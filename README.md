@@ -103,4 +103,6 @@ py tools\audit_evidence.py --case examples\caso_experimental_completo.json --out
 
 Consulte [docs/VALIDACAO_EVIDENCIAS.md](docs/VALIDACAO_EVIDENCIAS.md).
 
-Ver [PLANEJAMENTO.md](PLANEJAMENTO.md) para a sequência de implementação e decisões pendentes.
+Ver [PLANEJAMENTO.md](PLANEJAMENTO.md) para a sequência LTFT/HTFT, as portas de
+validação e as decisões pendentes. A separação científica dos regimes está em
+[docs/ESCOPO_LTFT_HTFT.md](docs/ESCOPO_LTFT_HTFT.md).

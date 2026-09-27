@@ -1,267 +1,273 @@
-# Plano de implementação e implantação — Reação Fischer–Tropsch
+# Plano de construção e implantação — Reação Fischer–Tropsch
 
-## 1. Objetivo e fronteira
+## 1. Objetivo e fronteira científica
 
-Construir uma plataforma própria para orientar estudos Fischer–Tropsch em baixa
-temperatura a partir do hidrocarboneto desejado, das condições operacionais, do
-catalisador e da evidência disponível.
+Construir uma plataforma própria para planejar, registrar e comparar estudos da
+reação Fischer–Tropsch a partir do produto desejado. A primeira linha de produto
+é **LTFT**; a linha **HTFT** será preparada em contratos e arquitetura antes de
+receber modelos ou recomendações.
 
-O projeto não é uma evolução do CataILab. O diretório `../CataILab_LTFT/` e os
-arquivos em `reference_results/legacy_catailab/` são referências históricas, não
-dependências de código, dados calibrados ou runtime da nova plataforma.
+O projeto não é uma evolução do CataILab. O legado é somente referência
+histórica. Código, dados, identidade, execução e validação são independentes.
 
-A plataforma deve sempre distinguir:
+A plataforma separa: entrada; evidência rastreável; hipótese; orientação ASF ou
+proxy; modelo calibrado; DFT executado; e recomendação experimental aprovada.
 
-1. composição proposta;
-2. estrutura atômica conhecida;
-3. hipótese estrutural;
-4. proxy ou orientação heurística;
-5. cálculo DFT;
-6. resultado experimental.
+## 2. Dois regimes, dois domínios
 
-## 2. Estado atual
+LTFT e HTFT não serão tratados como uma simples troca de temperatura. Cada
+regime terá contrato, dados, validação, modelos, métricas e relatório próprios.
 
-Legenda: `CONCLUÍDO`, `EM CURSO`, `PLANEJADO`, `BLOQUEADO`.
-
-| Componente | Estado | Evidência atual |
+| Aspecto | Linha LTFT | Linha HTFT preparada |
 |---|---|---|
-| Pacote Python independente | CONCLUÍDO | `src/plataforma_ltft/` |
-| Contrato e validação das entradas | CONCLUÍDO | `domain.py` e testes |
-| Seleção do hidrocarboneto-alvo | CONCLUÍDO | faixas e C1–C60 |
-| Distribuição ASF em base de carbono | CONCLUÍDO | fechamento testado |
-| Worker local por JSON | CONCLUÍDO | execução ponta a ponta |
-| Notebook próprio | CONCLUÍDO | gerador e notebook compilável |
-| Evidência histórica segregada | CONCLUÍDO | `data/evidence/` |
-| Orientação quantitativa de condições | BLOQUEADO | faltam modelos calibrados |
-| Ranking de catalisadores | BLOQUEADO | faltam critérios e dados aprovados |
-| Interface de usuário | PLANEJADO | arquitetura ainda não aprovada |
-| DFT/adsorção | PLANEJADO | protocolo e estruturas ainda ausentes |
-| Implantação pública | BLOQUEADO | depende dos marcos G1–G7 |
+| Objetivo inicial | destilados médios, parafinas e ceras | olefinas leves, gasolina e coprodutos |
+| Famílias iniciais | Co e Fe, comparadas separadamente | Fe e Fe promovido; demais exigem evidência |
+| Reações paralelas | WGS registrada, especialmente para Fe | WGS, Boudouard, metanação e secundárias obrigatórias |
+| Produtos mínimos | parafinas, olefinas, oxigenados e faixas Cn | resolução reforçada de olefinas/isômeros |
+| Riscos centrais | água, desativação, transferência de massa/calor | coque, carbetos, hot spots e reações secundárias |
+| Estado | núcleo funcional, sem cinética calibrada | arquitetura a construir; recomendações bloqueadas |
+
+As faixas operacionais não serão universais. O envelope inicial de roteamento é
+`LTFT = 180–260 °C`, `transição = >260–<280 °C` e `HTFT = 280–350 °C`.
+São rótulos configuráveis, com fonte e versão, não limites físico-químicos.
+Casos na transição exigirão classificação explícita do usuário.
+
+Detalhes: [docs/ESCOPO_LTFT_HTFT.md](docs/ESCOPO_LTFT_HTFT.md).
+
+## 3. Estado real
+
+| Componente | LTFT | HTFT | Evidência/condição |
+|---|---|---|---|
+| Interface Streamlit pública | CONCLUÍDO | BLOQUEADO | versão atual é somente LTFT |
+| Produto-alvo antes do catalisador | CONCLUÍDO | PLANEJADO | reaproveitar conceito, não parâmetros |
+| Contrato de caso | CONCLUÍDO v1 | PLANEJADO v2 | v2 adicionará `ft_regime` |
+| ASF em base de carbono | CONCLUÍDO | PLANEJADO | validade deve ser avaliada por regime |
+| Worker e JSON auditável | CONCLUÍDO | PLANEJADO | falta roteador de regime |
+| Evidência rastreável | EM CURSO | BLOQUEADO | HTFT requer corpus próprio |
+| Balanços C/H/O | PLANEJADO | PLANEJADO | pré-requisito para calibração |
+| Cinética calibrada | BLOQUEADO | BLOQUEADO | faltam dados aprovados e domínio |
+| Ranking de catalisadores | BLOQUEADO | BLOQUEADO | faltam critérios e validação externa |
+| DFT/adsorção | PLANEJADO | PLANEJADO | protocolos separados por fase/superfície |
+| Protótipo publicado | CONCLUÍDO | não aplicável | não equivale a produção validada |
+| Produção observável | BLOQUEADO | BLOQUEADO | faltam autenticação, backup e rollback |
+
+## 4. Arquitetura-alvo
+
+```text
+produto desejado
+  -> classificador (LTFT | transição | HTFT)
+  -> contrato específico
+  -> evidências compatíveis
+  -> motor do regime
+       LTFT: ASF + validação + futuros modelos LTFT
+       HTFT: ASF limitada + olefinas/WGS/secundárias + futuros modelos HTFT
+  -> domínio, sensibilidade e incerteza
+  -> relatório auditável
+  -> recomendação bloqueada ou liberada por porta científica
+```
+
+- núcleo comum somente para unidades, proveniência, balanços e auditoria;
+- adaptadores `ltft` e `htft`, sem condicionais dispersas;
+- parâmetros calibrados em um regime são proibidos no outro;
+- contratos e resultados são versionados, sem reinterpretar o v1;
+- cada execução registra versões de dados, modelo, código e configuração;
+- HTFT mantém `recommendation_blocked=true` até validação própria.
+
+## 5. Consolidação LTFT
+
+### LTFT-1 — contrato v2
+
+Adicionar: `ft_regime` e fonte do envelope; gás completo, inertes, contaminantes
+e umidade; reator/leito/diluente; temperaturas de entrada, leito e máxima;
+pressão, vazão, GHSV/WHSV e tempo; preparo/ativação; base analítica e seletividade;
+conversões CO/H2, CO2, água, balanços C/H/O, incerteza, replicatas e estado
+estacionário.
+
+**Aceite:** migração v1→v2, exemplos válidos/inválidos e testes de unidades,
+limites e regras condicionais.
+
+### LTFT-2 — qualidade experimental e balanços
 
-## 3. Trilhas de trabalho
+- validar fechamento C/H/O com tolerância declarada;
+- separar seletividade total, hidrocarbonetos, CO2 e oxigenados;
+- registrar GC, calibração, fatores de resposta e espécies não identificadas;
+- testar H2/CO declarado contra a alimentação real;
+- sinalizar limitações de transporte e hot spots;
+- exigir estado estacionário e histórico de desativação.
+
+**Aceite:** relatório reproduzível; dados reprovados não entram em calibração.
 
-### Trilha A — produto científico
+### LTFT-3 — seletividade e ASF ampliada
 
-- Definir produto-alvo, base da seletividade e função-objetivo.
-- Separar famílias Co, Fe e Co–Fe exploratória.
-- Qualificar evidências por origem, condição, unidade, incerteza e aplicabilidade.
-- Implementar modelos somente quando houver equação, parâmetros, unidades e
-  conjunto de validação compatível.
-- Manter recomendações bloqueadas quando faltarem entradas críticas.
+- manter ASF ideal como referência matemática;
+- comparar medição e ASF por número de carbono;
+- medir desvios de C1, C2, olefinas e cauda pesada;
+- admitir múltiplos `alpha` ou modelos não-ASF só após validação;
+- propagar incerteza para as frações previstas;
+- não inferir produto puro a partir de ASF isolada.
+
+**Aceite:** regressão com dados sintéticos conhecidos e conjunto experimental
+aprovado que não tenha sido usado no ajuste.
 
-### Trilha B — engenharia da plataforma
+### LTFT-4 — catalisadores e domínio
 
-- Evoluir contratos e esquemas versionados.
-- Implementar serviços de materiais, evidência, triagem e exportação.
-- Criar persistência, fila de workers e rastreabilidade das execuções.
-- Construir interface própria após estabilizar os contratos.
-- Automatizar testes unitários, integração, regressão científica e segurança.
+- separar Co, Fe e Co–Fe exploratório;
+- representar suporte, promotor, precursor, carga, dispersão e partícula;
+- rotular fase ativa como medida, inferida ou hipotética;
+- avaliar água, carbono, sinterização e transformação de fase;
+- comparar apenas casos compatíveis e explicar inclusão/exclusão.
 
-### Trilha C — implantação operacional
+**Aceite:** nenhuma recomendação sem cobertura, incerteza, domínio e validação
+externa.
+
+### LTFT-5 — planejamento experimental
 
-- Definir ambientes de desenvolvimento, homologação e produção.
-- Configurar autenticação, autorização, segredos, logs e backups.
-- Publicar primeiro em homologação com dados não sensíveis.
-- Executar aceite científico e operacional.
-- Promover uma versão imutável para produção e manter plano de reversão.
+- gerar faixas candidatas, não ponto ótimo sem calibração;
+- respeitar restrições de segurança/equipamento informadas pelo usuário;
+- sugerir replicatas, brancos, ativação e pontos de verificação;
+- permitir DOE somente no domínio aprovado;
+- exportar premissas, controles, respostas e critérios de parada.
 
-## 4. Fases e portas de decisão
+**Aceite:** revisão por especialista e piloto documentado; sem controle de
+equipamento nesta fase.
 
-### Fase 0 — governança do projeto
+## 6. Preparação HTFT
 
-**Estado:** EM CURSO
+### HTFT-0 — escopo
 
-Entregáveis:
+Escolher um alvo: olefinas leves, gasolina, aromáticos ou outro corte. Não
+combinar objetivos incompatíveis em um único escore.
 
-- nome e identidade próprios;
-- responsáveis por produto, ciência, dados e operação;
-- catálogo de decisões e critérios de mudança;
-- política de licença, autoria, privacidade e uso dos dados.
+Entregáveis: produto/base de seletividade; envelope de reator/alimentação/família;
+espécies e balanços obrigatórios; critérios de sucesso/segurança; corpus HTFT
+separado.
 
-**Porta G0:** escopo, responsáveis e política de dados aprovados.
+**Porta H0:** caso de uso e responsáveis científicos aprovados.
 
-### Fase 1 — contrato científico mínimo
+### HTFT-1 — contrato e taxonomia
 
-**Estado:** CONCLUÍDO (G1 atingida em 2026-09-25)
+Incluir Fe, promotores e evolução óxido/carbeto/carbono; olefinas/parafinas por
+Cn e razão O/P; isômeros, aromáticos, oxigenados e não identificados; CO2/WGS,
+água e balanços; coque e regeneração; gradiente/máximo térmico; transientes,
+tempo e desativação por estágio.
 
-Entregáveis existentes:
+**Porta H1:** schema, exemplos e bloqueio cruzado de parâmetros LTFT.
 
-- seleção do produto antes do catalisador;
-- contrato para composição, família ativa, fase, suporte, carga e condições;
-- ASF condicional ao `alpha` informado;
-- bloqueio de cinética e recomendação não sustentadas.
+### HTFT-2 — evidência e reações secundárias
 
-Entregáveis adicionais concluídos:
+- extrair apenas estudos HTFT compatíveis;
+- registrar WGS, Boudouard, metanação, craqueamento e readsorção;
+- distinguir seletividade primária de produtos após reações secundárias;
+- mapear temperatura, pressão, H2/CO, conversão e residência;
+- registrar fase e carbono superficial quando medidos.
 
-- promotor, precursor, ativação, alimentação, vazão, GHSV/WHSV, leito e tempo;
-- unidades canônicas e regras condicionais;
-- esquemas v1 para caso, evidência e resultado;
-- exemplos completo e inválido e testes de limites.
+**Porta H2:** conjunto rastreável, aprovado e suficiente; antes disso, saídas
+são descritivas e bloqueadas.
 
-**Porta G1:** esquema versionado, exemplos válidos/inválidos e testes de unidades.
+### HTFT-3 — motor mínimo
 
-### Fase 2 — curadoria e qualificação da evidência
+- ASF apenas como linha de base limitada;
+- balanços e métricas de olefinas com incerteza;
+- alertas de extrapolação, hot spot, coque e incompatibilidade;
+- comparação de modelos fora da amostra;
+- rejeição automática de modelos LTFT.
 
-**Estado:** EM CURSO
+**Porta H3:** validação fora da amostra, resíduos, incerteza, domínio e revisão
+científica independente.
 
-Concluído em 2026-09-27:
+### HTFT-4 — interface controlada
 
-- esquemas específicos dos três CSVs;
-- validação de cabeçalhos, tipos, ausências, duplicatas e limites;
-- fechamento das seletividades de hidrocarbonetos;
-- manifesto, hashes e compatibilidade contextual com o caso LTFT;
-- relatório JSON reproduzível que impede calibração e ranking automáticos.
+- seletor de regime antes das condições;
+- mostrar mudança de contrato ao trocar LTFT↔HTFT;
+- selo `experimental` durante homologação;
+- impedir recomendação antes de H0–H3;
+- testar em homologação antes do endereço público.
 
-Entregáveis:
+**Porta H4:** aceite científico, usabilidade e não regressão LTFT.
 
-- manifesto por fonte e licença;
-- leitura e validação do esquema dos três CSVs existentes;
-- vínculo de cada observação à composição, preparação e condições;
-- estados `metadado`, `leitura integral`, `extraído`, `verificado` e `aprovado`;
-- relatório de lacunas para cinética, conversão e seletividade.
+## 7. DFT e materiais
 
-Os resultados históricos continuam fora do conjunto de calibração até reprodução
-e aprovação explícitas.
+- LTFT: superfícies de Co/Fe, água e intermediários de crescimento;
+- HTFT: carbetos de Fe, promotores, carbono superficial e olefinas;
+- exigir superfície limpa, adsorbato isolado e sistema adsorvido;
+- fórmula não substitui estrutura, superfície, cobertura ou spin;
+- entrada gerada não equivale a cálculo executado;
+- DFT não equivale a desempenho experimental.
 
-**Porta G2:** conjunto de evidências rastreável, validado e aprovado para um caso de uso.
+**Porta DFT:** estrutura/protocolo validados, convergência, proveniência e revisão.
 
-### Fase 3 — motor de orientação e triagem
+## 8. Engenharia e operação
 
-**Estado:** fundação ASF CONCLUÍDA; motor completo PLANEJADO
+Sequência: contratos v2 e roteador; persistência; worker idempotente/fila; API
+versionada; interface com proveniência/bloqueios; exportações; autenticação e
+auditoria; observabilidade, backup e rollback.
 
-Sequência:
+Ambientes: desenvolvimento com dados sintéticos/públicos; homologação com dados
+aprovados; produção imutável e monitorada; integração futura de laboratório
+separada e sem controle de equipamento no MVP.
 
-1. produto desejado;
-2. orientação ASF e definição da métrica-alvo;
-3. seleção comparativa de famílias catalíticas;
-4. intervalo experimental permitido pela evidência;
-5. análise de sensibilidade e domínio de aplicabilidade;
-6. recomendação apenas quando critérios de aceite forem satisfeitos.
+O Streamlit atual é protótipo público; não satisfaz sozinho homologação ou
+produção científica.
 
-Não adotar automaticamente o funil legado `1000 → 100 → 10 → 2`. As cotas e o
-ranking devem nascer de objetivos, custos, diversidade e evidência aprovados.
+## 9. Portas de liberação
 
-**Porta G3:** resultados reproduzíveis em conjunto de validação, com limitações e
-incerteza reportadas.
+| Porta | Libera | Condição mínima |
+|---|---|---|
+| G0 | governança | escopo, responsáveis, licenças e política de dados |
+| G1 | contrato comum | schemas, unidades, migração e testes |
+| L1 | análise LTFT | LTFT-1 a LTFT-3 aceitos |
+| L2 | orientação LTFT | LTFT-4 validado externamente |
+| L3 | plano experimental | LTFT-5 revisado por especialista |
+| H0 | desenvolvimento HTFT | caso de uso aprovado |
+| H1 | ingestão HTFT | contrato e taxonomia próprios |
+| H2 | calibração HTFT | evidência aprovada e suficiente |
+| H3 | orientação HTFT | validação externa e revisão |
+| H4 | exposição pública HTFT | homologação e não regressão LTFT |
+| D1 | uso de DFT | protocolo, convergência e proveniência |
+| O1 | produção | segurança, backup, rollback e observabilidade |
 
-### Fase 4 — materiais e estruturas
+## 10. Próximos ciclos
 
-**Estado:** PLANEJADO
+### Ciclo 1 — consolidar LTFT
 
-Entregáveis:
+1. implementar `ft_regime` e contrato v2 sem quebrar v1;
+2. adicionar balanços C/H/O e qualidade analítica;
+3. qualificar um conjunto LTFT completo e licenciável;
+4. comparar ASF com esse conjunto e quantificar desvios;
+5. publicar relatório de validação sem liberar recomendação final.
 
-- entrada por fórmula, elementos, identificador de base ou CIF;
-- fórmula/elementos tratados como espaço químico, nunca como estrutura confirmada;
-- recuperação e validação de estruturas completas;
-- proveniência, simetria, ocupação, carga, spin e estado estrutural;
-- hipóteses neurais rotuladas e separadas das estruturas conhecidas.
+### Ciclo 2 — preparar HTFT bloqueado
 
-**Porta G4:** somente estruturas completas e validadas podem seguir para DFT.
+1. aprovar o primeiro produto-alvo HTFT;
+2. criar schema e exemplos HTFT;
+3. implementar roteador e bloqueio LTFT/HTFT;
+4. criar testes de incompatibilidade e não regressão;
+5. liberar só formulário e diagnóstico em homologação.
 
-### Fase 5 — DFT e adsorção
+### Ciclo 3 — validar por portas
 
-**Estado:** BLOQUEADO até G4 e aprovação do protocolo
+1. formar corpus HTFT rastreável;
+2. validar balanços e métricas de olefinas;
+3. comparar modelos fora da amostra;
+4. executar aceite científico independente;
+5. habilitar HTFT publicamente somente após H4.
 
-Entregáveis:
+## 11. Critério global de pronto
 
-- protocolo explícito de superfície, faceta, terminação e adsorbato;
-- três energias comparáveis: sistema adsorvido, superfície limpa e adsorbato isolado;
-- cálculo de `E_ads = E_superfície+adsorbato − E_superfície − E_adsorbato`;
-- configurações de funcional, dispersão, spin, carga, slab, vácuo, cobertura,
-  pseudopotenciais/bases, cutoff e pontos k;
-- adaptadores independentes para os engines aprovados;
-- validação sintática e reconstrução cruzada antes da execução.
+Funcionalidade científica pronta exige requisito, contrato, proveniência,
+unidades, incerteza, testes, domínio, artefato reproduzível e aceite científico.
+Implantação pronta também exige versão, migração, permissões, backup, rollback,
+logs, monitoramento e teste de fumaça. Publicar código ou URL não basta.
 
-**Porta G5:** pacote DFT validado para execução no programa-alvo. Arquivo gerado
-não equivale a cálculo executado ou resultado confirmado.
+## 12. Decisões pendentes
 
-### Fase 6 — interface e experiência do usuário
+1. caso LTFT para validação externa;
+2. tolerâncias de balanço e estado estacionário;
+3. produto-alvo inicial HTFT;
+4. limites versionados dos regimes;
+5. corpus e licenças HTFT;
+6. métricas para olefinas e reações secundárias;
+7. homologação, persistência e autenticação;
+8. protocolo DFT por regime e recursos computacionais.
 
-**Estado:** PLANEJADO após G1–G3
-
-Fluxo proposto:
-
-1. escolher hidrocarboneto/faixa desejada;
-2. informar alimentação e restrições experimentais;
-3. selecionar ou comparar família catalítica;
-4. definir composição, suporte, carga, promotor e ativação;
-5. visualizar evidências aplicáveis e lacunas;
-6. executar orientação/triagem;
-7. revisar hipóteses, incertezas e domínio;
-8. exportar relatório auditável;
-9. opcionalmente preparar DFT após G4/G5.
-
-A interface deve mostrar diretamente se cada valor é entrada, evidência,
-heurística, proxy, DFT ou experimento.
-
-**Porta G6:** teste de usabilidade e aceite científico sem afirmações enganosas.
-
-### Fase 7 — homologação
-
-**Estado:** BLOQUEADO até G3 e G6
-
-Entregáveis:
-
-- ambiente separado de produção;
-- banco e armazenamento de artefatos com backups testados;
-- autenticação e perfis de acesso;
-- logs estruturados, métricas, alertas e trilha de auditoria;
-- testes de carga, recuperação, segurança e reprodutibilidade;
-- casos de aceite com resultados esperados e tolerâncias.
-
-**Porta G7:** aceite conjunto científico, técnico e operacional.
-
-### Fase 8 — produção e operação
-
-**Estado:** BLOQUEADO até G7
-
-Entregáveis:
-
-- versão imutável e identificada;
-- migrações e backups verificados;
-- plano de rollback;
-- monitoramento e resposta a incidentes;
-- política de revalidação quando dados, modelos ou protocolos mudarem;
-- documentação e treinamento dos usuários.
-
-**Porta G8:** publicação confirmada, teste de fumaça e observabilidade ativa.
-
-## 5. Próximo ciclo recomendado
-
-O próximo ciclo deve avançar G2, nesta ordem:
-
-1. localizar e registrar URL/DOI e licença de cada fonte;
-2. verificar a leitura integral e conferir cada valor contra a tabela original;
-3. promover registros conferidos de `extraido` para `verificado`;
-4. escolher um único caso de uso para o primeiro aceite científico;
-5. só então definir o primeiro método quantitativo além da ASF.
-
-## 6. Critérios globais de pronto
-
-Uma funcionalidade só está concluída quando possui:
-
-- requisito e responsável definidos;
-- esquema/contrato versionado;
-- código sem dependência do runtime legado;
-- testes positivos, negativos e de limites;
-- proveniência e unidades;
-- documentação de uso e limitações;
-- artefato reproduzível;
-- aceite científico quando produzir orientação ou resultado científico.
-
-Uma implantação só está concluída quando, além dos itens acima, possui ambiente
-identificado, versão implantada, migrações concluídas, backup, rollback, logs,
-monitoramento e teste de fumaça registrados.
-
-## 7. Decisões pendentes
-
-1. Nome público e identidade visual.
-2. Caso de uso LTFT inicial para aceite.
-3. Arquitetura da interface e infraestrutura de implantação.
-4. Modelo de autenticação e perfis de usuário.
-5. Banco de dados e política de retenção.
-6. Fontes experimentais autorizadas para calibração.
-7. Métricas e critérios do futuro ranking.
-8. Protocolo DFT, engines e recursos computacionais.
-
-Nenhuma dessas decisões será preenchida silenciosamente pelo sistema.
+Nenhuma decisão pendente será inferida silenciosamente.
