@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "datasets": {
+    "ltft_kinetic_equations_provenance.csv": {
+      "dataset_id": "ltft-kinetic-equations-provenance-v1",
+      "source": "Bezerra 2010 e referências citadas nas linhas",
+      "source_url_or_doi": null,
+      "license": null,
+      "evidence_status": "extraido",
+      "full_text_verified": false,
+      "approved_uses": ["proveniencia", "identificacao_de_lacunas"],
+      "prohibited_uses": ["calibracao_automatica", "ranking", "recomendacao_de_condicoes"]
+    },
+    "ltft_mello_2017_selectivity.csv": {
+      "dataset_id": "ltft-mello-2017-selectivity-v1",
+      "source": "Mello 2017, Tabela S1 e texto principal",
+      "source_url_or_doi": null,
+      "license": null,
+      "evidence_status": "extraido",
+      "full_text_verified": false,
+      "approved_uses": ["auditoria_de_fechamento", "comparacao_contextual"],
+      "prohibited_uses": ["calibracao_automatica", "ranking", "transferencia_para_outro_catalisador"]
+    },
+    "ltft_mello_2017_supports.csv": {
+      "dataset_id": "ltft-mello-2017-supports-v1",
+      "source": "Mello 2017",
+      "source_url_or_doi": null,
+      "license": null,
+      "evidence_status": "extraido",
+      "full_text_verified": false,
+      "approved_uses": ["comparacao_contextual_de_suportes"],
+      "prohibited_uses": ["ranking", "inferir_superioridade_universal", "calibracao_automatica"]
+    }
+  }
+}

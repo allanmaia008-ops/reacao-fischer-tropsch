@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:plataforma-ltft:case:1.0.0",
+  "title": "Caso LTFT v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "composition", "active_family", "active_phase_hypothesis",
+    "support", "active_metal_loading_wt_pct", "temperature_c", "pressure_bar",
+    "h2_co_molar_ratio", "desired_product"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "composition": {"type": "string", "minLength": 1},
+    "active_family": {"enum": ["Co", "Fe", "Co-Fe"]},
+    "active_phase_hypothesis": {"type": "string", "minLength": 1},
+    "support": {"type": "string", "minLength": 1},
+    "active_metal_loading_wt_pct": {"type": "number", "exclusiveMinimum": 0, "maximum": 100},
+    "promoter": {"type": ["string", "null"], "minLength": 1},
+    "promoter_loading_wt_pct": {"type": ["number", "null"], "exclusiveMinimum": 0, "maximum": 100},
+    "precursor": {"type": ["string", "null"], "minLength": 1},
+    "activation_gas": {"type": ["string", "null"], "minLength": 1},
+    "activation_temperature_c": {"type": ["number", "null"], "exclusiveMinimum": -273.15},
+    "activation_duration_h": {"type": ["number", "null"], "exclusiveMinimum": 0},
+    "reactor_type": {"type": ["string", "null"], "minLength": 1},
+    "temperature_c": {"type": "number", "exclusiveMinimum": -273.15},
+    "pressure_bar": {"type": "number", "exclusiveMinimum": 0},
+    "h2_co_molar_ratio": {"type": "number", "exclusiveMinimum": 0},
+    "feed_composition_mol_fraction": {
+      "type": ["object", "null"],
+      "additionalProperties": {"type": "number", "minimum": 0, "maximum": 1}
+    },
+    "feed_flow_mol_s": {"type": ["number", "null"], "exclusiveMinimum": 0},
+    "ghsv_h_1": {"type": ["number", "null"], "exclusiveMinimum": 0},
+    "whsv_h_1": {"type": ["number", "null"], "exclusiveMinimum": 0},
+    "catalyst_mass_g": {"type": ["number", "null"], "exclusiveMinimum": 0},
+    "bed_volume_ml": {"type": ["number", "null"], "exclusiveMinimum": 0},
+    "time_on_stream_h": {"type": ["number", "null"], "exclusiveMinimum": 0},
+    "desired_product": {"type": "string", "minLength": 1}
+  }
+}

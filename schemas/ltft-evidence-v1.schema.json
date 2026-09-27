@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:plataforma-ltft:evidence:1.0.0",
+  "title": "Registro de evidência LTFT v1",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["schema_version", "evidence_id", "source", "evidence_status", "data", "limitations"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "evidence_id": {"type": "string", "minLength": 1},
+    "source": {"type": "string", "minLength": 1},
+    "source_url_or_doi": {"type": ["string", "null"]},
+    "license": {"type": ["string", "null"]},
+    "evidence_status": {"enum": ["metadado", "leitura_integral", "extraido", "verificado", "aprovado"]},
+    "data": {"type": "object"},
+    "units": {"type": "object"},
+    "uncertainties": {"type": ["object", "null"]},
+    "conditions": {"type": ["object", "null"]},
+    "limitations": {"type": "array", "items": {"type": "string"}, "minItems": 1}
+  }
+}

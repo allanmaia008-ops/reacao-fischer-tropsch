@@ -1,0 +1,29 @@
+{
+  "case": {
+    "schema_version": "1.0.0",
+    "composition": "Co",
+    "active_family": "Co",
+    "active_phase_hypothesis": "Co0 a confirmar por caracterização",
+    "support": "Al2O3",
+    "active_metal_loading_wt_pct": 20,
+    "promoter": "Ru",
+    "promoter_loading_wt_pct": 0.5,
+    "precursor": "a definir e registrar antes do ensaio",
+    "activation_gas": "H2",
+    "activation_temperature_c": 400,
+    "activation_duration_h": 10,
+    "reactor_type": "leito fixo",
+    "temperature_c": 220,
+    "pressure_bar": 20,
+    "h2_co_molar_ratio": 2.0,
+    "feed_composition_mol_fraction": {"H2": 0.6666666667, "CO": 0.3333333333},
+    "feed_flow_mol_s": 0.001,
+    "ghsv_h_1": 500,
+    "whsv_h_1": null,
+    "catalyst_mass_g": null,
+    "bed_volume_ml": 1.0,
+    "time_on_stream_h": 24,
+    "desired_product": "C12-C20"
+  },
+  "alpha": 0.85
+}

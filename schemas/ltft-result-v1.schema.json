@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:plataforma-ltft:result:1.0.0",
+  "title": "Resultado LTFT v1",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["schema_version", "status", "warning"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "status": {"enum": ["orientacao_por_produto", "distribuicao_asf_condicional"]},
+    "alpha_origin": {"enum": ["informado_pelo_usuario"]},
+    "CO_conversion_pct": {"type": ["number", "null"]},
+    "physical_productivity": {"type": ["number", "null"]},
+    "WGS_extent": {"type": ["number", "null"]},
+    "warning": {"type": "string", "minLength": 1}
+  }
+}

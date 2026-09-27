@@ -1,0 +1,17 @@
+{
+  "case": {
+    "schema_version": "1.0.0",
+    "composition": "Co",
+    "active_family": "Co",
+    "active_phase_hypothesis": "Co0 a confirmar",
+    "support": "Al2O3",
+    "active_metal_loading_wt_pct": 20,
+    "temperature_c": 220,
+    "pressure_bar": 20,
+    "h2_co_molar_ratio": 2.0,
+    "feed_flow_mol_s": null,
+    "catalyst_mass_g": null,
+    "desired_product": "C12-C20"
+  },
+  "alpha": 0.85
+}

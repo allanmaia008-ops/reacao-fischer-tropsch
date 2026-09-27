@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "datasets": {
+    "ltft_kinetic_equations_provenance.csv": {
+      "primary_key": ["system"],
+      "columns": ["system", "equation", "parameters", "source", "status", "limitation"],
+      "required": ["system", "equation", "parameters", "source", "status", "limitation"],
+      "allowed_status": ["not calibrated", "assumption only", "literature equation"]
+    },
+    "ltft_mello_2017_selectivity.csv": {
+      "primary_key": ["Catalisador"],
+      "columns": ["Catalisador", "CO2_pct", "C1_pct", "C2_C4_pct", "C5_C12_pct", "C13plus_pct", "CTY_mol_CO_gCo_h", "basis", "source_table"],
+      "required": ["Catalisador", "CO2_pct", "C1_pct", "C2_C4_pct", "C5_C12_pct", "C13plus_pct", "basis", "source_table"],
+      "nullable": ["CTY_mol_CO_gCo_h"],
+      "closure": "C1_pct + C2_C4_pct + C5_C12_pct + C13plus_pct = 100 within 0.11 percentage point"
+    },
+    "ltft_mello_2017_supports.csv": {
+      "primary_key": ["Suporte"],
+      "columns": ["Suporte", "M_wt_pct", "delta_atoms_nm2", "BET_m2_g", "Vp_cm3_g", "Vp_normalized_cm3_gAl2O3", "pore_nm", "eta_eV"],
+      "required": ["Suporte", "BET_m2_g", "Vp_cm3_g", "Vp_normalized_cm3_gAl2O3", "pore_nm", "eta_eV"],
+      "nullable": ["M_wt_pct", "delta_atoms_nm2"]
+    }
+  }
+}
+
