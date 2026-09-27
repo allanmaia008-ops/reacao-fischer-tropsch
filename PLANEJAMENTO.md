@@ -1,4 +1,4 @@
-# Plano de implementação e implantação — Plataforma LTFT
+# Plano de implementação e implantação — Reação Fischer–Tropsch
 
 ## 1. Objetivo e fronteira
 

@@ -1,4 +1,4 @@
-"""Interface web da Plataforma LTFT, independente do protótipo legado."""
+"""Interface web da Reação Fischer–Tropsch, independente do protótipo legado."""
 from pathlib import Path
 import sys
 
@@ -10,8 +10,8 @@ import streamlit as st
 from plataforma_ltft import LTFTCase, plan_product_target, run_screening, validate_case
 
 
-st.set_page_config(page_title="Plataforma LTFT", page_icon="⚗️", layout="wide")
-st.title("Plataforma LTFT")
+st.set_page_config(page_title="Reação Fischer–Tropsch", page_icon="⚗️", layout="wide")
+st.title("Reação Fischer–Tropsch")
 st.caption("Orientação científica para Fischer–Tropsch em baixa temperatura")
 st.warning(
     "A plataforma diferencia orientação ASF, evidência, cálculo e experimento. "

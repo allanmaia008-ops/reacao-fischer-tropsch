@@ -11,7 +11,7 @@ class StreamlitAppTests(unittest.TestCase):
         app = AppTest.from_file(str(ROOT / "app.py"), default_timeout=30).run()
         self.assertFalse(app.exception)
         self.assertFalse(app.error)
-        self.assertEqual(app.title[0].value, "Plataforma LTFT")
+        self.assertEqual(app.title[0].value, "Reação Fischer–Tropsch")
 
 
 if __name__ == "__main__":

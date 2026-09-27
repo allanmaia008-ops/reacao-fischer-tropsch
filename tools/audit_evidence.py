@@ -11,7 +11,7 @@ from plataforma_ltft.domain import LTFTCase
 from plataforma_ltft.evidence_validation import write_audit_report
 
 
-parser = argparse.ArgumentParser(description="Audita a evidência CSV da Plataforma LTFT")
+parser = argparse.ArgumentParser(description="Audita a evidência CSV da Reação Fischer–Tropsch")
 parser.add_argument("--evidence", type=Path, default=ROOT / "data" / "evidence")
 parser.add_argument("--case", type=Path)
 parser.add_argument("--output", type=Path, default=ROOT / "outputs" / "evidence_audit.json")
@@ -21,4 +21,3 @@ if args.case:
     payload = json.loads(args.case.read_text(encoding="utf-8"))
     case = LTFTCase(**payload["case"])
 print(write_audit_report(args.evidence, args.output, case))
-

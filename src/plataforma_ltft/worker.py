@@ -30,7 +30,7 @@ def execute(config_path: Path, output_dir: Path) -> Path:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Worker da Plataforma LTFT")
+    parser = argparse.ArgumentParser(description="Worker da Reação Fischer–Tropsch")
     parser.add_argument("--config", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()

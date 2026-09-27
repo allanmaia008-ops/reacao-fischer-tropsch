@@ -1,13 +1,13 @@
-# Plataforma LTFT
+# Reação Fischer–Tropsch
 
 Projeto novo e independente para triagem científica Fischer–Tropsch em baixa temperatura.
 Este diretório é o produto em construção. `../CataILab_LTFT/` é somente uma referência
 histórica de requisitos, fluxos e limitações; não é dependência, base de código ou
 runtime desta plataforma.
 
-Estado atual: núcleo mínimo executável com domínio, ASF, worker JSON, notebook e
-evidência versionada. Ainda não existe interface, motor de ranking, modelo cinético
-calibrado, integração DFT ou recomendação final.
+Estado atual: núcleo mínimo executável com interface Streamlit, domínio, ASF,
+worker JSON, notebook e evidência versionada. Ainda não existe motor de ranking,
+modelo cinético calibrado, integração DFT ou recomendação final.
 
 ## Interface web
 
@@ -20,7 +20,7 @@ O arquivo principal de publicação no Streamlit Community Cloud é `app.py`.
 ### Publicação no Streamlit Community Cloud
 
 1. Conecte a conta GitHub no Streamlit Community Cloud.
-2. Selecione o repositório `allanmaia008-ops/plataforma-ltft`.
+2. Selecione o repositório `allanmaia008-ops/reacao-fischer-tropsch`.
 3. Use a branch `main` e o arquivo principal `app.py`.
 4. Esta versão não requer secrets.
 
