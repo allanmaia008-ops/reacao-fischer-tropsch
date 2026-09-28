@@ -14,7 +14,7 @@ from plataforma_ltft import (
 
 st.set_page_config(page_title="Reação Fischer–Tropsch", page_icon="⚗️", layout="wide")
 st.title("Reação Fischer–Tropsch")
-st.caption("Orientação científica para Fischer–Tropsch em baixa temperatura")
+st.caption("Orientação científica para Fischer–Tropsch em baixa e alta temperatura")
 st.warning(
     "A plataforma diferencia orientação ASF, evidência, cálculo e experimento. "
     "Não apresenta heurísticas como cinética calibrada ou recomendação final."
@@ -69,13 +69,15 @@ with case_tab:
         default_temperature = {"LTFT": 220.0, "transicao": 270.0, "HTFT": 320.0}[regime]
         default_composition = "Fe" if regime == "HTFT" else "Co"
         c1, c2, c3 = st.columns(3)
-        composition = c1.text_input("Composição", default_composition)
-        family = c2.selectbox("Família ativa", family_options)
+        composition = c1.text_input("Composição", default_composition, key=f"composition_{regime}")
+        family = c2.selectbox("Família ativa", family_options, key=f"family_{regime}")
         phase = c3.text_input("Hipótese de fase ativa", "Co0 a confirmar")
         support = c1.text_input("Suporte", "Al2O3")
         loading = c2.number_input("Carga de metal ativo (% massa)", 0.01, 100.0, 20.0)
         product = c3.selectbox("Produto-alvo do caso", ["CH4", "C2-C4", "C5-C11", "C12-C20", "C21+", "C5+"])
-        temperature = c1.number_input("Temperatura (°C)", 180.0, 350.0, default_temperature)
+        temperature = c1.number_input(
+            "Temperatura (°C)", 180.0, 350.0, default_temperature, key=f"temperature_{regime}"
+        )
         pressure = c2.number_input("Pressão (bar absoluto)", 0.01, 500.0, 20.0)
         ratio = c3.number_input("Razão molar H₂/CO", 0.01, 10.0, 2.0)
         alpha = st.number_input("α informado pelo usuário", 0.001, 0.999, 0.850, step=0.01)
