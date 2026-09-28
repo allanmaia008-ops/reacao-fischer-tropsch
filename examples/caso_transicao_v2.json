@@ -1,0 +1,18 @@
+{
+  "case": {
+    "schema_version": "2.0.0",
+    "ft_regime": "transicao",
+    "regime_envelope_version": "1.0.0",
+    "regime_justification": "Ponto deliberado para estudar a transição entre envelopes.",
+    "composition": "Fe",
+    "active_family": "Fe",
+    "active_phase_hypothesis": "Fase ativa a confirmar",
+    "support": "SiO2",
+    "active_metal_loading_wt_pct": 20,
+    "temperature_c": 270,
+    "pressure_bar": 20,
+    "h2_co_molar_ratio": 1.5,
+    "desired_product": "C5-C11"
+  },
+  "alpha": 0.75
+}

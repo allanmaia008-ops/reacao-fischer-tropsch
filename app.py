@@ -7,7 +7,9 @@ sys.path.insert(0, str(ROOT / "src"))
 
 import streamlit as st
 
-from plataforma_ltft import LTFTCase, plan_product_target, run_screening, validate_case
+from plataforma_ltft import (
+    CASE_SCHEMA_VERSION, LTFTCase, plan_product_target, run_screening, validate_case,
+)
 
 
 st.set_page_config(page_title="Reação Fischer–Tropsch", page_icon="⚗️", layout="wide")
@@ -53,22 +55,34 @@ with target_tab:
         st.warning(plan["blocking_reason"])
 
 with case_tab:
-    st.subheader("Entradas do caso LTFT")
+    st.subheader("Entradas do caso Fischer–Tropsch")
     with st.form("case_form"):
+        regime = st.selectbox("Regime", ["LTFT", "HTFT", "transicao"])
+        if regime == "HTFT":
+            st.warning("HTFT está em preparação: a saída será descritiva e a recomendação permanecerá bloqueada.")
+        elif regime == "transicao":
+            st.warning("A faixa de transição exige justificativa científica explícita.")
+        regime_justification = st.text_input(
+            "Justificativa do regime (obrigatória para transição)", ""
+        )
+        family_options = ["Fe"] if regime == "HTFT" else ["Co", "Fe", "Co-Fe"]
+        default_temperature = {"LTFT": 220.0, "transicao": 270.0, "HTFT": 320.0}[regime]
+        default_composition = "Fe" if regime == "HTFT" else "Co"
         c1, c2, c3 = st.columns(3)
-        composition = c1.text_input("Composição", "Co")
-        family = c2.selectbox("Família ativa", ["Co", "Fe", "Co-Fe"])
+        composition = c1.text_input("Composição", default_composition)
+        family = c2.selectbox("Família ativa", family_options)
         phase = c3.text_input("Hipótese de fase ativa", "Co0 a confirmar")
         support = c1.text_input("Suporte", "Al2O3")
         loading = c2.number_input("Carga de metal ativo (% massa)", 0.01, 100.0, 20.0)
         product = c3.selectbox("Produto-alvo do caso", ["CH4", "C2-C4", "C5-C11", "C12-C20", "C21+", "C5+"])
-        temperature = c1.number_input("Temperatura (°C)", -273.14, 1000.0, 220.0)
+        temperature = c1.number_input("Temperatura (°C)", 180.0, 350.0, default_temperature)
         pressure = c2.number_input("Pressão (bar absoluto)", 0.01, 500.0, 20.0)
         ratio = c3.number_input("Razão molar H₂/CO", 0.01, 10.0, 2.0)
         alpha = st.number_input("α informado pelo usuário", 0.001, 0.999, 0.850, step=0.01)
         submitted = st.form_submit_button("Avaliar distribuição ASF", type="primary")
     if submitted:
         case = LTFTCase(
+            schema_version=CASE_SCHEMA_VERSION,
             composition=composition,
             active_family=family,
             active_phase_hypothesis=phase,
@@ -78,6 +92,8 @@ with case_tab:
             pressure_bar=pressure,
             h2_co_molar_ratio=ratio,
             desired_product=product,
+            ft_regime=regime,
+            regime_justification=regime_justification or None,
         )
         validation = validate_case(case)
         if not validation.valid_for_screening:

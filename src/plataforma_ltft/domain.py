@@ -1,10 +1,50 @@
-"""Contrato científico v1; valida entradas sem inferir desempenho catalítico."""
+"""Contrato científico v2 e migração v1, sem inferir desempenho catalítico."""
 
 from dataclasses import dataclass
 from math import isclose, isfinite
-from typing import Mapping
+from typing import Any, Mapping
 
-CASE_SCHEMA_VERSION = "1.0.0"
+CASE_SCHEMA_VERSION = "2.0.0"
+LEGACY_CASE_SCHEMA_VERSION = "1.0.0"
+REGIME_ENVELOPE_VERSION = "1.0.0"
+VALID_REGIMES = ("LTFT", "transicao", "HTFT")
+LTFT_MIN_C = 180.0
+LTFT_MAX_C = 260.0
+HTFT_MIN_C = 280.0
+HTFT_MAX_C = 350.0
+
+
+def classify_ft_regime(temperature_c: float) -> str:
+    """Classifica pelo envelope de roteamento, não por limite físico universal."""
+    if not _is_finite_number(temperature_c):
+        raise ValueError("temperature_c deve ser um número finito.")
+    if LTFT_MIN_C <= temperature_c <= LTFT_MAX_C:
+        return "LTFT"
+    if LTFT_MAX_C < temperature_c < HTFT_MIN_C:
+        return "transicao"
+    if HTFT_MIN_C <= temperature_c <= HTFT_MAX_C:
+        return "HTFT"
+    raise ValueError(
+        f"Temperatura fora do envelope versionado {REGIME_ENVELOPE_VERSION} "
+        f"({LTFT_MIN_C:g}–{HTFT_MAX_C:g} °C)."
+    )
+
+
+def migrate_case_v1_to_v2(data: Mapping[str, Any]) -> dict[str, Any]:
+    """Migra um caso LTFT v1 sem reinterpretar transição ou HTFT silenciosamente."""
+    migrated = dict(data)
+    if migrated.get("schema_version") != LEGACY_CASE_SCHEMA_VERSION:
+        raise ValueError("A migração aceita somente casos com schema_version 1.0.0.")
+    regime = classify_ft_regime(migrated.get("temperature_c"))
+    if regime != "LTFT":
+        raise ValueError("Caso v1 fora de LTFT exige classificação e revisão explícitas no contrato v2.")
+    migrated.update({
+        "schema_version": CASE_SCHEMA_VERSION,
+        "ft_regime": "LTFT",
+        "regime_envelope_version": REGIME_ENVELOPE_VERSION,
+        "regime_justification": None,
+    })
+    return migrated
 
 
 @dataclass(frozen=True)
@@ -33,6 +73,9 @@ class LTFTCase:
     bed_volume_ml: float | None = None
     time_on_stream_h: float | None = None
     desired_product: str | None = None
+    ft_regime: str | None = None
+    regime_envelope_version: str = REGIME_ENVELOPE_VERSION
+    regime_justification: str | None = None
 
 
 @dataclass(frozen=True)
@@ -51,7 +94,7 @@ def _is_finite_number(value) -> bool:
 
 
 def validate_case(case: LTFTCase) -> ValidationResult:
-    """Valida completude, unidades fixas e dependências condicionais do contrato v1."""
+    """Valida completude, regime, unidades e dependências do contrato v2."""
     screening_fields = (
         "composition", "active_family", "active_phase_hypothesis", "support",
         "active_metal_loading_wt_pct", "temperature_c", "pressure_bar",
@@ -66,8 +109,15 @@ def validate_case(case: LTFTCase) -> ValidationResult:
     missing_experimental = [name for name in experimental_fields if getattr(case, name) is None]
     errors: list[str] = []
 
-    if case.schema_version != CASE_SCHEMA_VERSION:
-        errors.append(f"schema_version deve ser {CASE_SCHEMA_VERSION}.")
+    if case.schema_version not in (CASE_SCHEMA_VERSION, LEGACY_CASE_SCHEMA_VERSION):
+        errors.append(f"schema_version deve ser {LEGACY_CASE_SCHEMA_VERSION} ou {CASE_SCHEMA_VERSION}.")
+    if case.schema_version == CASE_SCHEMA_VERSION:
+        if case.ft_regime not in VALID_REGIMES:
+            errors.append("ft_regime deve ser LTFT, transicao ou HTFT no contrato v2.")
+        if case.regime_envelope_version != REGIME_ENVELOPE_VERSION:
+            errors.append(f"regime_envelope_version deve ser {REGIME_ENVELOPE_VERSION}.")
+    elif case.ft_regime is not None:
+        errors.append("Caso v1 não pode declarar ft_regime; migre explicitamente para v2.")
     if case.active_family is not None and case.active_family not in ("Co", "Fe", "Co-Fe"):
         errors.append("Família ativa deve ser Co, Fe ou Co-Fe exploratória.")
     if case.desired_product is not None:
@@ -84,6 +134,11 @@ def validate_case(case: LTFTCase) -> ValidationResult:
         value = getattr(case, name)
         if value is not None and (not isinstance(value, str) or not value.strip()):
             errors.append(f"{name} não pode ser vazio.")
+
+    if case.regime_justification is not None and (
+        not isinstance(case.regime_justification, str) or not case.regime_justification.strip()
+    ):
+        errors.append("regime_justification não pode ser vazia.")
 
     numeric_fields = (
         "active_metal_loading_wt_pct", "promoter_loading_wt_pct",
@@ -102,6 +157,26 @@ def validate_case(case: LTFTCase) -> ValidationResult:
                 errors.append(f"{name} deve ser maior que zero absoluto.")
         elif value <= 0:
             errors.append(f"{name} deve ser positivo.")
+
+    if _is_finite_number(case.temperature_c):
+        try:
+            classified = classify_ft_regime(case.temperature_c)
+        except ValueError as exc:
+            errors.append(str(exc))
+        else:
+            if case.schema_version == LEGACY_CASE_SCHEMA_VERSION and classified != "LTFT":
+                errors.append("Contrato v1 é exclusivo de LTFT; migre e classifique o caso no v2.")
+            if case.schema_version == CASE_SCHEMA_VERSION and case.ft_regime != classified:
+                errors.append(
+                    f"ft_regime={case.ft_regime!r} é incompatível com {case.temperature_c:g} °C; "
+                    f"o envelope {REGIME_ENVELOPE_VERSION} classifica como {classified}."
+                )
+            if classified == "transicao" and not (
+                isinstance(case.regime_justification, str) and case.regime_justification.strip()
+            ):
+                errors.append("Casos na faixa de transição exigem regime_justification explícita.")
+            if classified == "HTFT" and case.active_family not in (None, "Fe"):
+                errors.append("O escopo HTFT inicial aceita somente a família Fe; outras exigem nova evidência.")
 
     for name in ("active_metal_loading_wt_pct", "promoter_loading_wt_pct"):
         value = getattr(case, name)

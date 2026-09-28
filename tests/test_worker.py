@@ -22,6 +22,9 @@ class WorkerTests(unittest.TestCase):
             self.assertEqual(data["status"], "orientacao_por_produto")
             self.assertEqual(data["target_plan"]["desired_product"], "C12-C20")
             self.assertIsNone(data["target_plan"]["catalyst_orientation"]["selected_family"])
+            self.assertEqual(data["schema_version"], "2.0.0")
+            self.assertEqual(data["ft_regime"], "nao_definido")
+            self.assertTrue(data["recommendation_blocked"])
 
     def test_worker_writes_auditable_result(self):
         with tempfile.TemporaryDirectory() as folder:
@@ -33,3 +36,13 @@ class WorkerTests(unittest.TestCase):
             self.assertEqual(data["target_plan"]["desired_product"], "C12-C20")
             self.assertTrue(data["target_plan"]["recommendation_blocked"])
             self.assertFalse(data["readiness"]["valid_for_experimental_plan"])
+            self.assertEqual(data["schema_version"], "2.0.0")
+            self.assertEqual(data["ft_regime"], "LTFT")
+
+    def test_htft_output_is_explicitly_blocked(self):
+        with tempfile.TemporaryDirectory() as folder:
+            result = execute(ROOT / "examples" / "caso_htft_v2.json", Path(folder))
+            data = json.loads(result.read_text(encoding="utf-8"))
+            self.assertEqual(data["ft_regime"], "HTFT")
+            self.assertTrue(data["recommendation_blocked"])
+            self.assertIn("preparação", data["recommendation_blocking_reason"])

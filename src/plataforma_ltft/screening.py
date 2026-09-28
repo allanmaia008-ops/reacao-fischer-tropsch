@@ -2,7 +2,7 @@
 from dataclasses import asdict
 
 from .asf import product_bands, validate_alpha
-from .domain import LTFTCase, validate_case
+from .domain import CASE_SCHEMA_VERSION, LTFTCase, validate_case
 from .product_targets import build_target_plan, target_fraction
 
 
@@ -15,11 +15,19 @@ def run_screening(case: LTFTCase, alpha: float) -> dict:
         })
     alpha = validate_alpha(alpha)
     return {
-        "schema_version": "1.0.0",
+        "schema_version": CASE_SCHEMA_VERSION,
         "status": "distribuicao_asf_condicional",
         "case": asdict(case),
         "alpha": alpha,
         "alpha_origin": "informado_pelo_usuario",
+        "ft_regime": case.ft_regime or "LTFT",
+        "regime_envelope_version": case.regime_envelope_version,
+        "recommendation_blocked": True,
+        "recommendation_blocking_reason": (
+            "HTFT está em preparação e não possui modelo validado."
+            if case.ft_regime == "HTFT"
+            else "Não há cinética calibrada e validação experimental suficientes."
+        ),
         "product_basis": "fracao_do_carbono_nos_hidrocarbonetos",
         "product_bands": product_bands(alpha),
         "target_fraction": target_fraction(alpha, case.desired_product),

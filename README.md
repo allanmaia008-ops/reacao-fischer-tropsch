@@ -74,8 +74,12 @@ $env:PYTHONPATH = "$PWD\src"
 py -m plataforma_ltft.worker --config examples\caso_co.json --output outputs\caso_co
 ```
 
-O arquivo `resultado_ltft.json` contém distribuição ASF condicional ao `alpha`
+O arquivo `resultado_ft.json` contém distribuição ASF condicional ao `alpha`
 informado. Ele não produz conversão, produtividade ou extensão WGS.
+
+O worker migra casos LTFT v1 para o contrato v2 de forma explícita. Casos de
+transição e HTFT exigem `schema_version: 2.0.0`, regime declarado e envelope
+versionado. Consulte [docs/CONTRATO_V2.md](docs/CONTRATO_V2.md).
 
 ## Notebook
 

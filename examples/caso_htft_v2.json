@@ -1,0 +1,18 @@
+{
+  "case": {
+    "schema_version": "2.0.0",
+    "ft_regime": "HTFT",
+    "regime_envelope_version": "1.0.0",
+    "regime_justification": "Caso de preparação HTFT baseado em Fe; sem recomendação.",
+    "composition": "Fe promovido",
+    "active_family": "Fe",
+    "active_phase_hypothesis": "Carbeto de ferro a confirmar",
+    "support": "a definir",
+    "active_metal_loading_wt_pct": 30,
+    "temperature_c": 320,
+    "pressure_bar": 20,
+    "h2_co_molar_ratio": 1,
+    "desired_product": "C2-C4"
+  },
+  "alpha": 0.65
+}
