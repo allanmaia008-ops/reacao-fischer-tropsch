@@ -9,14 +9,20 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from plataforma_ltft.domain import LTFTCase
-from plataforma_ltft.evidence_validation import audit_evidence_directory, write_audit_report
+from plataforma_ltft.evidence_validation import DATASET_SPECS, audit_evidence_directory, write_audit_report
 
 
 class EvidenceValidationTests(unittest.TestCase):
     def setUp(self):
         self.evidence = ROOT / "data" / "evidence"
 
+    def require_local_evidence_corpus(self):
+        missing = [name for name in DATASET_SPECS if not self.evidence.joinpath(name).exists()]
+        if missing:
+            self.skipTest("Corpus CSV local não versionado; licenças ainda não verificadas.")
+
     def test_current_csvs_are_structurally_valid_but_not_approved(self):
+        self.require_local_evidence_corpus()
         report = audit_evidence_directory(self.evidence)
         self.assertEqual(report["summary"]["dataset_count"], 3)
         self.assertEqual(report["summary"]["structurally_valid_count"], 3)
@@ -27,18 +33,21 @@ class EvidenceValidationTests(unittest.TestCase):
         self.assertTrue(all(not item["allowed_to_change_ranking"] for item in report["datasets"]))
 
     def test_selectivity_rows_close_at_100_percent(self):
+        self.require_local_evidence_corpus()
         report = audit_evidence_directory(self.evidence)
         selectivity = next(item for item in report["datasets"] if "selectivity" in item["filename"])
         self.assertEqual(selectivity["metrics"]["selectivity_closure_pct"], [100.0] * 5)
         self.assertEqual(selectivity["metrics"]["missing_counts"]["CTY_mol_CO_gCo_h"], 4)
 
     def test_compatibility_is_context_only_not_transferability(self):
+        self.require_local_evidence_corpus()
         case = LTFTCase(active_family="Co", promoter="Ru", promoter_loading_wt_pct=0.5)
         report = audit_evidence_directory(self.evidence, case)
         mello = [item for item in report["datasets"] if item["filename"].startswith("ltft_mello")]
         self.assertTrue(all(item["compatibility"]["status"] == "context_only" for item in mello))
 
     def test_bad_selectivity_closure_is_detected_without_editing_source(self):
+        self.require_local_evidence_corpus()
         with tempfile.TemporaryDirectory() as folder:
             copied = Path(folder) / "evidence"
             shutil.copytree(self.evidence, copied)
