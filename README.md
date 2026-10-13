@@ -118,6 +118,7 @@ validação e as decisões pendentes. A separação científica dos regimes est�
 - [Plano de implementação LTFT/HTFT](PLANEJAMENTO.md)
 - [Arquitetura-alvo](docs/ARQUITETURA_ALVO.md)
 - [Backlog inicial priorizado](docs/BACKLOG_INICIAL.md)
+- [Charter científico e aceite da FT-001](docs/CHARTER_FT_001.md)
 - [Planilha de atividades e status](docs/Planilha_Atividades_Plataforma_Fischer_Tropsch.xlsx)
 - [Escopo científico LTFT/HTFT](docs/ESCOPO_LTFT_HTFT.md)
 
