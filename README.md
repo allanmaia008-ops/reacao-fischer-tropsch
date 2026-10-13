@@ -83,14 +83,35 @@ O worker migra casos LTFT v1 para o contrato v2 de forma explícita. Casos de
 transição e HTFT exigem `schema_version: 2.0.0`, regime declarado e envelope
 versionado. Consulte [docs/CONTRATO_V2.md](docs/CONTRATO_V2.md).
 
-## Notebook
+## Notebooks modulares
 
 ```powershell
 py tools\generate_notebook.py
 ```
 
-O notebook gerado fica em `notebooks/fluxo_ltft.ipynb` e usa somente o pacote
-`plataforma_ltft`.
+O gerador mantém seis notebooks independentes em `notebooks/`, todos importando
+o pacote oficial `plataforma_ltft` em vez de duplicar regras científicas:
+
+1. `01_produto_asf.ipynb` — produto-alvo e orientação ASF;
+2. `02_contrato_catalisador.ipynb` — cadastro e validação do catalisador;
+3. `03_unidades_canonicas.ipynb` — conversões e rastreabilidade de unidades;
+4. `04_auditoria_evidencias.ipynb` — auditoria não destrutiva de evidências;
+5. `05_caso_experimental_ltft.ipynb` — caso completo e triagem LTFT;
+6. `06_preparacao_htft.ipynb` — contrato HTFT com recomendação bloqueada.
+
+`fluxo_ltft.ipynb` permanece como demonstração histórica simples. A manutenção
+deve ocorrer primeiro nos módulos de `src/plataforma_ltft/`; depois, execute o
+gerador para atualizar os notebooks.
+
+Validação rápida dos seis fluxos, sem depender de um kernel Jupyter instalado:
+
+```powershell
+py tools\validate_notebooks.py
+```
+
+Essa validação executa as células de código em ordem e complementa os testes
+estruturais de `tests/test_notebooks.py`. Para exploração interativa, abra cada
+arquivo em Jupyter ou VS Code e selecione um ambiente com o pacote instalado.
 
 ## Evidência e resultados históricos
 
