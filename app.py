@@ -27,8 +27,10 @@ from plataforma_ltft.ui_workflow import (
     regime_input_errors,
     workflow_progress,
 )
-from plataforma_ltft.ui_design import apply_global_design, maturity_card, section_intro
+from plataforma_ltft.ui_design import apply_global_design, maturity_badge, maturity_card, section_intro
 from plataforma_ltft.result_panel import carbon_curve, curve_closure, readiness_rows
+from plataforma_ltft.evidence_maturity import maturity_catalog, result_maturity_rows
+from plataforma_ltft.scenario_comparison import compare_asf_scenarios
 
 
 PRODUCT_OPTIONS = ["CH4", "C2-C4", "C5-C11", "C12-C20", "C21+", "C5+"]
@@ -57,6 +59,11 @@ def _initialize_state() -> None:
         "screening_result": None,
         "case_validation": None,
         "evidence_reviewed": False,
+        "comparison_enabled": False,
+        "comparison_count": 2,
+        "comparison_alpha_1": 0.80,
+        "comparison_alpha_2": 0.85,
+        "comparison_alpha_3": 0.90,
     }
     for key, value in defaults.items():
         if key not in st.session_state:
@@ -383,11 +390,74 @@ def _render_results() -> None:
 
         st.warning(result["warning"])
         st.error("Recomendação bloqueada: " + result["recommendation_blocking_reason"])
+
+        with st.container(border=True):
+            st.markdown("#### Maturidade dos resultados")
+            for item in result_maturity_rows(result):
+                maturity_badge(item["category"])
+                st.markdown(f"**{item['artifact']}** — {item['provenance']}")
+                st.caption(item["limitation"])
+
+        with st.container(border=True):
+            st.markdown("#### Comparação de cenários ASF")
+            st.checkbox(
+                "Ativar comparação matemática", key="comparison_enabled",
+                help="Compara somente a sensibilidade ao α. Não otimiza condições experimentais.",
+            )
+            if st.session_state.comparison_enabled:
+                st.selectbox("Número de cenários", [2, 3], key="comparison_count")
+                comparison_columns = st.columns(st.session_state.comparison_count)
+                alphas = []
+                for index, column in enumerate(comparison_columns, start=1):
+                    key = f"comparison_alpha_{index}"
+                    alphas.append(column.number_input(
+                        f"α do cenário {index}", 0.001, 0.999, key=key,
+                        step=0.01, format="%.3f",
+                    ))
+                try:
+                    comparison = compare_asf_scenarios(alphas, target)
+                except ValueError as exc:
+                    st.error(str(exc))
+                else:
+                    comparison_rows = [
+                        {
+                            "Cenário": row["scenario"], "α": row["alpha"],
+                            "Fração no alvo (%)": 100 * row["target_fraction"],
+                            "CH4 (%)": 100 * row["CH4"], "C2-C4 (%)": 100 * row["C2-C4"],
+                            "C5-C11 (%)": 100 * row["C5-C11"], "C12-C20 (%)": 100 * row["C12-C20"],
+                            "C21+ (%)": 100 * row["C21+"],
+                        }
+                        for row in comparison["summaries"]
+                    ]
+                    st.dataframe(
+                        comparison_rows, use_container_width=True, hide_index=True,
+                        column_config={
+                            "α": st.column_config.NumberColumn(format="%.3f"),
+                            **{
+                                name: st.column_config.NumberColumn(format="%.2f")
+                                for name in ("Fração no alvo (%)", "CH4 (%)", "C2-C4 (%)", "C5-C11 (%)", "C12-C20 (%)", "C21+ (%)")
+                            },
+                        },
+                    )
+                    comparison_chart = (
+                        alt.Chart(alt.Data(values=comparison["curve"]))
+                        .mark_line(point=False)
+                        .encode(
+                            x=alt.X("carbon_number:Q", title="Número de carbono (Cn)"),
+                            y=alt.Y("carbon_fraction:Q", title="Fração de carbono ASF", axis=alt.Axis(format=".1%")),
+                            color=alt.Color("scenario:N", title="Cenário"),
+                            strokeDash=alt.StrokeDash("target_group:N", title="Relação com o alvo"),
+                            tooltip=["scenario:N", alt.Tooltip("alpha:Q", format=".3f"), "carbon_number:Q", alt.Tooltip("carbon_fraction:Q", format=".4%")],
+                        )
+                        .properties(height=320)
+                    )
+                    st.altair_chart(comparison_chart, use_container_width=True)
+                    st.warning("Sensibilidade matemática condicionada ao α. Não é otimização nem recomendação experimental.")
     _step_buttons(STEP_CONDITIONS, STEP_EVIDENCE)
 
 
 def _render_evidence() -> None:
-    st.subheader("Evidências e limites")
+    section_intro("Evidências e limites", "Interprete cada saída conforme sua origem e seu nível de maturidade.")
     st.markdown(
         "**Esta versão faz:** seleção de alvo, cálculo ASF condicionado ao α, "
         "validação de entradas e manutenção dos bloqueios científicos."
@@ -396,6 +466,11 @@ def _render_evidence() -> None:
         "**Esta versão não afirma:** conversão, produtividade, cinética calibrada, "
         "fase ativa confirmada, resultado DFT/experimental ou condição ótima."
     )
+    st.markdown("### Catálogo de maturidade")
+    for item in maturity_catalog():
+        with st.container(border=True):
+            maturity_badge(item["category"])
+            st.write(item["definition"])
     reviewed = st.checkbox(
         "Revisei os limites desta execução (isso não aprova evidências nem libera recomendação).",
         key="evidence_reviewed",

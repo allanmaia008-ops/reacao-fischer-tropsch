@@ -24,6 +24,10 @@ destaca a faixa-alvo e fecha a distribuição com a cauda analítica C61+ até C
 Também separa as condições usadas, a prontidão científica e os bloqueios. As
 faixas de Cn não são tratadas automaticamente como produtos comerciais.
 
+Os resultados recebem categorias rastreáveis de maturidade e podem ser
+comparados em dois ou três cenários de α. Essa comparação é uma sensibilidade
+matemática e mantém a recomendação experimental bloqueada.
+
 ## Interface web
 
 ```powershell
@@ -43,6 +47,10 @@ rótulo público da aplicação é **Projeto Fischer–Tropsch**.
 O contrato científico atual é o v2. Consulte [docs/CONTRATO_V2.md](docs/CONTRATO_V2.md),
 o contrato v1 preservado para compatibilidade e os JSON Schemas em
 [schemas/](schemas/README.md).
+
+O contrato para futuros modelos cinéticos está definido em
+[docs/CONTRATO_CINETICO_V1.md](docs/CONTRATO_CINETICO_V1.md). Nenhuma equação é
+executada enquanto o contrato não estiver completo e validado.
 
 ## Princípios
 

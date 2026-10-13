@@ -243,9 +243,9 @@ recomendação validada.
 5. `FT-053`: **concluída** — painel de resultados com curva ASF C1–C60,
    faixa-alvo destacada, base de carbono, cauda analítica C61+ até C∞, condições,
    prontidão e bloqueios separados; cortes seguem rotulados como faixas de Cn;
-6. `FT-054`: categorias visuais de maturidade da evidência;
-7. `FT-055`: comparação auditável de dois ou três cenários;
-8. `FT-056`: testes de UX, regressão científica e aceite da publicação.
+6. `FT-054`: **concluída** — categorias visuais e textuais de maturidade;
+7. `FT-055`: **concluída** — comparação auditável de dois ou três cenários ASF;
+8. `FT-056`: **concluída** — testes de UX, regressão científica, CI e critérios de publicação.
 
 Após `FT-056`, retomar os ciclos abaixo na ordem original.
 
@@ -275,8 +275,9 @@ Após `FT-056`, retomar os ciclos abaixo na ordem original.
 
 ### Ciclo 4 — modelar processo e economia após validação
 
-1. `FT-057`: especificar o contrato cinético, domínio, unidades, parâmetros,
-   incerteza e fonte; temperatura e pressão isoladas não predizem conversão;
+1. `FT-057`: **concluída** — contrato cinético v1 com domínio, unidades,
+   parâmetros, incerteza, fonte e porta de validação; temperatura e pressão
+   isoladas continuam sem predizer conversão;
 2. `FT-058`: implementar o primeiro reator LTFT com alimentação, vazão/GHSV ou
    WHSV, geometria, balanços molares, energia, pressão, transporte, WGS e
    desativação conforme a hipótese adotada;

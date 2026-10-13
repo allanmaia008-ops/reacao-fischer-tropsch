@@ -353,12 +353,13 @@ Ordem de execução:
 5. `FT-053` — **concluída**: painel científico de resultados com curva ASF
    C1–C60, faixa-alvo destacada, base de carbono declarada, fechamento com cauda
    analítica C61+ até C∞, condições utilizadas, prontidão e bloqueios separados;
-6. `FT-054` — representar a maturidade da evidência por categorias rastreáveis:
-   matemático, heurístico, literatura, experimental, calibrado ou bloqueado;
-7. `FT-055` — permitir comparação auditável de dois ou três cenários sem
-   apresentar a comparação como otimização experimental;
-8. `FT-056` — testar responsividade, acessibilidade, fluxo, regressão científica
-   e publicação antes do aceite da modernização.
+6. `FT-054` — **concluída**: maturidade representada por categorias textuais e
+   visuais rastreáveis — matemático, heurístico, literatura, experimental,
+   calibrado ou bloqueado — vinculadas à origem e à limitação;
+7. `FT-055` — **concluída**: comparação auditável de dois ou três cenários ASF,
+   com entradas, base e bloqueios explícitos, sem apresentá-la como otimização;
+8. `FT-056` — **concluída**: responsividade, acessibilidade, fluxo e regressão
+   científica testados; CI e critérios separados de publicação documentados.
 
 **Porta UX:** as atividades `FT-049` a `FT-056` devem ser aceitas antes de
 retomar `FT-010` e as demais atividades anteriormente planejadas. Correções
@@ -440,8 +441,8 @@ Entregáveis:
 Esta fase começa pelo LTFT e só avança de descrição para predição após o corpus,
 os balanços e o modelo quantitativo passarem pelas portas científicas.
 
-- `FT-057` — definir contrato do modelo cinético, variáveis, parâmetros,
-  unidades, domínio, fonte e incerteza;
+- `FT-057` — **concluída**: contrato v1 do modelo cinético com variáveis,
+  parâmetros, unidades, domínio, fontes, incerteza e porta de validação;
 - `FT-058` — implementar o primeiro modelo de reator LTFT com balanços molares,
   geometria, vazão/GHSV ou WHSV, pressão, calor e massa, queda de pressão e
   desativação quando aplicáveis;
@@ -627,12 +628,9 @@ Uma implantação está pronta somente quando acrescenta:
 
 ## 18. Próxima atividade recomendada
 
-Executar `FT-054`, representando a maturidade da evidência por categorias
-rastreáveis e mantendo visíveis as limitações científicas.
-
-Depois, executar `FT-055` e `FT-056` na ordem definida na Fase UX. Somente após
-o aceite dessa porta o projeto retorna à CI mínima, aos balanços, à validação
-LTFT, à preparação HTFT e às demais fases já planejadas.
+Executar `FT-058`, implementando o primeiro modelo de reator LTFT somente após
+selecionar uma hipótese cinética aprovada para o caso. Até essa aprovação, o
+modelo deve permanecer bloqueado e não produzir conversão ou produtividade.
 
 ## 19. Decisões ainda necessárias
 

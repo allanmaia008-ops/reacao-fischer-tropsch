@@ -38,6 +38,22 @@ button:focus-visible, input:focus-visible, [role="radio"]:focus-visible,
   outline-offset: 2px;
 }
 [data-testid="stCaptionContainer"] { color: var(--ft-muted); }
+.ft-maturity {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  margin-bottom: 0.45rem;
+  border: 1px solid var(--ft-border);
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 750;
+  letter-spacing: 0.01em;
+}
+.ft-mathematical { background: #e7f1ff; color: #174a7e; }
+.ft-heuristic { background: #fff3cd; color: #6b4b00; border-style: dashed; }
+.ft-literature { background: #ede9fe; color: #51368a; }
+.ft-experimental { background: #e8f5e9; color: #24632c; }
+.ft-calibrated { background: #dff4ee; color: #075c49; border-width: 2px; }
+.ft-blocked { background: #fde8e8; color: #8a2020; border-style: double; }
 @media (max-width: 700px) {
   [data-testid="stMainBlockContainer"] { padding: 1rem 0.9rem 3rem; }
   h1 { font-size: 2rem !important; }
@@ -77,3 +93,18 @@ def maturity_card(title: str, status: str, description: str, tone: str) -> None:
         else:
             st.markdown(f"**Status: {status}**")
         st.write(description)
+
+
+def maturity_badge(category: str) -> None:
+    """Selo textual; a categoria continua legível sem percepção de cor."""
+    css_name = {
+        "matemático": "mathematical", "heurístico": "heuristic",
+        "literatura": "literature", "experimental": "experimental",
+        "calibrado": "calibrated", "bloqueado": "blocked",
+    }.get(category)
+    if css_name is None:
+        raise ValueError(f"Categoria de maturidade desconhecida: {category}")
+    st.markdown(
+        f'<span class="ft-maturity ft-{css_name}">Maturidade: {category}</span>',
+        unsafe_allow_html=True,
+    )

@@ -4,7 +4,7 @@ from pathlib import Path
 from streamlit.testing.v1 import AppTest
 
 from plataforma_ltft.ui_workflow import (
-    STEP_CATALYST, STEP_CONDITIONS, STEP_REGIME, STEP_RESULTS, WORKFLOW_STEPS,
+    STEP_CATALYST, STEP_CONDITIONS, STEP_EVIDENCE, STEP_REGIME, STEP_RESULTS, WORKFLOW_STEPS,
 )
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -81,6 +81,18 @@ class StreamlitAppTests(unittest.TestCase):
         self.assertTrue(any("Curva ASF por número de carbono" in item.value for item in app.markdown))
         self.assertTrue(any("cauda analítica C61+" in item.value for item in app.caption))
         self.assertTrue(any("Recomendação bloqueada" in item.value for item in app.error))
+        self.assertTrue(any("Maturidade dos resultados" in item.value for item in app.markdown))
+        next(field for field in app.checkbox if field.label == "Ativar comparação matemática").set_value(True).run()
+        self.assertFalse(app.exception)
+        self.assertTrue(any("Sensibilidade matemática" in item.value for item in app.warning))
+
+    def test_evidence_step_exposes_all_maturity_categories(self):
+        app = AppTest.from_file(str(ROOT / "app.py"), default_timeout=30).run()
+        next(button for button in app.button if button.label == "Começar planejamento").click().run()
+        app.radio[0].set_value(STEP_EVIDENCE).run()
+        rendered = " ".join(item.value for item in app.markdown)
+        for category in ("matemático", "heurístico", "literatura", "experimental", "calibrado", "bloqueado"):
+            self.assertIn(category, rendered)
 
 
 if __name__ == "__main__":
