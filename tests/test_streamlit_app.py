@@ -11,7 +11,7 @@ class StreamlitAppTests(unittest.TestCase):
         app = AppTest.from_file(str(ROOT / "app.py"), default_timeout=30).run()
         self.assertFalse(app.exception)
         self.assertFalse(app.error)
-        self.assertEqual(app.title[0].value, "Reação Fischer–Tropsch")
+        self.assertEqual(app.title[0].value, "Projeto Fischer–Tropsch")
 
     def test_htft_selection_resets_regime_specific_defaults(self):
         app = AppTest.from_file(str(ROOT / "app.py"), default_timeout=30).run()

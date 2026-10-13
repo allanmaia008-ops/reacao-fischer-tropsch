@@ -15,7 +15,8 @@ modelo cinético calibrado, integração DFT ou recomendação final.
 py -m streamlit run app.py
 ```
 
-O arquivo principal de publicação no Streamlit Community Cloud é `app.py`.
+O arquivo principal de publicação no Streamlit Community Cloud é `app.py`. O
+rótulo público da aplicação é **Projeto Fischer–Tropsch**.
 
 ### Publicação no Streamlit Community Cloud
 

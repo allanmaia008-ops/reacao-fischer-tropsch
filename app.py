@@ -1,4 +1,4 @@
-"""Interface web da Reação Fischer–Tropsch, independente do protótipo legado."""
+"""Interface web pública do Projeto Fischer–Tropsch."""
 from pathlib import Path
 import sys
 
@@ -12,8 +12,8 @@ from plataforma_ltft import (
 )
 
 
-st.set_page_config(page_title="Reação Fischer–Tropsch", page_icon="⚗️", layout="wide")
-st.title("Reação Fischer–Tropsch")
+st.set_page_config(page_title="Projeto Fischer–Tropsch", page_icon="⚗️", layout="wide")
+st.title("Projeto Fischer–Tropsch")
 st.caption("Orientação científica para Fischer–Tropsch em baixa e alta temperatura")
 st.warning(
     "A plataforma diferencia orientação ASF, evidência, cálculo e experimento. "
