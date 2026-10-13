@@ -234,7 +234,8 @@ Este ciclo deve ser concluído antes da retomada dos ciclos científicos já
 planejados. Ele não altera contratos nem promove orientação heurística a
 recomendação validada.
 
-1. `FT-049`: navegação lateral e fluxo guiado com progresso;
+1. `FT-049`: **concluída** — navegação lateral e fluxo guiado com progresso,
+   pendências e persistência do estado da sessão;
 2. `FT-050`: página inicial e estado de maturidade LTFT/HTFT;
 3. `FT-051`: identidade visual, responsividade e acessibilidade;
 4. `FT-052`: formulário modular com ajuda, unidades e validação imediata;

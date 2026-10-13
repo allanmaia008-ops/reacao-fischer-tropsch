@@ -341,8 +341,9 @@ regras científicas, contratos, bloqueios ou o worker já validados.
 
 Ordem de execução:
 
-1. `FT-049` — criar navegação lateral pelo fluxo produto → regime → catalisador
-   → condições → resultados → evidências, com progresso e pendências;
+1. `FT-049` — **concluída**: navegação lateral pelo fluxo produto → regime →
+   catalisador → condições → resultados → evidências, com progresso, pendências
+   e estado persistente da sessão;
 2. `FT-050` — criar página inicial com proposta, ações principais e estado
    explícito de LTFT, HTFT e recomendações;
 3. `FT-051` — implantar sistema visual próprio, responsivo e acessível;
@@ -586,11 +587,10 @@ Uma implantação está pronta somente quando acrescenta:
 
 ## 18. Próxima atividade recomendada
 
-Executar `FT-049`, a arquitetura do fluxo guiado. O trabalho deve começar pela
-separação da interface Streamlit em componentes de navegação e estado, mantendo
-os módulos de `src/plataforma_ltft/` como fonte única das regras científicas.
+Executar `FT-050`, a página inicial e o estado da plataforma, preservando a
+navegação e os bloqueios científicos concluídos na `FT-049`.
 
-Depois, executar `FT-050` a `FT-056` na ordem definida na Fase UX. Somente após
+Depois, executar `FT-051` a `FT-056` na ordem definida na Fase UX. Somente após
 o aceite dessa porta o projeto retorna à CI mínima, aos balanços, à validação
 LTFT, à preparação HTFT e às demais fases já planejadas.
 
