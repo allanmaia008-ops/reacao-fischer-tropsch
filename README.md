@@ -24,8 +24,9 @@ O arquivo principal de publicação no Streamlit Community Cloud é `app.py`.
 3. Use a branch `main` e o arquivo principal `app.py`.
 4. Esta versão não requer secrets.
 
-O contrato científico atual é o v1. Consulte [docs/CONTRATO_V1.md](docs/CONTRATO_V1.md)
-e os JSON Schemas em [schemas/](schemas/README.md).
+O contrato científico atual é o v2. Consulte [docs/CONTRATO_V2.md](docs/CONTRATO_V2.md),
+o contrato v1 preservado para compatibilidade e os JSON Schemas em
+[schemas/](schemas/README.md).
 
 ## Princípios
 
@@ -110,3 +111,14 @@ Consulte [docs/VALIDACAO_EVIDENCIAS.md](docs/VALIDACAO_EVIDENCIAS.md).
 Ver [PLANEJAMENTO.md](PLANEJAMENTO.md) para a sequência LTFT/HTFT, as portas de
 validação e as decisões pendentes. A separação científica dos regimes está em
 [docs/ESCOPO_LTFT_HTFT.md](docs/ESCOPO_LTFT_HTFT.md).
+
+## Planejamento consolidado
+
+- [Planejamento mestre da plataforma](PLANEJAMENTO_MESTRE.md)
+- [Plano de implementação LTFT/HTFT](PLANEJAMENTO.md)
+- [Arquitetura-alvo](docs/ARQUITETURA_ALVO.md)
+- [Backlog inicial priorizado](docs/BACKLOG_INICIAL.md)
+- [Escopo científico LTFT/HTFT](docs/ESCOPO_LTFT_HTFT.md)
+
+O planejamento mestre amplia o roteiro existente sem substituir os contratos,
+testes, módulos LTFT/HTFT ou as restrições científicas já implementadas.
