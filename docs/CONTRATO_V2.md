@@ -26,6 +26,7 @@ envelope são rejeitados até existir estudo e versão específicos.
 
 - `schemas/ft-case-v2.schema.json` — entrada v2;
 - `schemas/ft-result-v2.schema.json` — saída e bloqueio científico;
+- `docs/UNIDADES_CANONICAS.md` — catálogo 1.0.0, conversões e limites;
 - `examples/caso_htft_v2.json` — exemplo HTFT de preparação;
 - `examples/caso_transicao_v2.json` — exemplo com justificativa;
 - `docs/CONTRATO_V1.md` — contrato legado preservado.

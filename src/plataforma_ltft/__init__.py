@@ -7,5 +7,10 @@ from .domain import (
 from .screening import run_screening
 from .product_targets import STANDARD_TARGETS, build_target_plan, plan_product_target
 from .evidence_validation import audit_evidence_directory
+from .units import (
+    CANONICAL_UNITS, FIELD_QUANTITIES, UNIT_CATALOG_VERSION,
+    CanonicalMeasurement, UnitDefinition, UnitError,
+    canonicalize, canonicalize_field, convert, normalize_unit, unit_catalog,
+)
 
-__all__ = ["CASE_SCHEMA_VERSION", "REGIME_ENVELOPE_VERSION", "LTFTCase", "ValidationResult", "classify_ft_regime", "migrate_case_v1_to_v2", "validate_case", "run_screening", "STANDARD_TARGETS", "build_target_plan", "plan_product_target", "audit_evidence_directory"]
+__all__ = ["CASE_SCHEMA_VERSION", "REGIME_ENVELOPE_VERSION", "LTFTCase", "ValidationResult", "classify_ft_regime", "migrate_case_v1_to_v2", "validate_case", "run_screening", "STANDARD_TARGETS", "build_target_plan", "plan_product_target", "audit_evidence_directory", "CANONICAL_UNITS", "FIELD_QUANTITIES", "UNIT_CATALOG_VERSION", "CanonicalMeasurement", "UnitDefinition", "UnitError", "canonicalize", "canonicalize_field", "convert", "normalize_unit", "unit_catalog"]

@@ -6,7 +6,7 @@
 |---|---|---|
 | FT-001 | charter e fronteira científica | **CONCLUÍDO** — escopo e exclusões aprovados em [CHARTER_FT_001.md](CHARTER_FT_001.md) |
 | FT-002 | taxonomia LTFT/HTFT | regimes e transição versionados |
-| FT-003 | unidades canônicas | catálogo e conversões testados |
+| FT-003 | unidades canônicas | **CONCLUÍDO** — catálogo 1.0.0 e conversões testados em [UNIDADES_CANONICAS.md](UNIDADES_CANONICAS.md) |
 | FT-004 | contrato de caso | schema, exemplos e validação |
 | FT-005 | contrato de catalisador | preparação, fase e proveniência |
 | FT-006 | contrato de evidência | origem, licença e status de revisão |
