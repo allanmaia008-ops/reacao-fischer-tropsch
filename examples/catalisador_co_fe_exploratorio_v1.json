@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "catalyst_id": "CAT-COFE-EXP-001",
+  "batch_id": "LOT-COFE-EXP-001-A",
+  "display_name": "Co-Fe exploratório demonstrativo",
+  "active_family": "Co-Fe",
+  "nominal_composition": "15 wt% Co / 10 wt% Fe / SiO2",
+  "scientific_hypothesis": "Sistema exploratório; interação Co-Fe e fase ativa não confirmadas.",
+  "precursor": "Co(NO3)2·6H2O e Fe(NO3)3·9H2O",
+  "support": "SiO2",
+  "active_metal_loading_wt_pct": 25.0,
+  "promoters": [],
+  "preparation_method": "coimpregnação sequencial",
+  "preparation_steps": [
+    {"name": "impregnação de Fe", "description": "Depositar precursor de Fe no suporte.", "temperature_c": 25, "duration_h": 1, "atmosphere": "ar"},
+    {"name": "impregnação de Co", "description": "Depositar precursor de Co após secagem intermediária.", "temperature_c": 25, "duration_h": 1, "atmosphere": "ar"}
+  ],
+  "activation": {"gas": "H2", "temperature_c": 400, "duration_h": 10},
+  "active_phase": {"label": "fases Co/Fe não confirmadas", "status": "hipotetica", "evidence_ids": []},
+  "particle_size_um": null,
+  "dispersion_pct": null,
+  "characterization_evidence_ids": [],
+  "storage_conditions": "Recipiente seco e identificado como exploratório.",
+  "provenance": {"source_type": "experimento_interno", "source_reference": "registro demonstrativo CAT-COFE-EXP-001", "license": "uso interno", "curator": "Allan Maia", "recorded_at": "2026-10-12"}
+}

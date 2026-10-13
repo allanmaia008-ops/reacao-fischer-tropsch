@@ -5,6 +5,7 @@
 - `ltft-result-v1.schema.json`: saída do worker.
 - `ft-case-v2.schema.json`: caso com regime LTFT, transição ou HTFT.
 - `ft-result-v2.schema.json`: resultado com bloqueio científico explícito.
+- `ft-catalyst-v1.schema.json`: lote, preparação, ativação, fase e proveniência do catalisador.
 
 As unidades fazem parte dos nomes dos campos (`_c`, `_bar`, `_mol_s`, `_h_1`,
 `_g`, `_ml`, `_wt_pct`). O JSON Schema valida forma e limites simples; as regras

@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "catalyst_id": "CAT-FE-001",
+  "batch_id": "LOT-FE-001-A",
+  "display_name": "Fe promovido lote demonstrativo",
+  "active_family": "Fe",
+  "nominal_composition": "Fe/K/SiO2",
+  "scientific_hypothesis": "Formação de carbeto durante ativação e reação; requer caracterização.",
+  "precursor": "Fe(NO3)3·9H2O",
+  "support": "SiO2",
+  "active_metal_loading_wt_pct": 30.0,
+  "promoters": [{"name": "K", "loading_wt_pct": 1.0, "precursor": "K2CO3"}],
+  "preparation_method": "coimpregnação",
+  "preparation_steps": [
+    {"name": "coimpregnação", "description": "Depositar precursores de Fe e K sobre SiO2.", "temperature_c": 25, "duration_h": 2, "atmosphere": "ar"},
+    {"name": "calcinação", "description": "Calcinar o material seco.", "temperature_c": 450, "duration_h": 5, "atmosphere": "ar"}
+  ],
+  "activation": {"gas": "H2/CO", "temperature_c": 300, "duration_h": 8},
+  "active_phase": {"label": "carbeto de ferro", "status": "inferida", "evidence_ids": ["EVID-FE-PHASE-001"]},
+  "particle_size_um": 300,
+  "dispersion_pct": null,
+  "characterization_evidence_ids": ["EVID-FE-PHASE-001"],
+  "storage_conditions": "Atmosfera seca, recipiente identificado.",
+  "provenance": {"source_type": "experimento_interno", "source_reference": "registro demonstrativo CAT-FE-001", "license": "uso interno", "curator": "Allan Maia", "recorded_at": "2026-10-12"}
+}

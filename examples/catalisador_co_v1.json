@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "catalyst_id": "CAT-CO-001",
+  "batch_id": "LOT-CO-001-A",
+  "display_name": "Co/Al2O3 lote demonstrativo",
+  "active_family": "Co",
+  "nominal_composition": "20 wt% Co / 0.5 wt% Ru / Al2O3",
+  "scientific_hypothesis": null,
+  "precursor": "Co(NO3)2·6H2O",
+  "support": "Al2O3",
+  "active_metal_loading_wt_pct": 20.0,
+  "promoters": [{"name": "Ru", "loading_wt_pct": 0.5, "precursor": "Ru(NO)(NO3)3"}],
+  "preparation_method": "impregnação por volume de poros",
+  "preparation_steps": [
+    {"name": "impregnação", "description": "Adicionar solução precursora ao suporte seco.", "temperature_c": 25, "duration_h": 1, "atmosphere": "ar"},
+    {"name": "calcinação", "description": "Calcinar o sólido seco.", "temperature_c": 400, "duration_h": 4, "atmosphere": "ar"}
+  ],
+  "activation": {"gas": "H2", "temperature_c": 400, "duration_h": 10},
+  "active_phase": {"label": "Co0", "status": "hipotetica", "evidence_ids": []},
+  "particle_size_um": 250,
+  "dispersion_pct": null,
+  "characterization_evidence_ids": [],
+  "storage_conditions": "Recipiente seco e fechado, temperatura ambiente.",
+  "provenance": {"source_type": "experimento_interno", "source_reference": "registro demonstrativo CAT-CO-001", "license": "uso interno", "curator": "Allan Maia", "recorded_at": "2026-10-12"}
+}
