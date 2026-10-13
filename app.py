@@ -18,11 +18,15 @@ from plataforma_ltft.ui_workflow import (
     STEP_REGIME,
     STEP_RESULTS,
     WORKFLOW_STEPS,
+    catalyst_input_errors,
     invalidate_from,
     mark_step_complete,
     pending_steps,
+    product_input_error,
+    regime_input_errors,
     workflow_progress,
 )
+from plataforma_ltft.ui_design import apply_global_design, maturity_card, section_intro
 
 
 PRODUCT_OPTIONS = ["CH4", "C2-C4", "C5-C11", "C12-C20", "C21+", "C5+"]
@@ -132,11 +136,11 @@ def _navigation() -> None:
 
 
 def _render_home() -> None:
-    st.subheader("Planejamento científico orientado pelo produto")
-    st.write(
+    section_intro(
+        "Planejamento científico orientado pelo produto",
         "Escolha o hidrocarboneto ou corte desejado, descreva o regime, o "
         "catalisador e as condições e obtenha uma análise rastreável dos limites "
-        "do caso Fischer–Tropsch."
+        "do caso Fischer–Tropsch.",
     )
     primary, secondary = st.columns(2)
     primary.button(
@@ -151,17 +155,11 @@ def _render_home() -> None:
     st.markdown("### Estado científico da plataforma")
     ltft, htft, recommendation = st.columns(3)
     with ltft:
-        st.markdown("#### LTFT")
-        st.success("Protótipo funcional")
-        st.write("Seleção de produto, validação do caso e distribuição ASF condicionada ao α informado.")
+        maturity_card("LTFT", "Protótipo funcional", "Seleção de produto, validação do caso e distribuição ASF condicionada ao α informado.", "success")
     with htft:
-        st.markdown("#### HTFT")
-        st.warning("Em preparação")
-        st.write("Cadastro e diagnóstico descritivo, sem reutilizar automaticamente modelos LTFT.")
+        maturity_card("HTFT", "Em preparação", "Cadastro e diagnóstico descritivo, sem reutilizar automaticamente modelos LTFT.", "warning")
     with recommendation:
-        st.markdown("#### Recomendações")
-        st.markdown("🔴 **Bloqueadas**")
-        st.write("Exigem evidência aprovada, calibração, domínio de aplicabilidade e validação externa.")
+        maturity_card("Recomendações", "Bloqueadas", "Exigem evidência aprovada, calibração, domínio de aplicabilidade e validação externa.", "blocked")
 
     st.markdown("### O que você pode fazer agora")
     st.markdown(
@@ -185,13 +183,16 @@ def _step_buttons(previous: str | None, following: str | None) -> None:
 
 
 def _render_product() -> None:
-    st.subheader("Produto desejado")
-    st.write("Comece pelo hidrocarboneto ou corte que deseja priorizar.")
-    with st.form("product_form"):
-        st.selectbox("Produto ou faixa-alvo", PRODUCT_OPTIONS, key="target_standard")
-        st.text_input("Ou informe um hidrocarboneto individual entre C1 e C60", key="target_exact")
-        submitted = st.form_submit_button("Confirmar produto", type="primary")
-    if submitted:
+    section_intro("Produto desejado", "Comece pelo hidrocarboneto ou corte que deseja priorizar.")
+    with st.container(border=True):
+        st.markdown("#### Definição do alvo")
+        st.selectbox("Produto ou faixa-alvo", PRODUCT_OPTIONS, key="target_standard", help="Faixas de número de carbono usadas para triagem. Elas não garantem um produto comercial puro.")
+        st.text_input("Hidrocarboneto individual, opcional", key="target_exact", placeholder="Exemplo: C16", help="Se preenchido, substitui a faixa selecionada. Aceita C1 a C60.")
+        product_error = product_input_error(st.session_state.target_exact)
+        if product_error:
+            st.error(product_error)
+        submitted = st.button("Confirmar produto", type="primary", disabled=bool(product_error))
+    if submitted and not product_error:
         selected = st.session_state.target_exact.strip() or st.session_state.target_standard
         try:
             st.session_state.target_plan = plan_product_target(selected)
@@ -216,76 +217,66 @@ def _render_product() -> None:
 
 
 def _render_regime() -> None:
-    st.subheader("Regime Fischer–Tropsch")
-    st.selectbox(
-        "Regime", ["LTFT", "HTFT", "transicao"], key="ft_regime",
-        on_change=_regime_changed,
-    )
+    section_intro("Regime Fischer–Tropsch", "Classifique o caso antes de aplicar regras ou evidências específicas.")
+    with st.container(border=True):
+        st.markdown("#### Classificação térmica")
+        st.selectbox("Regime", ["LTFT", "HTFT", "transicao"], key="ft_regime", on_change=_regime_changed, help="LTFT: 180–260 °C. Transição: acima de 260 e abaixo de 280 °C. HTFT: 280–350 °C.")
+        st.text_input("Justificativa do regime", key="regime_justification", placeholder="Obrigatória somente para a faixa de transição", help="Registre a base científica usada para classificar um caso na faixa de transição.")
+        regime_errors = regime_input_errors(st.session_state.ft_regime, st.session_state.regime_justification)
+        for message in regime_errors:
+            st.error(message)
+        confirm_regime = st.button("Confirmar regime", type="primary", disabled=bool(regime_errors))
     if st.session_state.ft_regime == "HTFT":
         st.warning("HTFT está em preparação: a saída será descritiva e a recomendação permanecerá bloqueada.")
     elif st.session_state.ft_regime == "transicao":
         st.warning("A faixa de transição exige justificativa científica explícita.")
-    st.text_input(
-        "Justificativa do regime (obrigatória para transição)",
-        key="regime_justification",
-    )
-    if st.button("Confirmar regime", type="primary"):
-        if st.session_state.ft_regime == "transicao" and not st.session_state.regime_justification.strip():
-            st.error("Informe a justificativa científica para o regime de transição.")
-        else:
-            _mark_complete(STEP_REGIME)
-            st.success("Regime confirmado para este fluxo.")
+    if confirm_regime:
+        _mark_complete(STEP_REGIME)
+        st.success("Regime confirmado para este fluxo.")
     _step_buttons(STEP_PRODUCT, STEP_CATALYST)
 
 
 def _render_catalyst() -> None:
-    st.subheader("Catalisador")
+    section_intro("Catalisador", "Registre a formulação declarada e diferencie dados medidos de hipóteses.")
     regime = st.session_state.ft_regime
     family_options = ["Fe"] if regime == "HTFT" else ["Co", "Fe", "Co-Fe"]
     if st.session_state.active_family not in family_options:
         st.session_state.active_family = family_options[0]
-    with st.form("catalyst_form"):
+    with st.container(border=True):
+        st.markdown("#### Composição e fase")
         c1, c2 = st.columns(2)
-        c1.text_input("Composição", key="composition")
-        c2.selectbox("Família ativa", family_options, key="active_family")
-        c1.text_input("Hipótese de fase ativa", key="active_phase")
-        c2.text_input("Suporte", key="support")
-        st.number_input("Carga de metal ativo (% massa)", 0.01, 100.0, key="loading")
-        submitted = st.form_submit_button("Confirmar catalisador", type="primary")
+        c1.text_input("Composição", key="composition", help="Composição declarada; não confirma a fase ativa.")
+        c2.selectbox("Família ativa", family_options, key="active_family", help="Família usada para aplicar regras específicas do regime.")
+        c1.text_input("Hipótese de fase ativa", key="active_phase", help="Hipótese científica que exige confirmação experimental.")
+        c2.text_input("Suporte", key="support", help="Material de suporte declarado, por exemplo Al2O3, SiO2 ou TiO2.")
+        st.number_input("Carga de metal ativo", 0.01, 100.0, key="loading", format="%.2f", help="Porcentagem em massa (% m/m) do metal ativo.")
+        catalyst_errors = catalyst_input_errors(st.session_state.composition, st.session_state.active_phase, st.session_state.support)
+        for message in catalyst_errors:
+            st.error(message)
+        submitted = st.button("Confirmar catalisador", type="primary", disabled=bool(catalyst_errors))
     if submitted:
-        required = [st.session_state.composition, st.session_state.active_phase, st.session_state.support]
-        if not all(value.strip() for value in required):
-            st.error("Preencha composição, hipótese de fase ativa e suporte.")
-        else:
-            _invalidate_from(STEP_CATALYST)
-            _mark_complete(STEP_CATALYST)
-            st.success("Dados mínimos do catalisador confirmados.")
+        _invalidate_from(STEP_CATALYST)
+        _mark_complete(STEP_CATALYST)
+        st.success("Dados mínimos do catalisador confirmados.")
     _step_buttons(STEP_REGIME, STEP_CONDITIONS)
 
 
 def _render_conditions() -> None:
-    st.subheader("Condições e execução")
+    section_intro("Condições e execução", "Informe as condições com unidades explícitas e revise a validação antes do cálculo.")
     prerequisites = (STEP_PRODUCT, STEP_REGIME, STEP_CATALYST)
     missing = [step for step in prerequisites if step not in st.session_state.completed_steps]
     if missing:
         st.warning("Confirme antes: " + ", ".join(missing) + ".")
-    c1, c2, c3 = st.columns(3)
-    c1.number_input(
-        "Temperatura (°C)", 180.0, 350.0, key="temperature",
-        on_change=_invalidate_from, args=(STEP_CONDITIONS,),
-    )
-    c2.number_input(
-        "Pressão (bar absoluto)", 0.01, 500.0, key="pressure",
-        on_change=_invalidate_from, args=(STEP_CONDITIONS,),
-    )
-    c3.number_input(
-        "Razão molar H₂/CO", 0.01, 10.0, key="h2_co_ratio",
-        on_change=_invalidate_from, args=(STEP_CONDITIONS,),
-    )
-    st.number_input(
-        "α informado pelo usuário", 0.001, 0.999, key="alpha", step=0.01,
-        on_change=_invalidate_from, args=(STEP_CONDITIONS,),
-    )
+    with st.container(border=True):
+        st.markdown("#### Condições do reator")
+        c1, c2, c3 = st.columns(3)
+        c1.number_input("Temperatura", 180.0, 350.0, key="temperature", format="%.1f", on_change=_invalidate_from, args=(STEP_CONDITIONS,), help="Unidade: °C. A compatibilidade é verificada contra o regime selecionado.")
+        c2.number_input("Pressão absoluta", 0.01, 500.0, key="pressure", format="%.2f", on_change=_invalidate_from, args=(STEP_CONDITIONS,), help="Unidade: bar absoluto.")
+        c3.number_input("Razão molar H₂/CO", 0.01, 10.0, key="h2_co_ratio", format="%.2f", on_change=_invalidate_from, args=(STEP_CONDITIONS,), help="Razão molar adimensional na alimentação.")
+    with st.container(border=True):
+        st.markdown("#### Parâmetro do modelo ASF")
+        st.number_input("Probabilidade de crescimento da cadeia (α)", 0.001, 0.999, key="alpha", step=0.01, format="%.3f", on_change=_invalidate_from, args=(STEP_CONDITIONS,), help="Entrada do usuário entre 0 e 1. Não é prevista a partir de temperatura e pressão nesta versão.")
+        st.caption("α é uma entrada matemática do cálculo ASF, não uma medição nem uma cinética calibrada.")
     if st.button("Validar e calcular distribuição ASF", type="primary", disabled=bool(missing)):
         desired_product = st.session_state.selected_target or st.session_state.target_standard
         case = LTFTCase(
@@ -351,6 +342,7 @@ def _render_evidence() -> None:
 
 st.set_page_config(page_title="Projeto Fischer–Tropsch", page_icon="⚗️", layout="wide")
 _initialize_state()
+apply_global_design()
 _navigation()
 st.title("Projeto Fischer–Tropsch")
 st.caption("Orientação científica para Fischer–Tropsch em baixa e alta temperatura")

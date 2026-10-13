@@ -28,6 +28,23 @@ class StreamlitAppTests(unittest.TestCase):
         self.assertFalse(app.session_state["show_home"])
         self.assertTrue(any(item.value == "Produto desejado" for item in app.subheader))
 
+    def test_invalid_exact_product_is_reported_before_confirmation(self):
+        app = AppTest.from_file(str(ROOT / "app.py"), default_timeout=30).run()
+        next(button for button in app.button if button.label == "Começar planejamento").click().run()
+        next(field for field in app.text_input if field.label == "Hidrocarboneto individual, opcional").set_value("C61").run()
+        self.assertTrue(any("C1 e C60" in item.value for item in app.error))
+        confirm = next(button for button in app.button if button.label == "Confirmar produto")
+        self.assertTrue(confirm.disabled)
+
+    def test_transition_requires_justification_immediately(self):
+        app = AppTest.from_file(str(ROOT / "app.py"), default_timeout=30).run()
+        next(button for button in app.button if button.label == "Começar planejamento").click().run()
+        app.radio[0].set_value(STEP_REGIME).run()
+        app.selectbox[0].set_value("transicao").run()
+        self.assertTrue(any("justificativa científica" in item.value for item in app.error))
+        confirm = next(button for button in app.button if button.label == "Confirmar regime")
+        self.assertTrue(confirm.disabled)
+
     def test_htft_selection_resets_regime_specific_defaults(self):
         app = AppTest.from_file(str(ROOT / "app.py"), default_timeout=30).run()
         next(button for button in app.button if button.label == "Começar planejamento").click().run()

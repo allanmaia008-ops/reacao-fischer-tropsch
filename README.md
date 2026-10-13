@@ -15,6 +15,10 @@ seis etapas — produto, regime, catalisador, condições, resultados e evidênc
 com progresso, pendências e estado persistente durante a sessão. Esse progresso
 representa preenchimento da interface e não substitui validação científica.
 
+O sistema visual usa componentes responsivos, foco de teclado visível e suporte
+a preferência de movimento reduzido. Os campos são agrupados por contexto, têm
+unidades e ajuda próximas e exibem pendências antes da confirmação.
+
 ## Interface web
 
 ```powershell

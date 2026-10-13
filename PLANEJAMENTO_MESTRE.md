@@ -346,9 +346,10 @@ Ordem de execução:
    e estado persistente da sessão;
 2. `FT-050` — **concluída**: página inicial com proposta, ações principais e
    estado explícito de LTFT, HTFT e recomendações;
-3. `FT-051` — implantar sistema visual próprio, responsivo e acessível;
-4. `FT-052` — reorganizar entradas em blocos, com unidades, ajuda contextual e
-   validação imediata;
+3. `FT-051` — **concluída**: sistema visual próprio com tokens, componentes,
+   foco visível, redução de movimento e adaptação para desktop e celular;
+4. `FT-052` — **concluída**: entradas reorganizadas em blocos, com unidades,
+   ajuda contextual, mensagens próximas ao campo e validação imediata;
 5. `FT-053` — criar painel científico de resultados com curva ASF por Cn,
    faixa-alvo e cortes configuráveis; declarar a base de carbono, conservar a
    cauda analítica até C∞ e rotular C1–C4, C5–C11, C12–C20 e C21+ como faixas
@@ -627,11 +628,10 @@ Uma implantação está pronta somente quando acrescenta:
 
 ## 18. Próxima atividade recomendada
 
-Executar `FT-051`, implantando identidade visual própria, responsividade e
-acessibilidade sobre a página inicial e o fluxo concluídos em `FT-049` e
-`FT-050`.
+Executar `FT-053`, criando o painel científico de resultados e a curva ASF por
+Cn sem alterar as regras matemáticas ou os bloqueios científicos existentes.
 
-Depois, executar `FT-052` a `FT-056` na ordem definida na Fase UX. Somente após
+Depois, executar `FT-054` a `FT-056` na ordem definida na Fase UX. Somente após
 o aceite dessa porta o projeto retorna à CI mínima, aos balanços, à validação
 LTFT, à preparação HTFT e às demais fases já planejadas.
 

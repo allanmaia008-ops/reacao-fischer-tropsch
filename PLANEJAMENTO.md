@@ -238,8 +238,8 @@ recomendação validada.
    pendências e persistência do estado da sessão;
 2. `FT-050`: **concluída** — página inicial, ações principais e estado de
    maturidade LTFT/HTFT/recomendações;
-3. `FT-051`: identidade visual, responsividade e acessibilidade;
-4. `FT-052`: formulário modular com ajuda, unidades e validação imediata;
+3. `FT-051`: **concluída** — identidade visual, responsividade e acessibilidade;
+4. `FT-052`: **concluída** — formulário modular com ajuda, unidades e validação imediata;
 5. `FT-053`: painel de resultados e curva ASF interativa, com base de carbono,
    cauda C21+ analítica e cortes rotulados como faixas de Cn, não como produtos
    comerciais comprovados;
