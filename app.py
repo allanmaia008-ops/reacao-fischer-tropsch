@@ -5,6 +5,7 @@ import sys
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT / "src"))
 
+import altair as alt
 import streamlit as st
 
 from plataforma_ltft import (
@@ -27,6 +28,7 @@ from plataforma_ltft.ui_workflow import (
     workflow_progress,
 )
 from plataforma_ltft.ui_design import apply_global_design, maturity_card, section_intro
+from plataforma_ltft.result_panel import carbon_curve, curve_closure, readiness_rows
 
 
 PRODUCT_OPTIONS = ["CH4", "C2-C4", "C5-C11", "C12-C20", "C21+", "C5+"]
@@ -307,16 +309,80 @@ def _render_conditions() -> None:
 
 
 def _render_results() -> None:
-    st.subheader("Resultados")
+    section_intro(
+        "Resultados",
+        "Leia a distribuição matemática junto das entradas, da prontidão e das limitações do caso.",
+    )
     result = st.session_state.screening_result
     if not result:
         st.info("Nenhum resultado disponível. Confirme as etapas anteriores e execute o caso em Condições.")
     else:
+        case = result["case"]
+        target = case["desired_product"]
         st.success("Distribuição ASF condicional calculada.")
-        st.bar_chart(result["product_bands"])
-        st.metric("Fração de carbono na faixa-alvo", f"{100 * result['target_fraction']:.2f}%")
-        st.json(result["readiness"])
+
+        metric_target, metric_alpha, metric_regime = st.columns(3)
+        metric_target.metric("Fração de carbono no alvo", f"{100 * result['target_fraction']:.2f}%", help="Fração calculada na base de carbono dos hidrocarbonetos.")
+        metric_alpha.metric("α informado", f"{result['alpha']:.3f}", help="Entrada do usuário; não foi estimada por cinética.")
+        metric_regime.metric("Regime declarado", result["ft_regime"])
+
+        with st.container(border=True):
+            st.markdown("#### Curva ASF por número de carbono")
+            curve = carbon_curve(result["alpha"], target)
+            chart = (
+                alt.Chart(alt.Data(values=curve))
+                .mark_bar()
+                .encode(
+                    x=alt.X("carbon_number:O", title="Número de carbono (Cn)", axis=alt.Axis(labelAngle=0, labelOverlap=True)),
+                    y=alt.Y("carbon_fraction:Q", title="Fração de carbono ASF", axis=alt.Axis(format=".1%")),
+                    color=alt.Color(
+                        "target_group:N", title=None,
+                        scale=alt.Scale(domain=["Faixa-alvo", "Demais Cn"], range=["#B45309", "#5B8F82"]),
+                    ),
+                    tooltip=[
+                        alt.Tooltip("carbon_number:O", title="Cn"),
+                        alt.Tooltip("carbon_fraction:Q", title="Fração de carbono", format=".4%"),
+                        alt.Tooltip("target_group:N", title="Classificação"),
+                    ],
+                )
+                .properties(height=360)
+            )
+            st.altair_chart(chart, use_container_width=True)
+            closure = curve_closure(result["alpha"])
+            st.caption(
+                f"A curva exibe C1–C60 ({closure['C1-C60']:.4%}). A cauda analítica C61+ "
+                f"é {closure['C61+']:.4%}; fechamento total = {closure['total']:.6f}."
+            )
+
+        with st.container(border=True):
+            st.markdown("#### Faixas de número de carbono")
+            bands = result["product_bands"]
+            band_columns = st.columns(5)
+            for column, label in zip(band_columns, ("CH4", "C2-C4", "C5-C11", "C12-C20", "C21+")):
+                column.metric(label, f"{100 * bands[label]:.2f}%")
+            st.caption("As faixas são agrupamentos por Cn; não representam automaticamente produtos comerciais após separação ou upgrading.")
+
+        left, right = st.columns(2)
+        with left:
+            with st.container(border=True):
+                st.markdown("#### Condições utilizadas")
+                st.table([
+                    {"Entrada": "Produto-alvo", "Valor": target},
+                    {"Entrada": "Temperatura", "Valor": f"{case['temperature_c']:.1f} °C"},
+                    {"Entrada": "Pressão absoluta", "Valor": f"{case['pressure_bar']:.2f} bar"},
+                    {"Entrada": "Razão molar H₂/CO", "Valor": f"{case['h2_co_molar_ratio']:.2f}"},
+                    {"Entrada": "Catalisador", "Valor": f"{case['active_family']} / {case['support']}"},
+                ])
+        with right:
+            with st.container(border=True):
+                st.markdown("#### Prontidão científica")
+                st.table(readiness_rows(result["readiness"]))
+                missing = result["readiness"]["missing_experimental_fields"]
+                if missing:
+                    st.caption("Campos ainda necessários para plano experimental: " + ", ".join(missing) + ".")
+
         st.warning(result["warning"])
+        st.error("Recomendação bloqueada: " + result["recommendation_blocking_reason"])
     _step_buttons(STEP_CONDITIONS, STEP_EVIDENCE)
 
 

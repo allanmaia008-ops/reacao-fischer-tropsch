@@ -78,6 +78,9 @@ class StreamlitAppTests(unittest.TestCase):
         self.assertIsNotNone(app.session_state["screening_result"])
         app.radio[0].set_value(STEP_RESULTS).run()
         self.assertTrue(any("Distribuição ASF condicional calculada" in item.value for item in app.success))
+        self.assertTrue(any("Curva ASF por número de carbono" in item.value for item in app.markdown))
+        self.assertTrue(any("cauda analítica C61+" in item.value for item in app.caption))
+        self.assertTrue(any("Recomendação bloqueada" in item.value for item in app.error))
 
 
 if __name__ == "__main__":

@@ -19,6 +19,11 @@ O sistema visual usa componentes responsivos, foco de teclado visível e suporte
 a preferência de movimento reduzido. Os campos são agrupados por contexto, têm
 unidades e ajuda próximas e exibem pendências antes da confirmação.
 
+O painel de resultados apresenta a curva ASF em base de carbono de C1 a C60,
+destaca a faixa-alvo e fecha a distribuição com a cauda analítica C61+ até C∞.
+Também separa as condições usadas, a prontidão científica e os bloqueios. As
+faixas de Cn não são tratadas automaticamente como produtos comerciais.
+
 ## Interface web
 
 ```powershell

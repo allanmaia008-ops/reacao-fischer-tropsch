@@ -240,9 +240,9 @@ recomendação validada.
    maturidade LTFT/HTFT/recomendações;
 3. `FT-051`: **concluída** — identidade visual, responsividade e acessibilidade;
 4. `FT-052`: **concluída** — formulário modular com ajuda, unidades e validação imediata;
-5. `FT-053`: painel de resultados e curva ASF interativa, com base de carbono,
-   cauda C21+ analítica e cortes rotulados como faixas de Cn, não como produtos
-   comerciais comprovados;
+5. `FT-053`: **concluída** — painel de resultados com curva ASF C1–C60,
+   faixa-alvo destacada, base de carbono, cauda analítica C61+ até C∞, condições,
+   prontidão e bloqueios separados; cortes seguem rotulados como faixas de Cn;
 6. `FT-054`: categorias visuais de maturidade da evidência;
 7. `FT-055`: comparação auditável de dois ou três cenários;
 8. `FT-056`: testes de UX, regressão científica e aceite da publicação.

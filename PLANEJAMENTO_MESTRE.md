@@ -350,10 +350,9 @@ Ordem de execução:
    foco visível, redução de movimento e adaptação para desktop e celular;
 4. `FT-052` — **concluída**: entradas reorganizadas em blocos, com unidades,
    ajuda contextual, mensagens próximas ao campo e validação imediata;
-5. `FT-053` — criar painel científico de resultados com curva ASF por Cn,
-   faixa-alvo e cortes configuráveis; declarar a base de carbono, conservar a
-   cauda analítica até C∞ e rotular C1–C4, C5–C11, C12–C20 e C21+ como faixas
-   de número de carbono, sem equipará-las automaticamente a produtos comerciais;
+5. `FT-053` — **concluída**: painel científico de resultados com curva ASF
+   C1–C60, faixa-alvo destacada, base de carbono declarada, fechamento com cauda
+   analítica C61+ até C∞, condições utilizadas, prontidão e bloqueios separados;
 6. `FT-054` — representar a maturidade da evidência por categorias rastreáveis:
    matemático, heurístico, literatura, experimental, calibrado ou bloqueado;
 7. `FT-055` — permitir comparação auditável de dois ou três cenários sem
@@ -628,10 +627,10 @@ Uma implantação está pronta somente quando acrescenta:
 
 ## 18. Próxima atividade recomendada
 
-Executar `FT-053`, criando o painel científico de resultados e a curva ASF por
-Cn sem alterar as regras matemáticas ou os bloqueios científicos existentes.
+Executar `FT-054`, representando a maturidade da evidência por categorias
+rastreáveis e mantendo visíveis as limitações científicas.
 
-Depois, executar `FT-054` a `FT-056` na ordem definida na Fase UX. Somente após
+Depois, executar `FT-055` e `FT-056` na ordem definida na Fase UX. Somente após
 o aceite dessa porta o projeto retorna à CI mínima, aos balanços, à validação
 LTFT, à preparação HTFT e às demais fases já planejadas.
 
