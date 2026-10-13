@@ -37,7 +37,7 @@
 | FT-021 | corpus LTFT aprovado | licença, origem e revisão completas |
 | FT-022 | compatibilidade de casos | regras e justificativa auditáveis |
 | FT-023 | domínio de aplicabilidade | alertas de extrapolação testados |
-| FT-024 | modelo quantitativo inicial | validação externa e incerteza |
+| FT-024 | modelo quantitativo inicial | cinética calibrada, domínio, validação externa e incerteza; sem inferir conversão só por T/P |
 | FT-025 | análise de sensibilidade | variáveis e faixa de validade |
 | FT-026 | gerador de plano experimental | revisão humana obrigatória |
 | FT-027 | piloto de laboratório | protocolo e resultado documentados |
@@ -54,7 +54,19 @@
 | FT-033 | interface HTFT bloqueada | diagnóstico sem recomendação |
 | FT-034 | validação HTFT | conjunto externo e revisão independente |
 
-## P4 — DFT
+## P4 — processo e avaliação técnico-econômica
+
+| ID | Entrega | Aceite |
+|---|---|---|
+| FT-057 | contrato cinético | variáveis, unidades, parâmetros, fonte, domínio e incerteza versionados |
+| FT-058 | modelo de reator LTFT | balanços, alimentação, vazão, geometria, pressão e fenômenos adotados testados |
+| FT-059 | propriedades termodinâmicas | EOS, mistura, pseudocomponentes, fases e faixa de validade comparados com dados |
+| FT-060 | balanço integrado de massa e energia | syngas, FT e upgrading fechados; O2 produzido e consumido distinguidos |
+| FT-061 | contrato técnico-econômico | fronteira, capacidade, ano-base, preços e cenários aprovados |
+| FT-062 | modelo econômico | CAPEX/OPEX, H2, eletricidade, carbono e custo do combustível com sensibilidade |
+| FT-063 | validação integrada | conjunto externo, resíduos, incerteza e revisão independente |
+
+## P5 — DFT
 
 | ID | Entrega | Aceite |
 |---|---|---|
@@ -65,7 +77,7 @@
 | FT-039 | parser de saída | convergência e erros detectados |
 | FT-040 | relatório DFT | hipótese e limitações separadas de experimento |
 
-## P5 — plataforma operacional
+## P6 — plataforma operacional
 
 | ID | Entrega | Aceite |
 |---|---|---|
@@ -81,5 +93,5 @@
 ## Ordem imediata
 
 Começar por FT-001 a FT-010. FT-011 só inicia depois da aprovação dos contratos
-comuns. FT-024, FT-026, FT-034 e FT-040 nunca liberam recomendação sem suas portas
+comuns. FT-024, FT-026, FT-034, FT-040, FT-058, FT-062 e FT-063 nunca liberam recomendação sem suas portas
 científicas correspondentes.

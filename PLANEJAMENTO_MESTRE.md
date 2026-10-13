@@ -349,8 +349,10 @@ Ordem de execução:
 3. `FT-051` — implantar sistema visual próprio, responsivo e acessível;
 4. `FT-052` — reorganizar entradas em blocos, com unidades, ajuda contextual e
    validação imediata;
-5. `FT-053` — criar painel científico de resultados com curva ASF por Cn, faixa
-   alvo, métricas, condições e limitações;
+5. `FT-053` — criar painel científico de resultados com curva ASF por Cn,
+   faixa-alvo e cortes configuráveis; declarar a base de carbono, conservar a
+   cauda analítica até C∞ e rotular C1–C4, C5–C11, C12–C20 e C21+ como faixas
+   de número de carbono, sem equipará-las automaticamente a produtos comerciais;
 6. `FT-054` — representar a maturidade da evidência por categorias rastreáveis:
    matemático, heurístico, literatura, experimental, calibrado ou bloqueado;
 7. `FT-055` — permitir comparação auditável de dois ou três cenários sem
@@ -433,7 +435,42 @@ Entregáveis:
 
 **Saída:** orientação HTFT somente após aprovação.
 
-### Fase 6 — DFT
+### Fase 6 — modelagem de processo e avaliação técnico-econômica
+
+Esta fase começa pelo LTFT e só avança de descrição para predição após o corpus,
+os balanços e o modelo quantitativo passarem pelas portas científicas.
+
+- `FT-057` — definir contrato do modelo cinético, variáveis, parâmetros,
+  unidades, domínio, fonte e incerteza;
+- `FT-058` — implementar o primeiro modelo de reator LTFT com balanços molares,
+  geometria, vazão/GHSV ou WHSV, pressão, calor e massa, queda de pressão e
+  desativação quando aplicáveis;
+- `FT-059` — selecionar e validar propriedades termodinâmicas, equação de estado,
+  regras de mistura, pseudocomponentes e equilíbrio vapor–líquido de água,
+  hidrocarbonetos e ceras;
+- `FT-060` — integrar balanços de massa e energia do gás de síntese à síntese FT
+  e ao upgrading, distinguindo oxigênio coproduzido na eletrólise de oxigênio
+  consumido em gaseificação;
+- `FT-061` — definir contrato técnico-econômico, fronteira, capacidade, moeda,
+  ano-base, vida útil, disponibilidade, preços e cenários;
+- `FT-062` — calcular CAPEX, OPEX, consumo e custo de H2/gás de síntese,
+  eletricidade, intensidade de carbono e custo mínimo do combustível por
+  unidade de massa, volume e energia, com sensibilidade e incerteza;
+- `FT-063` — validar o fluxo integrado fora da amostra e documentar balanços,
+  resíduos, limites, rastreabilidade e revisão independente.
+
+`solve_ivp`, Cantera, Thermo ou bibliotecas equivalentes são meios de cálculo,
+não validação científica. A escolha de biblioteca deverá registrar modelos,
+parâmetros, fases, faixa de validade e comparação com dados experimentais.
+Conversão e seletividade não poderão ser inferidas apenas de temperatura e
+pressão: exigem cinética calibrada, catalisador, alimentação, vazão/tempo de
+residência, tipo de reator, transporte, WGS, desativação e domínio aplicável.
+
+**Saída:** simulador de processo rastreável e avaliação econômica por cenários;
+`recommendation_blocked=true` permanece enquanto calibração e validação externa
+forem insuficientes.
+
+### Fase 7 — DFT
 
 - protocolo por regime/família;
 - cadastro estrutural;
@@ -444,7 +481,7 @@ Entregáveis:
 
 **Saída:** cálculo rastreável, sem promovê-lo automaticamente a recomendação.
 
-### Fase 7 — plataforma multiusuário
+### Fase 8 — plataforma multiusuário
 
 - banco e armazenamento de artefatos;
 - autenticação e perfis;
@@ -453,7 +490,7 @@ Entregáveis:
 - exportações e API;
 - administração e observabilidade.
 
-### Fase 8 — homologação e produção
+### Fase 9 — homologação e produção
 
 - ambientes separados;
 - migrações, backup e recuperação;
@@ -476,8 +513,10 @@ pressupõe uma equipe pequena com participação científica regular.
 | Semanas 19–24 | planejamento experimental e homologação LTFT |
 | Semanas 25–30 | contrato, corpus e interface HTFT bloqueada |
 | Semanas 31–38 | validação HTFT inicial |
-| Semanas 39–46 | DFT mínimo e integração rastreável |
-| Semanas 47–52 | multiusuário, produção e operação |
+| Semanas 39–46 | modelagem de reator, termodinâmica e balanço energético |
+| Semanas 47–52 | avaliação técnico-econômica e validação integrada |
+| Semanas 53–60 | DFT mínimo e integração rastreável |
+| Semanas 61–68 | multiusuário, produção e operação |
 
 O avanço é governado pelas portas de qualidade, não apenas pelas datas.
 
@@ -489,7 +528,8 @@ O avanço é governado pelas portas de qualidade, não apenas pelas datas.
 - 1 engenheiro de dados/backend;
 - 1 desenvolvedor frontend/full-stack;
 - apoio de estatística/ML;
-- apoio de DFT quando a Fase 6 iniciar;
+- apoio de engenharia de processos, termodinâmica e economia na Fase 6;
+- apoio de DFT quando a Fase 7 iniciar;
 - apoio de DevOps/segurança na preparação de produção;
 - operadores/analistas do laboratório para aceite.
 

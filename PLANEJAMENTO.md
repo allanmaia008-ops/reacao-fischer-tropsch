@@ -239,7 +239,9 @@ recomendação validada.
 2. `FT-050`: página inicial e estado de maturidade LTFT/HTFT;
 3. `FT-051`: identidade visual, responsividade e acessibilidade;
 4. `FT-052`: formulário modular com ajuda, unidades e validação imediata;
-5. `FT-053`: painel de resultados e curva ASF interativa;
+5. `FT-053`: painel de resultados e curva ASF interativa, com base de carbono,
+   cauda C21+ analítica e cortes rotulados como faixas de Cn, não como produtos
+   comerciais comprovados;
 6. `FT-054`: categorias visuais de maturidade da evidência;
 7. `FT-055`: comparação auditável de dois ou três cenários;
 8. `FT-056`: testes de UX, regressão científica e aceite da publicação.
@@ -270,6 +272,27 @@ Após `FT-056`, retomar os ciclos abaixo na ordem original.
 4. executar aceite científico independente;
 5. habilitar HTFT publicamente somente após H4.
 
+### Ciclo 4 — modelar processo e economia após validação
+
+1. `FT-057`: especificar o contrato cinético, domínio, unidades, parâmetros,
+   incerteza e fonte; temperatura e pressão isoladas não predizem conversão;
+2. `FT-058`: implementar o primeiro reator LTFT com alimentação, vazão/GHSV ou
+   WHSV, geometria, balanços molares, energia, pressão, transporte, WGS e
+   desativação conforme a hipótese adotada;
+3. `FT-059`: validar propriedades, EOS, mistura, pseudocomponentes e VLE para
+   gás, água, líquidos e ceras antes de integrar Cantera, Thermo ou equivalente;
+4. `FT-060`: integrar balanços de massa e energia de syngas, FT e upgrading,
+   distinguindo O2 coproduzido na eletrólise de O2 usado na gaseificação;
+5. `FT-061` e `FT-062`: definir fronteira e cenários e então calcular CAPEX,
+   OPEX, H2, eletricidade, intensidade de carbono, custo mínimo do combustível e
+   sensibilidades; LCOE não será a métrica central de combustível;
+6. `FT-063`: validar o fluxo integrado fora da amostra e obter revisão
+   independente antes de qualquer orientação operacional.
+
+Este ciclo começa pelo LTFT. O uso de um integrador de EDO ou de uma biblioteca
+termodinâmica não substitui a formulação física, a calibração nem a validação.
+`recommendation_blocked=true` permanece até o cumprimento das portas aplicáveis.
+
 ## 11. Critério global de pronto
 
 Funcionalidade científica pronta exige requisito, contrato, proveniência,
@@ -287,5 +310,7 @@ logs, monitoramento e teste de fumaça. Publicar código ou URL não basta.
 6. métricas para olefinas e reações secundárias;
 7. homologação, persistência e autenticação;
 8. protocolo DFT por regime e recursos computacionais.
+9. modelo cinético LTFT inicial, parâmetros e conjunto externo de validação;
+10. fronteira, capacidade e cenários da avaliação técnico-econômica.
 
 Nenhuma decisão pendente será inferida silenciosamente.
