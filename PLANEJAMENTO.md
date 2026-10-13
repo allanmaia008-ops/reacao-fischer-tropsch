@@ -228,6 +228,23 @@ produção científica.
 
 ## 10. Próximos ciclos
 
+### Ciclo prioritário — modernizar a experiência da plataforma
+
+Este ciclo deve ser concluído antes da retomada dos ciclos científicos já
+planejados. Ele não altera contratos nem promove orientação heurística a
+recomendação validada.
+
+1. `FT-049`: navegação lateral e fluxo guiado com progresso;
+2. `FT-050`: página inicial e estado de maturidade LTFT/HTFT;
+3. `FT-051`: identidade visual, responsividade e acessibilidade;
+4. `FT-052`: formulário modular com ajuda, unidades e validação imediata;
+5. `FT-053`: painel de resultados e curva ASF interativa;
+6. `FT-054`: categorias visuais de maturidade da evidência;
+7. `FT-055`: comparação auditável de dois ou três cenários;
+8. `FT-056`: testes de UX, regressão científica e aceite da publicação.
+
+Após `FT-056`, retomar os ciclos abaixo na ordem original.
+
 ### Ciclo 1 — consolidar LTFT
 
 1. implementar `ft_regime` e contrato v2 sem quebrar v1;

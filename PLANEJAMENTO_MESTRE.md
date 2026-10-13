@@ -333,6 +333,37 @@ Cada valor exibirá um selo: `entrada`, `evidência`, `hipótese`, `heurística`
 
 ## 11. Estratégia de implementação
 
+### Fase UX — modernização prioritária da plataforma
+
+Esta fase passa a ser executada **antes da retomada das melhorias científicas e
+operacionais ainda planejadas**. Ela reorganiza a experiência sem alterar as
+regras científicas, contratos, bloqueios ou o worker já validados.
+
+Ordem de execução:
+
+1. `FT-049` — criar navegação lateral pelo fluxo produto → regime → catalisador
+   → condições → resultados → evidências, com progresso e pendências;
+2. `FT-050` — criar página inicial com proposta, ações principais e estado
+   explícito de LTFT, HTFT e recomendações;
+3. `FT-051` — implantar sistema visual próprio, responsivo e acessível;
+4. `FT-052` — reorganizar entradas em blocos, com unidades, ajuda contextual e
+   validação imediata;
+5. `FT-053` — criar painel científico de resultados com curva ASF por Cn, faixa
+   alvo, métricas, condições e limitações;
+6. `FT-054` — representar a maturidade da evidência por categorias rastreáveis:
+   matemático, heurístico, literatura, experimental, calibrado ou bloqueado;
+7. `FT-055` — permitir comparação auditável de dois ou três cenários sem
+   apresentar a comparação como otimização experimental;
+8. `FT-056` — testar responsividade, acessibilidade, fluxo, regressão científica
+   e publicação antes do aceite da modernização.
+
+**Porta UX:** as atividades `FT-049` a `FT-056` devem ser aceitas antes de
+retomar `FT-010` e as demais atividades anteriormente planejadas. Correções
+críticas de segurança ou integridade científica continuam tendo precedência.
+
+**Saída:** interface moderna e orientada à decisão, mantendo
+`recommendation_blocked=true` sempre que as evidências forem insuficientes.
+
 ### Fase 0 — fundação e governança
 
 Entregáveis:
@@ -437,9 +468,9 @@ pressupõe uma equipe pequena com participação científica regular.
 
 | Período | Entrega principal |
 |---|---|
-| Semanas 1–2 | Fase 0 e decisões de arquitetura |
-| Semanas 3–6 | núcleo comum, contratos e testes |
-| Semanas 7–12 | LTFT mínimo útil |
+| Próximo ciclo, semanas 1–4 | Fase UX prioritária (`FT-049` a `FT-056`) |
+| Após a Porta UX, semanas 5–6 | CI mínima e retomada das pendências de fundação |
+| Semanas 7–12 | consolidação do LTFT mínimo útil |
 | Semanas 13–18 | corpus, balanços e validação LTFT inicial |
 | Semanas 19–24 | planejamento experimental e homologação LTFT |
 | Semanas 25–30 | contrato, corpus e interface HTFT bloqueada |
@@ -555,16 +586,13 @@ Uma implantação está pronta somente quando acrescenta:
 
 ## 18. Próxima atividade recomendada
 
-Executar a Fase 0 e iniciar a Fase 1 com um **contrato científico mínimo**:
+Executar `FT-049`, a arquitetura do fluxo guiado. O trabalho deve começar pela
+separação da interface Streamlit em componentes de navegação e estado, mantendo
+os módulos de `src/plataforma_ltft/` como fonte única das regras científicas.
 
-1. aprovar o primeiro caso de uso LTFT;
-2. aprovar produtos/cortes iniciais;
-3. definir campos e unidades canônicas;
-4. definir envelope de regime versionado;
-5. criar schemas de caso, catalisador, evidência e resultado;
-6. criar exemplos válidos e inválidos;
-7. implementar validação e testes de fronteira;
-8. manter `recommendation_blocked=true` até validação científica posterior.
+Depois, executar `FT-050` a `FT-056` na ordem definida na Fase UX. Somente após
+o aceite dessa porta o projeto retorna à CI mínima, aos balanços, à validação
+LTFT, à preparação HTFT e às demais fases já planejadas.
 
 ## 19. Decisões ainda necessárias
 
