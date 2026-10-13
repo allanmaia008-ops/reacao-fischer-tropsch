@@ -8,6 +8,10 @@
 - `ft-catalyst-v1.schema.json`: lote, preparação, ativação, fase e proveniência do catalisador.
 - `ft-kinetic-model-v1.schema.json`: equação cinética, parâmetros, unidades,
   domínio, fontes, incerteza e estado de calibração/validação.
+- `ft-reactor-v1.schema.json`: alimentação, geometria, base espacial e modelos
+  físicos exigidos pelo primeiro reator LTFT.
+- `ft-thermodynamics-v1.schema.json`: pacote, EOS, mistura, pseudocomponentes,
+  VLE, cobertura de fases, domínio e validação termodinâmica.
 
 As unidades fazem parte dos nomes dos campos (`_c`, `_bar`, `_mol_s`, `_h_1`,
 `_g`, `_ml`, `_wt_pct`). O JSON Schema valida forma e limites simples; as regras

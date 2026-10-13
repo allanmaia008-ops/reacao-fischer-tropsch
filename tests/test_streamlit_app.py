@@ -93,6 +93,9 @@ class StreamlitAppTests(unittest.TestCase):
         rendered = " ".join(item.value for item in app.markdown)
         for category in ("matemático", "heurístico", "literatura", "experimental", "calibrado", "bloqueado"):
             self.assertIn(category, rendered)
+        self.assertIn("Reator LTFT — infraestrutura parcial", rendered)
+        self.assertIn("Termodinâmica — contrato parcial", rendered)
+        self.assertIn("Conversão e produtividade permanecem bloqueadas", rendered)
 
 
 if __name__ == "__main__":

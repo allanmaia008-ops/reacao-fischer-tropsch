@@ -466,6 +466,24 @@ def _render_evidence() -> None:
         "**Esta versão não afirma:** conversão, produtividade, cinética calibrada, "
         "fase ativa confirmada, resultado DFT/experimental ou condição ótima."
     )
+    st.markdown("### Modelagem de processo em preparação")
+    reactor_col, thermo_col = st.columns(2)
+    with reactor_col:
+        with st.container(border=True):
+            st.markdown("**Reator LTFT — infraestrutura parcial**")
+            st.write(
+                "Contrato, validação de entradas, inventário molar de alimentação e porta de "
+                "prontidão implementados. Conversão e produtividade permanecem bloqueadas sem "
+                "cinética validada e modelos físicos selecionados."
+            )
+    with thermo_col:
+        with st.container(border=True):
+            st.markdown("**Termodinâmica — contrato parcial**")
+            st.write(
+                "EOS, regra de mistura, pseudocomponentes, VLE, cobertura de fases, domínio e "
+                "métricas têm contrato versionado. O pacote só fica pronto após comparação com "
+                "dados rastreáveis."
+            )
     st.markdown("### Catálogo de maturidade")
     for item in maturity_catalog():
         with st.container(border=True):

@@ -278,11 +278,14 @@ Após `FT-056`, retomar os ciclos abaixo na ordem original.
 1. `FT-057`: **concluída** — contrato cinético v1 com domínio, unidades,
    parâmetros, incerteza, fonte e porta de validação; temperatura e pressão
    isoladas continuam sem predizer conversão;
-2. `FT-058`: implementar o primeiro reator LTFT com alimentação, vazão/GHSV ou
-   WHSV, geometria, balanços molares, energia, pressão, transporte, WGS e
-   desativação conforme a hipótese adotada;
-3. `FT-059`: validar propriedades, EOS, mistura, pseudocomponentes e VLE para
-   gás, água, líquidos e ceras antes de integrar Cantera, Thermo ou equivalente;
+2. `FT-058`: **parcial** — contrato do reator, validação de alimentação,
+   geometria, GHSV/WHSV, inventário molar e porta de prontidão implementados;
+   conversão e produtividade continuam bloqueadas até a aprovação da cinética
+   e dos modelos de energia, queda de pressão, transporte, WGS e desativação;
+3. `FT-059`: **parcial** — contrato termodinâmico e porta de validação cobrem
+   EOS, regra de mistura, pseudocomponentes, VLE, domínio, métricas e fases de
+   gás de síntese a ceras; falta selecionar candidatos e compará-los com dados
+   rastreáveis antes da integração de uma biblioteca;
 4. `FT-060`: integrar balanços de massa e energia de syngas, FT e upgrading,
    distinguindo O2 coproduzido na eletrólise de O2 usado na gaseificação;
 5. `FT-061` e `FT-062`: definir fronteira e cenários e então calcular CAPEX,
@@ -313,6 +316,7 @@ logs, monitoramento e teste de fumaça. Publicar código ou URL não basta.
 7. homologação, persistência e autenticação;
 8. protocolo DFT por regime e recursos computacionais.
 9. modelo cinético LTFT inicial, parâmetros e conjunto externo de validação;
-10. fronteira, capacidade e cenários da avaliação técnico-econômica.
+10. dados termodinâmicos de comparação e pacotes candidatos para FT-059;
+11. fronteira, capacidade e cenários da avaliação técnico-econômica.
 
 Nenhuma decisão pendente será inferida silenciosamente.

@@ -52,6 +52,13 @@ O contrato para futuros modelos cinéticos está definido em
 [docs/CONTRATO_CINETICO_V1.md](docs/CONTRATO_CINETICO_V1.md). Nenhuma equação é
 executada enquanto o contrato não estiver completo e validado.
 
+A infraestrutura do primeiro modelo de reator LTFT e o contrato termodinâmico
+estão documentados em [docs/MODELO_REATOR_LTFT_V1.md](docs/MODELO_REATOR_LTFT_V1.md)
+e [docs/CONTRATO_TERMODINAMICO_V1.md](docs/CONTRATO_TERMODINAMICO_V1.md).
+Ambos estão em estado parcial: validam a preparação e preservam os bloqueios,
+mas não calculam conversão, produtividade ou equilíbrio de fases antes da
+seleção, calibração e comparação dos modelos com dados rastreáveis.
+
 ## Princípios
 
 - Distinguir composição, estrutura conhecida, hipótese estrutural, proxy, DFT e experimento.

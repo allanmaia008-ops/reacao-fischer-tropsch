@@ -628,9 +628,11 @@ Uma implantação está pronta somente quando acrescenta:
 
 ## 18. Próxima atividade recomendada
 
-Executar `FT-058`, implementando o primeiro modelo de reator LTFT somente após
-selecionar uma hipótese cinética aprovada para o caso. Até essa aprovação, o
-modelo deve permanecer bloqueado e não produzir conversão ou produtividade.
+Concluir as portas científicas de `FT-058` e `FT-059`: selecionar uma hipótese
+cinética LTFT com parâmetros e domínio rastreáveis e qualificar dados de
+comparação termodinâmica para os pacotes candidatos. A infraestrutura de ambos
+foi implementada, mas permanece parcial e bloqueada para previsões. `FT-060`
+somente deve começar após essas duas validações.
 
 ## 19. Decisões ainda necessárias
 
@@ -641,6 +643,8 @@ modelo deve permanecer bloqueado e não produzir conversão ou produtividade.
 5. infraestrutura e identidade de acesso;
 6. primeiro caso HTFT;
 7. engines e recursos DFT;
-8. responsáveis por cada porta de aprovação.
+8. responsáveis por cada porta de aprovação;
+9. modelo cinético, parâmetros e domínio para o primeiro reator LTFT;
+10. propriedades de referência e critérios de aceite termodinâmico.
 
 Essas decisões não devem ser preenchidas silenciosamente pelo software.
