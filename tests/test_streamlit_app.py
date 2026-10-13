@@ -16,9 +16,21 @@ class StreamlitAppTests(unittest.TestCase):
         self.assertFalse(app.exception)
         self.assertFalse(app.error)
         self.assertEqual(app.title[0].value, "Projeto Fischer–Tropsch")
+        self.assertTrue(any("Planejamento científico orientado" in item.value for item in app.subheader))
+        self.assertTrue(any("Protótipo funcional" in item.value for item in app.success))
+        self.assertTrue(any("Em preparação" in item.value for item in app.warning))
+        self.assertTrue(any("Bloqueadas" in item.value for item in app.markdown))
+
+    def test_home_primary_action_opens_product_step(self):
+        app = AppTest.from_file(str(ROOT / "app.py"), default_timeout=30).run()
+        next(button for button in app.button if button.label == "Começar planejamento").click().run()
+        self.assertFalse(app.exception)
+        self.assertFalse(app.session_state["show_home"])
+        self.assertTrue(any(item.value == "Produto desejado" for item in app.subheader))
 
     def test_htft_selection_resets_regime_specific_defaults(self):
         app = AppTest.from_file(str(ROOT / "app.py"), default_timeout=30).run()
+        next(button for button in app.button if button.label == "Começar planejamento").click().run()
         app.radio[0].set_value(STEP_REGIME).run()
         app.selectbox[0].set_value("HTFT").run()
         self.assertFalse(app.exception)
@@ -35,14 +47,16 @@ class StreamlitAppTests(unittest.TestCase):
 
     def test_guided_ltft_flow_persists_and_reaches_results(self):
         app = AppTest.from_file(str(ROOT / "app.py"), default_timeout=30).run()
-        app.button[0].click().run()
+        next(button for button in app.button if button.label == "Começar planejamento").click().run()
+        next(button for button in app.button if button.label == "Confirmar produto").click().run()
         app.radio[0].set_value(STEP_REGIME).run()
-        app.button[0].click().run()
+        next(button for button in app.button if button.label == "Confirmar regime").click().run()
         app.radio[0].set_value(STEP_CATALYST).run()
-        app.button[0].click().run()
+        next(button for button in app.button if button.label == "Confirmar catalisador").click().run()
         app.radio[0].set_value(STEP_CONDITIONS).run()
-        self.assertFalse(app.button[0].disabled)
-        app.button[0].click().run()
+        calculate = next(button for button in app.button if button.label == "Validar e calcular distribuição ASF")
+        self.assertFalse(calculate.disabled)
+        calculate.click().run()
         self.assertFalse(app.exception)
         self.assertIsNotNone(app.session_state["screening_result"])
         app.radio[0].set_value(STEP_RESULTS).run()

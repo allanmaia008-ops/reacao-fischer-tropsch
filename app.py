@@ -31,6 +31,7 @@ PRODUCT_OPTIONS = ["CH4", "C2-C4", "C5-C11", "C12-C20", "C21+", "C5+"]
 def _initialize_state() -> None:
     defaults = {
         "workflow_step": STEP_PRODUCT,
+        "show_home": True,
         "completed_steps": [],
         "target_standard": "C12-C20",
         "target_exact": "",
@@ -73,6 +74,20 @@ def _invalidate_from(step: str) -> None:
 
 def _set_step(step: str) -> None:
     st.session_state.workflow_step = step
+    st.session_state.show_home = False
+
+
+def _open_home() -> None:
+    st.session_state.show_home = True
+
+
+def _show_workflow() -> None:
+    st.session_state.show_home = False
+
+
+def _open_step(step: str) -> None:
+    st.session_state.workflow_step = step
+    st.session_state.show_home = False
 
 
 def _regime_changed() -> None:
@@ -97,8 +112,12 @@ def _evidence_changed() -> None:
 
 def _navigation() -> None:
     completed = st.session_state.completed_steps
+    st.sidebar.button("⌂ Visão geral", on_click=_open_home, use_container_width=True)
     st.sidebar.header("Fluxo de planejamento")
-    st.sidebar.radio("Etapa atual", WORKFLOW_STEPS, key="workflow_step")
+    st.sidebar.radio(
+        "Etapa atual", WORKFLOW_STEPS, key="workflow_step",
+        on_change=_show_workflow,
+    )
     progress = workflow_progress(completed)
     st.sidebar.progress(progress, text=f"{len(completed)} de {len(WORKFLOW_STEPS)} etapas confirmadas")
     remaining = pending_steps(completed)
@@ -110,6 +129,51 @@ def _navigation() -> None:
         st.sidebar.success("Fluxo de interface revisado. Os bloqueios científicos continuam válidos.")
     st.sidebar.divider()
     st.sidebar.caption("O progresso indica preenchimento do fluxo, não validação científica.")
+
+
+def _render_home() -> None:
+    st.subheader("Planejamento científico orientado pelo produto")
+    st.write(
+        "Escolha o hidrocarboneto ou corte desejado, descreva o regime, o "
+        "catalisador e as condições e obtenha uma análise rastreável dos limites "
+        "do caso Fischer–Tropsch."
+    )
+    primary, secondary = st.columns(2)
+    primary.button(
+        "Começar planejamento", type="primary", on_click=_open_step,
+        args=(STEP_PRODUCT,), use_container_width=True,
+    )
+    secondary.button(
+        "Revisar escopo e limites", on_click=_open_step,
+        args=(STEP_EVIDENCE,), use_container_width=True,
+    )
+
+    st.markdown("### Estado científico da plataforma")
+    ltft, htft, recommendation = st.columns(3)
+    with ltft:
+        st.markdown("#### LTFT")
+        st.success("Protótipo funcional")
+        st.write("Seleção de produto, validação do caso e distribuição ASF condicionada ao α informado.")
+    with htft:
+        st.markdown("#### HTFT")
+        st.warning("Em preparação")
+        st.write("Cadastro e diagnóstico descritivo, sem reutilizar automaticamente modelos LTFT.")
+    with recommendation:
+        st.markdown("#### Recomendações")
+        st.markdown("🔴 **Bloqueadas**")
+        st.write("Exigem evidência aprovada, calibração, domínio de aplicabilidade e validação externa.")
+
+    st.markdown("### O que você pode fazer agora")
+    st.markdown(
+        "- definir um produto individual entre C1 e C60 ou uma faixa de carbono;\n"
+        "- organizar regime, catalisador e condições do caso;\n"
+        "- calcular e visualizar a distribuição ASF para um α fornecido;\n"
+        "- verificar pendências, limitações e bloqueios científicos."
+    )
+    st.info(
+        "A plataforma é uma ferramenta de apoio ao planejamento. Ela ainda não "
+        "prevê conversão, produtividade ou condição experimental ótima."
+    )
 
 
 def _step_buttons(previous: str | None, following: str | None) -> None:
@@ -303,4 +367,7 @@ renderers = {
     STEP_RESULTS: _render_results,
     STEP_EVIDENCE: _render_evidence,
 }
-renderers[st.session_state.workflow_step]()
+if st.session_state.show_home:
+    _render_home()
+else:
+    renderers[st.session_state.workflow_step]()

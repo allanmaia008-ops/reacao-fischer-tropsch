@@ -9,10 +9,11 @@ Estado atual: núcleo mínimo executável com interface Streamlit, domínio, ASF
 worker JSON, notebook e evidência versionada. Ainda não existe motor de ranking,
 modelo cinético calibrado, integração DFT ou recomendação final.
 
-A interface usa um fluxo guiado em seis etapas — produto, regime, catalisador,
-condições, resultados e evidências — com progresso, pendências e estado
-persistente durante a sessão. Esse progresso representa preenchimento da
-interface e não substitui validação científica.
+A página inicial apresenta a proposta, as ações principais e o estado científico
+de LTFT, HTFT e recomendações. A partir dela, a interface usa um fluxo guiado em
+seis etapas — produto, regime, catalisador, condições, resultados e evidências —
+com progresso, pendências e estado persistente durante a sessão. Esse progresso
+representa preenchimento da interface e não substitui validação científica.
 
 ## Interface web
 
