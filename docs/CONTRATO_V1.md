@@ -6,7 +6,9 @@
   pressão, H2/CO e produto-alvo estão completos e consistentes.
 - `valid_for_experimental_plan`: além da triagem, registra precursor, ativação,
   reator, composição/vazão da alimentação, tempo em operação e uma base de
-  velocidade espacial (`GHSV + volume do leito` ou `WHSV + massa de catalisador`).
+  velocidade espacial (`GHSV + volume do leito` ou `WHSV + massa de catalisador`),
+  temperaturas de entrada/saída do leito, método analítico, replicatas e critério
+  de estado estacionário.
 - `valid_for_rate_calculation`: permanece falso até existirem equação de taxa,
   parâmetros, unidades, incertezas, conversão medida e balanço de carbono.
 
@@ -33,6 +35,8 @@
 - a razão H2/CO declarada deve coincidir com a alimentação dentro de 2%;
 - cargas de metal ativo e promotor não podem superar juntas 100% em massa;
 - versões incompatíveis são rejeitadas.
+- `replicate_count` é inteiro positivo;
+- método analítico e critério de estado estacionário são descritos explicitamente.
 
 O contrato valida completude e consistência. Ele não comprova que uma condição é
 segura, ótima ou experimentalmente adequada.

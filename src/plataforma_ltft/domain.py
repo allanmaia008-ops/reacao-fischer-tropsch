@@ -62,6 +62,8 @@ class LTFTCase:
     activation_temperature_c: float | None = None
     activation_duration_h: float | None = None
     reactor_type: str | None = None
+    bed_inlet_temperature_c: float | None = None
+    bed_outlet_temperature_c: float | None = None
     temperature_c: float | None = None
     pressure_bar: float | None = None
     h2_co_molar_ratio: float | None = None
@@ -72,6 +74,9 @@ class LTFTCase:
     catalyst_mass_g: float | None = None
     bed_volume_ml: float | None = None
     time_on_stream_h: float | None = None
+    analytical_method: str | None = None
+    replicate_count: int | None = None
+    steady_state_criterion: str | None = None
     desired_product: str | None = None
     ft_regime: str | None = None
     regime_envelope_version: str = REGIME_ENVELOPE_VERSION
@@ -102,8 +107,10 @@ def validate_case(case: LTFTCase) -> ValidationResult:
     )
     experimental_fields = (
         "precursor", "activation_gas", "activation_temperature_c",
-        "activation_duration_h", "reactor_type", "feed_composition_mol_fraction",
-        "feed_flow_mol_s", "time_on_stream_h",
+        "activation_duration_h", "reactor_type", "bed_inlet_temperature_c",
+        "bed_outlet_temperature_c", "feed_composition_mol_fraction",
+        "feed_flow_mol_s", "time_on_stream_h", "analytical_method",
+        "replicate_count", "steady_state_criterion",
     )
     missing_screening = tuple(name for name in screening_fields if getattr(case, name) is None)
     missing_experimental = [name for name in experimental_fields if getattr(case, name) is None]
@@ -129,7 +136,7 @@ def validate_case(case: LTFTCase) -> ValidationResult:
 
     for name in (
         "composition", "active_phase_hypothesis", "support", "promoter", "precursor",
-        "activation_gas", "reactor_type",
+        "activation_gas", "reactor_type", "analytical_method", "steady_state_criterion",
     ):
         value = getattr(case, name)
         if value is not None and (not isinstance(value, str) or not value.strip()):
@@ -143,6 +150,7 @@ def validate_case(case: LTFTCase) -> ValidationResult:
     numeric_fields = (
         "active_metal_loading_wt_pct", "promoter_loading_wt_pct",
         "activation_temperature_c", "activation_duration_h", "temperature_c",
+        "bed_inlet_temperature_c", "bed_outlet_temperature_c",
         "pressure_bar", "h2_co_molar_ratio", "feed_flow_mol_s", "ghsv_h_1",
         "whsv_h_1", "catalyst_mass_g", "bed_volume_ml", "time_on_stream_h",
     )
@@ -157,6 +165,13 @@ def validate_case(case: LTFTCase) -> ValidationResult:
                 errors.append(f"{name} deve ser maior que zero absoluto.")
         elif value <= 0:
             errors.append(f"{name} deve ser positivo.")
+
+    if case.replicate_count is not None and (
+        isinstance(case.replicate_count, bool)
+        or not isinstance(case.replicate_count, int)
+        or case.replicate_count < 1
+    ):
+        errors.append("replicate_count deve ser um inteiro positivo.")
 
     if _is_finite_number(case.temperature_c):
         try:

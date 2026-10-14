@@ -118,6 +118,11 @@ py -m plataforma_ltft.worker --config examples\caso_co.json --output outputs\cas
 O arquivo `resultado_ft.json` contém distribuição ASF condicional ao `alpha`
 informado. Ele não produz conversão, produtividade ou extensão WGS.
 
+Quando o caso contém todos os campos experimentais, o resultado também inclui
+um resumo agrupado e uma impressão digital determinística. Isso comprova a
+reprodutibilidade das entradas, não a execução do experimento. Consulte
+[docs/ACEITE_FT_013.md](docs/ACEITE_FT_013.md).
+
 O worker migra casos LTFT v1 para o contrato v2 de forma explícita. Casos de
 transição e HTFT exigem `schema_version: 2.0.0`, regime declarado e envelope
 versionado. Consulte [docs/CONTRATO_V2.md](docs/CONTRATO_V2.md).

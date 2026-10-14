@@ -27,6 +27,8 @@
     "activation_temperature_c": {"type": ["number", "null"], "exclusiveMinimum": -273.15},
     "activation_duration_h": {"type": ["number", "null"], "exclusiveMinimum": 0},
     "reactor_type": {"type": ["string", "null"], "minLength": 1},
+    "bed_inlet_temperature_c": {"type": ["number", "null"], "exclusiveMinimum": -273.15},
+    "bed_outlet_temperature_c": {"type": ["number", "null"], "exclusiveMinimum": -273.15},
     "temperature_c": {"type": "number", "minimum": 180, "maximum": 350},
     "pressure_bar": {"type": "number", "exclusiveMinimum": 0},
     "h2_co_molar_ratio": {"type": "number", "exclusiveMinimum": 0},
@@ -40,6 +42,9 @@
     "catalyst_mass_g": {"type": ["number", "null"], "exclusiveMinimum": 0},
     "bed_volume_ml": {"type": ["number", "null"], "exclusiveMinimum": 0},
     "time_on_stream_h": {"type": ["number", "null"], "exclusiveMinimum": 0},
+    "analytical_method": {"type": ["string", "null"], "minLength": 1},
+    "replicate_count": {"type": ["integer", "null"], "minimum": 1},
+    "steady_state_criterion": {"type": ["string", "null"], "minLength": 1},
     "desired_product": {"type": "string", "minLength": 1}
   },
   "allOf": [

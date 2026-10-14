@@ -401,7 +401,8 @@ versionados e suíte automatizada. O aceite e seus limites estão em
 
 - ASF em base de carbono;
 - catalisadores Co/Fe separados;
-- caso experimental completo;
+- `FT-013` **concluída**: caso experimental completo, agrupado e reproduzível,
+  com impressão digital determinística e sem inventar resultados medidos;
 - balanços C/H/O;
 - ingestão e revisão de evidência;
 - comparação ASF versus experimento;

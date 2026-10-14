@@ -44,10 +44,13 @@ class DomainTests(unittest.TestCase):
             support="Al2O3", active_metal_loading_wt_pct=20, promoter="Ru",
             promoter_loading_wt_pct=0.5, precursor="precursor registrado",
             activation_gas="H2", activation_temperature_c=400, activation_duration_h=10,
-            reactor_type="leito fixo", temperature_c=220, pressure_bar=20,
+            reactor_type="leito fixo", bed_inlet_temperature_c=220,
+            bed_outlet_temperature_c=220, temperature_c=220, pressure_bar=20,
             h2_co_molar_ratio=2, feed_composition_mol_fraction={"H2": 2/3, "CO": 1/3},
             feed_flow_mol_s=0.001, ghsv_h_1=500, bed_volume_ml=1,
-            time_on_stream_h=24, desired_product="C12-C20", ft_regime="LTFT",
+            time_on_stream_h=24, analytical_method="GC-TCD/FID", replicate_count=3,
+            steady_state_criterion="três amostragens estáveis",
+            desired_product="C12-C20", ft_regime="LTFT",
         )
         result = validate_case(case)
         self.assertTrue(result.valid_for_screening)
@@ -71,6 +74,13 @@ class DomainTests(unittest.TestCase):
     def test_promoter_requires_loading(self):
         result = validate_case(LTFTCase(promoter="K"))
         self.assertIn("Promotor e promoter_loading_wt_pct devem ser informados juntos.", result.errors)
+
+    def test_experimental_quality_fields_are_required_and_replicates_are_positive(self):
+        case = LTFTCase(replicate_count=0)
+        result = validate_case(case)
+        self.assertIn("analytical_method", result.missing_experimental_fields)
+        self.assertIn("steady_state_criterion", result.missing_experimental_fields)
+        self.assertTrue(any("replicate_count" in error for error in result.errors))
 
     def test_regime_boundaries_are_deterministic(self):
         self.assertEqual(classify_ft_regime(260), "LTFT")

@@ -259,9 +259,12 @@ Após `FT-056`, retomar os ciclos abaixo na ordem original.
 
 1. implementar `ft_regime` e contrato v2 sem quebrar v1;
 2. adicionar balanços C/H/O e qualidade analítica;
-3. qualificar um conjunto LTFT completo e licenciável;
-4. comparar ASF com esse conjunto e quantificar desvios;
-5. publicar relatório de validação sem liberar recomendação final.
+3. `FT-013`: **concluída** — caso experimental LTFT completo e auditável com
+   reator, alimentação, velocidade espacial, condições e impressão digital;
+   permanece rotulado como planejamento ilustrativo, não evidência medida;
+4. qualificar um conjunto LTFT completo e licenciável;
+5. comparar ASF com esse conjunto e quantificar desvios;
+6. publicar relatório de validação sem liberar recomendação final.
 
 ### Ciclo 2 — preparar HTFT bloqueado
 

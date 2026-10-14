@@ -46,3 +46,12 @@ class WorkerTests(unittest.TestCase):
             self.assertEqual(data["ft_regime"], "HTFT")
             self.assertTrue(data["recommendation_blocked"])
             self.assertIn("preparação", data["recommendation_blocking_reason"])
+
+    def test_complete_experimental_case_is_auditable_but_not_measured(self):
+        with tempfile.TemporaryDirectory() as folder:
+            result = execute(ROOT / "examples" / "caso_experimental_completo.json", Path(folder))
+            data = json.loads(result.read_text(encoding="utf-8"))
+            case = data["experimental_case"]
+            self.assertTrue(case["readiness"]["valid_for_experimental_plan"])
+            self.assertEqual(case["record_status"], "planned_case_not_experimental_evidence")
+            self.assertIsNone(case["outputs"]["CO_conversion_pct"])

@@ -4,6 +4,7 @@ from dataclasses import asdict
 from .asf import product_bands, validate_alpha
 from .domain import CASE_SCHEMA_VERSION, LTFTCase, validate_case
 from .product_targets import build_target_plan, target_fraction
+from .experimental_case import experimental_case_summary
 
 
 def run_screening(case: LTFTCase, alpha: float) -> dict:
@@ -39,6 +40,7 @@ def run_screening(case: LTFTCase, alpha: float) -> dict:
             "missing_experimental_fields": validation.missing_experimental_fields,
             "missing_rate_fields": validation.missing_rate_fields,
         },
+        "experimental_case": experimental_case_summary(case),
         "CO_conversion_pct": None,
         "physical_productivity": None,
         "WGS_extent": None,
