@@ -39,8 +39,8 @@
 | ID | Entrega | Aceite |
 |---|---|---|
 | FT-021 | corpus LTFT aprovado | **AVALIADO/BLOQUEADO** — gate de aprovação implementado; os três conjuntos permanecem bloqueados por URL/DOI, licença e verificação integral ausentes; ver [ACEITE_FT_021.md](ACEITE_FT_021.md) |
-| FT-022 | compatibilidade de casos | regras e justificativa auditáveis |
-| FT-023 | domínio de aplicabilidade | alertas de extrapolação testados |
+| FT-022 | compatibilidade de casos | **CONCLUÍDO COM BLOQUEIO** — regras de família, regime, pressão, H₂/CO e aprovação de evidência; justificativa auditável |
+| FT-023 | domínio de aplicabilidade | **CONCLUÍDO COM BLOQUEIO** — envelope LTFT, alertas de extrapolação e `recommendation_blocked=true`; sem transferência quantitativa automática |
 | FT-024 | modelo quantitativo inicial | cinética calibrada, domínio, validação externa e incerteza; sem inferir conversão só por T/P |
 | FT-025 | análise de sensibilidade | variáveis e faixa de validade |
 | FT-026 | gerador de plano experimental | revisão humana obrigatória |
