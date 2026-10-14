@@ -8,10 +8,10 @@ sys.path.insert(0, str(ROOT / "src"))
 import altair as alt
 import streamlit as st
 
-from plataforma_ltft import (
-    CASE_SCHEMA_VERSION, LTFTCase, build_export_artifacts, generate_scientific_report,
-    plan_product_target, run_screening, validate_case,
-)
+from plataforma_ltft.domain import CASE_SCHEMA_VERSION, LTFTCase, validate_case
+from plataforma_ltft.product_targets import plan_product_target
+from plataforma_ltft.reporting import build_export_artifacts, generate_scientific_report
+from plataforma_ltft.screening import run_screening
 from plataforma_ltft.ui_workflow import (
     STEP_CATALYST,
     STEP_CONDITIONS,
