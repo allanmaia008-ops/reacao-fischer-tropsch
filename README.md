@@ -198,6 +198,10 @@ py tools\compare_asf_measurement.py --input examples\comparacao_asf_medicao_sint
 O exemplo é sintético e mantém a validação de modelo bloqueada. Consulte
 [docs/COMPARACAO_ASF_MEDICAO_FT_017.md](docs/COMPARACAO_ASF_MEDICAO_FT_017.md).
 
+As extensões aprovadas para ASF avançada, contrato experimental v2,
+diagnósticos de transporte e seleção de modelo estão em
+[docs/PLANO_ASF_AVANCADA_TRANSPORTE.md](docs/PLANO_ASF_AVANCADA_TRANSPORTE.md).
+
 Ver [PLANEJAMENTO.md](PLANEJAMENTO.md) para a sequência LTFT/HTFT, as portas de
 validação e as decisões pendentes. A separação científica dos regimes está em
 [docs/ESCOPO_LTFT_HTFT.md](docs/ESCOPO_LTFT_HTFT.md).

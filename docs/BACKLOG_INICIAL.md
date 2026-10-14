@@ -21,11 +21,15 @@
 |---|---|---|
 | FT-011 | seleção de produto | C1–C60 e cortes documentados |
 | FT-012 | ASF em base de carbono | fechamento e testes analíticos |
+| FT-012A | ASF avançada | **PLANEJADO** — ASF simples permanece referência; implementar mistura de duas ASF/segmentação, correções C1/C2, cauda analítica e testes; ver [PLANO_ASF_AVANCADA_TRANSPORTE.md](PLANO_ASF_AVANCADA_TRANSPORTE.md) |
 | FT-013 | caso experimental completo | **CONCLUÍDO** — reator, alimentação, condições, prontidão e impressão digital auditável; ver [ACEITE_FT_013.md](ACEITE_FT_013.md) |
+| FT-013A | contrato experimental v2 | **PLANEJADO** — diluição, partículas, geometria, ativação completa e detalhamento analítico, sem defaults arbitrários |
+| FT-013B | diagnóstico de transporte | **PLANEJADO** — Weisz–Prater e Mears com estados calculado, reprovado ou não avaliável por falta de dados |
 | FT-014 | balanço de carbono | **CONCLUÍDO** — tolerância configurável, residual, fechamento e relatório; ver [BALANCOS_ELEMENTARES_FT_014_015.md](BALANCOS_ELEMENTARES_FT_014_015.md) |
 | FT-015 | balanços H/O | **CONCLUÍDO** — espécies e bases documentadas, propagação de incerteza independente e bloqueio para H/O em base seca; ver [BALANCOS_ELEMENTARES_FT_014_015.md](BALANCOS_ELEMENTARES_FT_014_015.md) |
 | FT-016 | auditor de evidência | inconsistências e status rastreáveis |
 | FT-017 | comparação ASF/medição | **EM EXECUÇÃO** — contrato, alinhamento de base, resíduos e incerteza implementados com exemplo sintético; falta conectar medições experimentais aprovadas; ver [COMPARACAO_ASF_MEDICAO_FT_017.md](COMPARACAO_ASF_MEDICAO_FT_017.md) |
+| FT-017A | ajuste e seleção do modelo ASF | **BLOQUEADO** — comparar ASF simples e avançada por resíduos, AIC/BIC e incerteza somente após FT-012A e aprovação de dados experimentais |
 | FT-018 | interface LTFT | fluxo produto→caso→resultado |
 | FT-019 | exportação JSON/CSV | arquivos versionados e reproduzíveis |
 | FT-020 | relatório científico | premissas, evidências e limitações |

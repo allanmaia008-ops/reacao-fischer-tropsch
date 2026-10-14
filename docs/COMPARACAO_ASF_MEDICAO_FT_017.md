@@ -38,3 +38,10 @@ calibrar modelos, validar catalisadores ou orientar condições experimentais.
 3. registrar incertezas, limites de detecção e tratamento de espécies não
    identificadas;
 4. revisar os resíduos com especialista e definir critérios de aceite externos.
+
+## Expansão aprovada
+
+A etapa FT-017A comparará ASF simples e modelos avançados somente após a
+implementação de FT-012A e a aprovação de dados experimentais. A seleção deverá
+usar resíduos, incertezas e critérios de informação; Dual-alpha não será tratado
+como superior por padrão. Ver `PLANO_ASF_AVANCADA_TRANSPORTE.md`.
