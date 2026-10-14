@@ -12,6 +12,8 @@
   físicos exigidos pelo primeiro reator LTFT.
 - `ft-thermodynamics-v1.schema.json`: pacote, EOS, mistura, pseudocomponentes,
   VLE, cobertura de fases, domínio e validação termodinâmica.
+- `ft-elemental-balance-v1.schema.json`: correntes molares, composição atômica,
+  base de medição, fontes e tolerância para balanços C/H/O.
 
 As unidades fazem parte dos nomes dos campos (`_c`, `_bar`, `_mol_s`, `_h_1`,
 `_g`, `_ml`, `_wt_pct`). O JSON Schema valida forma e limites simples; as regras

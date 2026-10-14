@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://reacao-fischer-tropsch.local/schemas/ft-elemental-balance-v1.schema.json",
+  "title": "Contrato de balanço elementar Fischer-Tropsch v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contract_version", "balance_id", "inlet_molar_flow_mol_s", "outlet_molar_flow_mol_s", "species_atoms", "inlet_basis", "outlet_basis", "tolerance_pct", "source_ids"],
+  "properties": {
+    "contract_version": {"const": "1.0.0"},
+    "balance_id": {"type": "string", "minLength": 1},
+    "inlet_molar_flow_mol_s": {"type": "object", "minProperties": 1, "additionalProperties": {"type": "number", "minimum": 0}},
+    "outlet_molar_flow_mol_s": {"type": "object", "minProperties": 1, "additionalProperties": {"type": "number", "minimum": 0}},
+    "inlet_molar_flow_uncertainty_mol_s": {"type": "object", "additionalProperties": {"type": "number", "minimum": 0}},
+    "outlet_molar_flow_uncertainty_mol_s": {"type": "object", "additionalProperties": {"type": "number", "minimum": 0}},
+    "species_atoms": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "propertyNames": {"enum": ["C", "H", "O"]},
+        "additionalProperties": {"type": "integer", "minimum": 0}
+      }
+    },
+    "inlet_basis": {"enum": ["wet_total", "dry_gas", "hydrocarbon_only"]},
+    "outlet_basis": {"enum": ["wet_total", "dry_gas", "hydrocarbon_only"]},
+    "tolerance_pct": {"type": "number", "minimum": 0},
+    "source_ids": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+  }
+}

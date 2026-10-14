@@ -174,6 +174,18 @@ py tools\audit_evidence.py --case examples\caso_experimental_completo.json --out
 
 Consulte [docs/VALIDACAO_EVIDENCIAS.md](docs/VALIDACAO_EVIDENCIAS.md).
 
+## Balanços elementares
+
+Os balanços C/H/O usam correntes molares declaradas, composição atômica por
+espécie, base de medição e tolerância configurável:
+
+```powershell
+py tools\calculate_elemental_balance.py --input examples\balanco_elementar_demonstracao.json --output outputs\balanco_elementar_demonstracao.json
+```
+
+O exemplo é sintético e valida o cálculo, não um resultado experimental.
+Consulte [docs/BALANCOS_ELEMENTARES_FT_014_015.md](docs/BALANCOS_ELEMENTARES_FT_014_015.md).
+
 Ver [PLANEJAMENTO.md](PLANEJAMENTO.md) para a sequência LTFT/HTFT, as portas de
 validação e as decisões pendentes. A separação científica dos regimes está em
 [docs/ESCOPO_LTFT_HTFT.md](docs/ESCOPO_LTFT_HTFT.md).

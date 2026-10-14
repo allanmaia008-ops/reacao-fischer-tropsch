@@ -403,7 +403,8 @@ versionados e suíte automatizada. O aceite e seus limites estão em
 - catalisadores Co/Fe separados;
 - `FT-013` **concluída**: caso experimental completo, agrupado e reproduzível,
   com impressão digital determinística e sem inventar resultados medidos;
-- balanços C/H/O;
+- `FT-014` e `FT-015` **concluídas**: balanços C/H/O versionados com base de
+  medição, espécies, fontes, tolerância e relatório reproduzível;
 - ingestão e revisão de evidência;
 - comparação ASF versus experimento;
 - interface web LTFT.

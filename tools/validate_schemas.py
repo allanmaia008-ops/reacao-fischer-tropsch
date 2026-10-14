@@ -20,6 +20,7 @@ EXAMPLE_CASES = (
     ("ft-catalyst-v1.schema.json", "catalisador_co_v1.json", None, True),
     ("ft-catalyst-v1.schema.json", "catalisador_fe_v1.json", None, True),
     ("ft-catalyst-v1.schema.json", "catalisador_co_fe_exploratorio_v1.json", None, True),
+    ("ft-elemental-balance-v1.schema.json", "balanco_elementar_demonstracao.json", None, True),
 )
 
 

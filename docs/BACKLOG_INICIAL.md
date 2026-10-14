@@ -22,8 +22,8 @@
 | FT-011 | seleção de produto | C1–C60 e cortes documentados |
 | FT-012 | ASF em base de carbono | fechamento e testes analíticos |
 | FT-013 | caso experimental completo | **CONCLUÍDO** — reator, alimentação, condições, prontidão e impressão digital auditável; ver [ACEITE_FT_013.md](ACEITE_FT_013.md) |
-| FT-014 | balanço de carbono | tolerância configurável e relatório |
-| FT-015 | balanços H/O | espécies e bases documentadas |
+| FT-014 | balanço de carbono | **CONCLUÍDO** — tolerância configurável, residual, fechamento e relatório; ver [BALANCOS_ELEMENTARES_FT_014_015.md](BALANCOS_ELEMENTARES_FT_014_015.md) |
+| FT-015 | balanços H/O | **CONCLUÍDO** — espécies e bases documentadas, propagação de incerteza independente e bloqueio para H/O em base seca; ver [BALANCOS_ELEMENTARES_FT_014_015.md](BALANCOS_ELEMENTARES_FT_014_015.md) |
 | FT-016 | auditor de evidência | inconsistências e status rastreáveis |
 | FT-017 | comparação ASF/medição | resíduos e incerteza exibidos |
 | FT-018 | interface LTFT | fluxo produto→caso→resultado |

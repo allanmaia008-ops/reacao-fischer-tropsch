@@ -1,0 +1,21 @@
+{
+  "contract_version": "1.0.0",
+  "balance_id": "demo-ft-014-015",
+  "inlet_molar_flow_mol_s": {"H2": 2.0, "CO": 1.0, "N2": 0.1},
+  "outlet_molar_flow_mol_s": {"H2": 0.2, "CO": 0.2, "CO2": 0.1, "H2O": 0.6, "CH4": 0.3, "C2H6": 0.2, "N2": 0.1},
+  "inlet_molar_flow_uncertainty_mol_s": {"H2": 0.01, "CO": 0.005, "N2": 0.001},
+  "outlet_molar_flow_uncertainty_mol_s": {"H2": 0.002, "CO": 0.002, "CO2": 0.001, "H2O": 0.004, "CH4": 0.003, "C2H6": 0.002, "N2": 0.001},
+  "species_atoms": {
+    "H2": {"H": 2},
+    "CO": {"C": 1, "O": 1},
+    "CO2": {"C": 1, "O": 2},
+    "H2O": {"H": 2, "O": 1},
+    "CH4": {"C": 1, "H": 4},
+    "C2H6": {"C": 2, "H": 6},
+    "N2": {}
+  },
+  "inlet_basis": "wet_total",
+  "outlet_basis": "wet_total",
+  "tolerance_pct": 2.0,
+  "source_ids": ["synthetic-demonstration-not-experimental-evidence"]
+}

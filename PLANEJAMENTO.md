@@ -258,7 +258,9 @@ Após `FT-056`, retomar os ciclos abaixo na ordem original.
 ### Ciclo 1 — consolidar LTFT
 
 1. implementar `ft_regime` e contrato v2 sem quebrar v1;
-2. adicionar balanços C/H/O e qualidade analítica;
+2. `FT-014` e `FT-015`: **concluídas** — balanços molares C/H/O com espécies,
+   bases, fontes, residual, fechamento e tolerância configurável; H/O são
+   bloqueados em base seca;
 3. `FT-013`: **concluída** — caso experimental LTFT completo e auditável com
    reator, alimentação, velocidade espacial, condições e impressão digital;
    permanece rotulado como planejamento ilustrativo, não evidência medida;
