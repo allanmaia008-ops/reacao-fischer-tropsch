@@ -43,8 +43,8 @@
 | FT-023 | domínio de aplicabilidade | **CONCLUÍDO COM BLOQUEIO** — envelope LTFT, alertas de extrapolação e `recommendation_blocked=true`; sem transferência quantitativa automática |
 | FT-024 | modelo quantitativo inicial | **PORTA IMPLEMENTADA/BLOQUEADA** — só libera taxa com contrato validado, validação externa e incerteza definida |
 | FT-025 | análise de sensibilidade | **CONCLUÍDO COMO INFRAESTRUTURA** — sensibilidade one-at-a-time e marcação de pontos fora da faixa declarada |
-| FT-026 | gerador de plano experimental | revisão humana obrigatória |
-| FT-027 | piloto de laboratório | protocolo e resultado documentados |
+| FT-026 | gerador de plano experimental | **CONCLUÍDO COM BLOQUEIO** — plano estruturado, checklist e revisão humana obrigatória |
+| FT-027 | piloto de laboratório | **CONTRATO IMPLEMENTADO/BLOQUEADO** — registro exige protocolo, data, método e dados brutos; nenhum piloto foi alegado como executado |
 
 ## P3 — preparação HTFT
 
