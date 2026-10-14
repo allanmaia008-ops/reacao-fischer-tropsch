@@ -207,6 +207,7 @@ Implementações concluídas:
 - [ASF avançada FT-012A](docs/ASF_AVANCADA_FT_012A.md);
 - [contrato experimental v2 FT-013A](docs/CONTRATO_EXPERIMENTAL_V2_FT_013A.md);
 - [diagnóstico de transporte FT-013B](docs/DIAGNOSTICO_TRANSPORTE_FT_013B.md).
+- [exportação e relatório científico FT-019/FT-020](docs/EXPORTACAO_RELATORIO_FT_019_020.md).
 
 Execução reproduzível da FT-013B com um exemplo declarado como sintético:
 

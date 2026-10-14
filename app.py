@@ -9,7 +9,8 @@ import altair as alt
 import streamlit as st
 
 from plataforma_ltft import (
-    CASE_SCHEMA_VERSION, LTFTCase, plan_product_target, run_screening, validate_case,
+    CASE_SCHEMA_VERSION, LTFTCase, build_export_artifacts, generate_scientific_report,
+    plan_product_target, run_screening, validate_case,
 )
 from plataforma_ltft.ui_workflow import (
     STEP_CATALYST,
@@ -397,6 +398,34 @@ def _render_results() -> None:
                 maturity_badge(item["category"])
                 st.markdown(f"**{item['artifact']}** — {item['provenance']}")
                 st.caption(item["limitation"])
+
+        with st.container(border=True):
+            st.markdown("#### Exportação e relatório científico")
+            st.caption("Arquivos versionados e reproduzíveis. A exportação preserva campos nulos, proveniência disponível e bloqueios científicos.")
+            artifacts = build_export_artifacts(result)
+            report = generate_scientific_report(result)
+            export_columns = st.columns(4)
+            export_columns[0].download_button(
+                "Baixar resultado JSON", artifacts["resultado_ft_v1.json"],
+                file_name="resultado_ft_v1.json", mime="application/json",
+            )
+            export_columns[1].download_button(
+                "Baixar resumo CSV", artifacts["resumo_ft_v1.csv"],
+                file_name="resumo_ft_v1.csv", mime="text/csv",
+            )
+            export_columns[2].download_button(
+                "Baixar faixas ASF CSV", artifacts["faixas_asf_v1.csv"],
+                file_name="faixas_asf_v1.csv", mime="text/csv",
+            )
+            export_columns[3].download_button(
+                "Baixar relatório científico", report.encode("utf-8"),
+                file_name="relatorio_cientifico_ft_v1.md", mime="text/markdown",
+            )
+            with st.expander("Manifesto de integridade"):
+                st.download_button(
+                    "Baixar manifesto JSON", artifacts["manifesto_exportacao_v1.json"],
+                    file_name="manifesto_exportacao_v1.json", mime="application/json",
+                )
 
         with st.container(border=True):
             st.markdown("#### Comparação de cenários ASF")

@@ -82,6 +82,11 @@ class StreamlitAppTests(unittest.TestCase):
         self.assertTrue(any("cauda analítica C61+" in item.value for item in app.caption))
         self.assertTrue(any("Recomendação bloqueada" in item.value for item in app.error))
         self.assertTrue(any("Maturidade dos resultados" in item.value for item in app.markdown))
+        download_labels = {button.label for button in app.get("download_button")}
+        self.assertIn("Baixar resultado JSON", download_labels)
+        self.assertIn("Baixar resumo CSV", download_labels)
+        self.assertIn("Baixar faixas ASF CSV", download_labels)
+        self.assertIn("Baixar relatório científico", download_labels)
         next(field for field in app.checkbox if field.label == "Ativar comparação matemática").set_value(True).run()
         self.assertFalse(app.exception)
         self.assertTrue(any("Sensibilidade matemática" in item.value for item in app.warning))

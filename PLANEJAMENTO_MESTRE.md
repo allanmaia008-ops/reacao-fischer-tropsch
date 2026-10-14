@@ -414,6 +414,10 @@ versionados e suíte automatizada. O aceite e seus limites estão em
   geometria, ativação completa e rastreabilidade analítica;
 - `FT-013B` **concluída**: Weisz–Prater e Mears calculados, incluindo estado não
   avaliável quando faltarem entradas;
+- `FT-019` **concluída**: exportação JSON/CSV determinística, versionada e
+  acompanhada por manifesto de integridade SHA-256;
+- `FT-020` **concluída**: relatório científico Markdown gerado do resultado,
+  com premissas, evidências disponíveis, ausências, limitações e bloqueios;
 - `FT-017A` **bloqueada** até FT-012A e dados aprovados: ajuste e seleção de
   modelo por resíduos, incerteza e critérios de informação;
 - interface web LTFT.

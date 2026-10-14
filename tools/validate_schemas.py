@@ -26,6 +26,7 @@ EXAMPLE_CASES = (
     ("ft-experimental-protocol-v2.schema.json", "protocolo_experimental_v2_template.json", None, True),
     ("ft-experimental-protocol-v2.schema.json", "protocolo_experimental_v2_sintetico_completo.json", None, True),
     ("ft-transport-diagnostics-v1.schema.json", "diagnostico_transporte_sintetico.json", None, True),
+    ("ft-export-manifest-v1.schema.json", "manifesto_exportacao_sintetico.json", None, True),
 )
 
 

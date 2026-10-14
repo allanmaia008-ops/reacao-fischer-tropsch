@@ -31,8 +31,8 @@
 | FT-017 | comparação ASF/medição | **EM EXECUÇÃO** — contrato, alinhamento de base, resíduos e incerteza implementados com exemplo sintético; falta conectar medições experimentais aprovadas; ver [COMPARACAO_ASF_MEDICAO_FT_017.md](COMPARACAO_ASF_MEDICAO_FT_017.md) |
 | FT-017A | ajuste e seleção do modelo ASF | **BLOQUEADO** — comparar ASF simples e avançada por resíduos, AIC/BIC e incerteza somente após FT-012A e aprovação de dados experimentais |
 | FT-018 | interface LTFT | fluxo produto→caso→resultado |
-| FT-019 | exportação JSON/CSV | arquivos versionados e reproduzíveis |
-| FT-020 | relatório científico | premissas, evidências e limitações |
+| FT-019 | exportação JSON/CSV | **CONCLUÍDO** — JSON canônico, CSVs versionados e manifesto SHA-256 reproduzível; ver [EXPORTACAO_RELATORIO_FT_019_020.md](EXPORTACAO_RELATORIO_FT_019_020.md) |
+| FT-020 | relatório científico | **CONCLUÍDO** — relatório Markdown com premissas, evidências, prontidão, limitações e bloqueios; ver [EXPORTACAO_RELATORIO_FT_019_020.md](EXPORTACAO_RELATORIO_FT_019_020.md) |
 
 ## P2 — validação e planejamento LTFT
 

@@ -276,6 +276,10 @@ Após `FT-056`, retomar os ciclos abaixo na ordem original.
    avaliável quando faltarem taxa ou propriedades de transporte;
 8. `FT-017A`: após dados aprovados, ajustar e comparar ASF simples e avançada
    por resíduos, incerteza, AIC/BIC e avaliação fora do ajuste quando possível.
+9. `FT-019`: **concluída** — resultado JSON, CSVs de resumo/faixas e manifesto
+   SHA-256 determinísticos, disponíveis por Python, CLI e Streamlit;
+10. `FT-020`: **concluída** — relatório científico Markdown versionado com
+    premissas, resultados, evidências, prontidão, ausências e limitações.
 
 Detalhamento e critérios de aceite: `docs/PLANO_ASF_AVANCADA_TRANSPORTE.md`.
 4. qualificar um conjunto LTFT completo e licenciável;

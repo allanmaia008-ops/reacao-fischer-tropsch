@@ -22,6 +22,8 @@
   partículas, diluição, ativação completa, analytics e fontes por campo.
 - `ft-transport-diagnostics-v1.schema.json`: entradas SI, proveniência,
   incerteza e limites versionados para Weisz–Prater e Mears.
+- `ft-export-manifest-v1.schema.json`: integridade, tipo, tamanho e SHA-256 dos
+  arquivos JSON/CSV reproduzíveis da FT-019.
 
 As unidades fazem parte dos nomes dos campos (`_c`, `_bar`, `_mol_s`, `_h_1`,
 `_g`, `_ml`, `_wt_pct`). O JSON Schema valida forma e limites simples; as regras

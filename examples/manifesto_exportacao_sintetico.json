@@ -1,0 +1,11 @@
+{
+  "export_contract_version": "1.0.0",
+  "result_schema_version": "2.0.0",
+  "result_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "deterministic_export": true,
+  "files": [
+    {"name": "resultado_ft_v1.json", "media_type": "application/json", "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb", "bytes": 100},
+    {"name": "resumo_ft_v1.csv", "media_type": "text/csv", "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc", "bytes": 100},
+    {"name": "faixas_asf_v1.csv", "media_type": "text/csv", "sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd", "bytes": 100}
+  ]
+}
