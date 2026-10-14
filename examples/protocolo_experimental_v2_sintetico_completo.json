@@ -1,0 +1,72 @@
+{
+  "contract_version": "2.0.0",
+  "protocol_id": "FT-013A-SYNTHETIC-TEST",
+  "status": "planned",
+  "execution_confirmed": false,
+  "recommendation_blocked": true,
+  "base_case": {
+    "schema_version": "2.0.0",
+    "composition": "Co",
+    "active_family": "Co",
+    "active_phase_hypothesis": "synthetic software test",
+    "support": "Al2O3",
+    "active_metal_loading_wt_pct": 20,
+    "temperature_c": 220,
+    "pressure_bar": 20,
+    "h2_co_molar_ratio": 2,
+    "desired_product": "C12-C20",
+    "ft_regime": "LTFT",
+    "regime_envelope_version": "1.0.0"
+  },
+  "reactor_configuration": {
+    "internal_diameter_mm": 9.1,
+    "heated_length_mm": 300,
+    "bed_porosity_fraction": 0.4,
+    "catalyst_particle_diameter_um": 150,
+    "catalyst_mass_g": 0.5,
+    "inert_diluent": "SiC",
+    "dilution_ratio_mass": 5,
+    "diluent_particle_diameter_um": 180
+  },
+  "activation_protocol": {
+    "gas_composition_mol_fraction": {"H2": 1.0},
+    "total_flow_mol_s": 0.001,
+    "temperature_c": 350,
+    "heating_rate_c_min": 1,
+    "hold_time_h": 10,
+    "pressure_bar": 1
+  },
+  "analytics": {
+    "online_detectors": ["FID", "TCD"],
+    "species_ranges": {"FID": "C1-C30", "TCD": "H2,CO,CO2,N2"},
+    "calibration_protocol": "synthetic protocol for software validation",
+    "detection_limits": {"CO2_pct": 0.01},
+    "quantification_limits": {"CO2_pct": 0.03},
+    "heavy_fraction_method": "synthetic GC-MS software-test method",
+    "heavy_fraction_recovery_pct": 95
+  },
+  "source_ids": ["synthetic-software-test-not-experimental-evidence"],
+  "field_sources": {
+    "reactor_configuration.internal_diameter_mm": "synthetic-software-test-not-experimental-evidence",
+    "reactor_configuration.heated_length_mm": "synthetic-software-test-not-experimental-evidence",
+    "reactor_configuration.bed_porosity_fraction": "synthetic-software-test-not-experimental-evidence",
+    "reactor_configuration.catalyst_particle_diameter_um": "synthetic-software-test-not-experimental-evidence",
+    "reactor_configuration.catalyst_mass_g": "synthetic-software-test-not-experimental-evidence",
+    "reactor_configuration.inert_diluent": "synthetic-software-test-not-experimental-evidence",
+    "reactor_configuration.dilution_ratio_mass": "synthetic-software-test-not-experimental-evidence",
+    "reactor_configuration.diluent_particle_diameter_um": "synthetic-software-test-not-experimental-evidence",
+    "activation_protocol.gas_composition_mol_fraction": "synthetic-software-test-not-experimental-evidence",
+    "activation_protocol.total_flow_mol_s": "synthetic-software-test-not-experimental-evidence",
+    "activation_protocol.temperature_c": "synthetic-software-test-not-experimental-evidence",
+    "activation_protocol.heating_rate_c_min": "synthetic-software-test-not-experimental-evidence",
+    "activation_protocol.hold_time_h": "synthetic-software-test-not-experimental-evidence",
+    "activation_protocol.pressure_bar": "synthetic-software-test-not-experimental-evidence",
+    "analytics.online_detectors": "synthetic-software-test-not-experimental-evidence",
+    "analytics.species_ranges": "synthetic-software-test-not-experimental-evidence",
+    "analytics.calibration_protocol": "synthetic-software-test-not-experimental-evidence",
+    "analytics.detection_limits": "synthetic-software-test-not-experimental-evidence",
+    "analytics.quantification_limits": "synthetic-software-test-not-experimental-evidence",
+    "analytics.heavy_fraction_method": "synthetic-software-test-not-experimental-evidence",
+    "analytics.heavy_fraction_recovery_pct": "synthetic-software-test-not-experimental-evidence"
+  }
+}

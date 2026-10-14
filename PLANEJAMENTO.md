@@ -266,11 +266,11 @@ Após `FT-056`, retomar os ciclos abaixo na ordem original.
    permanece rotulado como planejamento ilustrativo, não evidência medida;
 4. `FT-017`: **parcial** — comparação por Cn ou cortes, resíduos, métricas e
    incertezas implementados; conclusão depende de medição experimental aprovada;
-5. `FT-012A`: planejar e implementar ASF avançada mantendo alpha único como
+5. `FT-012A`: **concluída** — ASF avançada mantendo alpha único como
    referência, com mistura de duas ASF ou segmentação explicitamente contratada,
    correções C1/C2 separadas, cauda analítica e normalização independente da
    janela do gráfico;
-6. `FT-013A`: evoluir o contrato experimental por migração versionada para
+6. `FT-013A`: **concluída** — contrato experimental separado e migração versionada para
    registrar diluente, partículas, geometria, ativação completa e analytics;
 7. `FT-013B`: implementar diagnósticos Weisz–Prater e Mears com estado não
    avaliável quando faltarem taxa ou propriedades de transporte;

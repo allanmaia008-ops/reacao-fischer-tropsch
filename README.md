@@ -202,6 +202,11 @@ As extensões aprovadas para ASF avançada, contrato experimental v2,
 diagnósticos de transporte e seleção de modelo estão em
 [docs/PLANO_ASF_AVANCADA_TRANSPORTE.md](docs/PLANO_ASF_AVANCADA_TRANSPORTE.md).
 
+Implementações concluídas:
+
+- [ASF avançada FT-012A](docs/ASF_AVANCADA_FT_012A.md);
+- [contrato experimental v2 FT-013A](docs/CONTRATO_EXPERIMENTAL_V2_FT_013A.md).
+
 Ver [PLANEJAMENTO.md](PLANEJAMENTO.md) para a sequência LTFT/HTFT, as portas de
 validação e as decisões pendentes. A separação científica dos regimes está em
 [docs/ESCOPO_LTFT_HTFT.md](docs/ESCOPO_LTFT_HTFT.md).

@@ -9,7 +9,7 @@ alternativas comparadas contra essa referência, nunca substituições presumida
 Valores numéricos apresentados em exemplos externos não são condições
 experimentais aprovadas e não serão promovidos a defaults da plataforma.
 
-## FT-012A — ASF avançada
+## FT-012A — ASF avançada — concluída
 
 **Objetivo:** representar desvios da ASF ideal sem impor uma interpretação
 mecanicista não demonstrada.
@@ -29,7 +29,7 @@ mecanicista não demonstrada.
 alterar `max_n` não altera as frações físicas; nenhuma variante é chamada de
 superior sem comparação com dados aprovados.
 
-## FT-013A — Contrato experimental v2
+## FT-013A — Contrato experimental v2 — concluída
 
 **Objetivo:** ampliar o caso planejado para avaliação de reprodutibilidade e de
 transporte.
@@ -48,7 +48,7 @@ transporte.
 negativos; campos ausentes permanecem ausentes, sem valores arbitrários; o caso
 continua rotulado como planejamento até confirmação da execução.
 
-## FT-013B — Diagnóstico de transporte
+## FT-013B — Diagnóstico de transporte — próxima implementação
 
 **Objetivo:** avaliar se uma medição pode sustentar interpretação cinética.
 

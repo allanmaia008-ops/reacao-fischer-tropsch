@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://reacao-fischer-tropsch.local/schemas/ft-experimental-protocol-v2.schema.json",
+  "title": "Protocolo experimental Fischer-Tropsch v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contract_version", "protocol_id", "status", "execution_confirmed", "recommendation_blocked", "base_case", "reactor_configuration", "activation_protocol", "analytics", "source_ids", "field_sources"],
+  "properties": {
+    "contract_version": {"const": "2.0.0"},
+    "protocol_id": {"type": "string", "minLength": 1},
+    "status": {"enum": ["planned", "executed"]},
+    "execution_confirmed": {"type": "boolean"},
+    "recommendation_blocked": {"const": true},
+    "base_case": {"type": "object", "required": ["schema_version"], "additionalProperties": true},
+    "reactor_configuration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["internal_diameter_mm", "heated_length_mm", "bed_porosity_fraction", "catalyst_particle_diameter_um", "catalyst_mass_g", "inert_diluent", "dilution_ratio_mass", "diluent_particle_diameter_um"],
+      "properties": {
+        "internal_diameter_mm": {"type": ["number", "null"], "exclusiveMinimum": 0},
+        "heated_length_mm": {"type": ["number", "null"], "exclusiveMinimum": 0},
+        "bed_porosity_fraction": {"type": ["number", "null"], "exclusiveMinimum": 0, "exclusiveMaximum": 1},
+        "catalyst_particle_diameter_um": {"type": ["number", "null"], "exclusiveMinimum": 0},
+        "catalyst_mass_g": {"type": ["number", "null"], "exclusiveMinimum": 0},
+        "inert_diluent": {"type": ["string", "null"], "minLength": 1},
+        "dilution_ratio_mass": {"type": ["number", "null"], "exclusiveMinimum": 0},
+        "diluent_particle_diameter_um": {"type": ["number", "null"], "exclusiveMinimum": 0}
+      }
+    },
+    "activation_protocol": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gas_composition_mol_fraction", "total_flow_mol_s", "temperature_c", "heating_rate_c_min", "hold_time_h", "pressure_bar"],
+      "properties": {
+        "gas_composition_mol_fraction": {"type": ["object", "null"], "additionalProperties": {"type": "number", "minimum": 0, "maximum": 1}},
+        "total_flow_mol_s": {"type": ["number", "null"], "exclusiveMinimum": 0},
+        "temperature_c": {"type": ["number", "null"], "exclusiveMinimum": -273.15},
+        "heating_rate_c_min": {"type": ["number", "null"], "exclusiveMinimum": 0},
+        "hold_time_h": {"type": ["number", "null"], "exclusiveMinimum": 0},
+        "pressure_bar": {"type": ["number", "null"], "exclusiveMinimum": 0}
+      }
+    },
+    "analytics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["online_detectors", "species_ranges", "calibration_protocol", "detection_limits", "quantification_limits", "heavy_fraction_method", "heavy_fraction_recovery_pct"],
+      "properties": {
+        "online_detectors": {"type": ["array", "null"], "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "species_ranges": {"type": ["object", "null"], "minProperties": 1},
+        "calibration_protocol": {"type": ["string", "null"], "minLength": 1},
+        "detection_limits": {"type": ["object", "null"], "minProperties": 1},
+        "quantification_limits": {"type": ["object", "null"], "minProperties": 1},
+        "heavy_fraction_method": {"type": ["string", "null"], "minLength": 1},
+        "heavy_fraction_recovery_pct": {"type": ["number", "null"], "minimum": 0, "maximum": 100}
+      }
+    },
+    "source_ids": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "field_sources": {"type": "object", "additionalProperties": {"type": "string", "minLength": 1}}
+  }
+}

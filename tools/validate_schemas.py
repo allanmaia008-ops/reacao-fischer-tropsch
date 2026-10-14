@@ -22,6 +22,9 @@ EXAMPLE_CASES = (
     ("ft-catalyst-v1.schema.json", "catalisador_co_fe_exploratorio_v1.json", None, True),
     ("ft-elemental-balance-v1.schema.json", "balanco_elementar_demonstracao.json", None, True),
     ("ft-asf-measurement-v1.schema.json", "comparacao_asf_medicao_sintetica.json", None, True),
+    ("ft-advanced-asf-v1.schema.json", "asf_avancada_dual_sintetica.json", None, True),
+    ("ft-experimental-protocol-v2.schema.json", "protocolo_experimental_v2_template.json", None, True),
+    ("ft-experimental-protocol-v2.schema.json", "protocolo_experimental_v2_sintetico_completo.json", None, True),
 )
 
 

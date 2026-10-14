@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://reacao-fischer-tropsch.local/schemas/ft-advanced-asf-v1.schema.json",
+  "title": "Contrato ASF avançada v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contract_version", "model_type"],
+  "properties": {
+    "contract_version": {"const": "1.0.0"},
+    "model_type": {"enum": ["single", "dual_mixture", "segmented"]},
+    "alpha": {"type": ["number", "null"], "exclusiveMinimum": 0, "exclusiveMaximum": 1},
+    "alpha_1": {"type": ["number", "null"], "exclusiveMinimum": 0, "exclusiveMaximum": 1},
+    "alpha_2": {"type": ["number", "null"], "exclusiveMinimum": 0, "exclusiveMaximum": 1},
+    "mixture_fraction": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+    "transition_carbon": {"type": ["integer", "null"], "minimum": 2, "maximum": 59},
+    "methane_factor": {"type": "number", "minimum": 0, "default": 1},
+    "c2_factor": {"type": "number", "minimum": 0, "default": 1}
+  }
+}

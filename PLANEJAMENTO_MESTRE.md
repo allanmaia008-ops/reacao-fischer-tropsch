@@ -408,9 +408,9 @@ versionados e suíte automatizada. O aceite e seus limites estão em
 - ingestão e revisão de evidência;
 - `FT-017` **parcial**: contrato e relatório ASF versus medição implementados;
   falta conectar uma distribuição experimental aprovada;
-- `FT-012A` **planejada**: ASF avançada como alternativa comparável à ASF
+- `FT-012A` **concluída**: ASF avançada como alternativa comparável à ASF
   simples, com duas distribuições/segmentação, C1/C2 separados e cauda analítica;
-- `FT-013A` **planejada**: contrato experimental v2 com diluição, partículas,
+- `FT-013A` **concluída**: contrato experimental v2 com diluição, partículas,
   geometria, ativação completa e rastreabilidade analítica;
 - `FT-013B` **planejada**: Weisz–Prater e Mears calculados, incluindo estado não
   avaliável quando faltarem entradas;

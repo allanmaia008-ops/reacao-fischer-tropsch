@@ -1,0 +1,11 @@
+{
+  "contract_version": "1.0.0",
+  "model_type": "dual_mixture",
+  "alpha": null,
+  "alpha_1": 0.72,
+  "alpha_2": 0.88,
+  "mixture_fraction": 0.35,
+  "transition_carbon": null,
+  "methane_factor": 1.15,
+  "c2_factor": 0.85
+}
