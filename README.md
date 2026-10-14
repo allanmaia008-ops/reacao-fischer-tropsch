@@ -99,6 +99,15 @@ No diretório do projeto:
 py -m unittest discover -s tests -v
 ```
 
+Validação explícita dos contratos JSON usada pela CI:
+
+```powershell
+py tools\validate_schemas.py
+```
+
+Consulte [docs/CI_MINIMA_FT_010.md](docs/CI_MINIMA_FT_010.md) para os gatilhos,
+portas e limites do aceite da FT-010.
+
 ## Execução pelo worker
 
 ```powershell

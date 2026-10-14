@@ -13,7 +13,7 @@
 | FT-007 | contrato de resultado | bloqueios e versões explícitos |
 | FT-008 | worker determinístico | mesma entrada gera resultado equivalente |
 | FT-009 | testes de limites | regimes, unidades e campos condicionais |
-| FT-010 | CI mínima | testes e validação de schemas em cada mudança |
+| FT-010 | CI mínima | **CONCLUÍDO** — testes e validação explícita de schemas/exemplos em cada mudança; ver [CI_MINIMA_FT_010.md](CI_MINIMA_FT_010.md) |
 
 ## P1 — LTFT mínimo útil
 

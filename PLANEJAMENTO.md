@@ -249,6 +249,12 @@ recomendação validada.
 
 Após `FT-056`, retomar os ciclos abaixo na ordem original.
 
+### Retomada da fundação
+
+1. `FT-010`: **concluída** — CI executa validação explícita de schemas e
+   exemplos, seguida da suíte completa, em cada mudança enviada a `main` e em
+   cada pull request. Consulte `docs/CI_MINIMA_FT_010.md`.
+
 ### Ciclo 1 — consolidar LTFT
 
 1. implementar `ft_regime` e contrato v2 sem quebrar v1;

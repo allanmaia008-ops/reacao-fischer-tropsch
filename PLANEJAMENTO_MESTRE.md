@@ -378,6 +378,11 @@ Entregáveis:
 - política de dados, autoria e segurança;
 - repositório, convenções e CI mínima.
 
+`FT-010` — **concluída**: workflow em cada `push` para `main` e em cada
+`pull_request`, com validação explícita dos nove JSON Schemas, sete exemplos
+versionados e suíte automatizada. O aceite e seus limites estão em
+`docs/CI_MINIMA_FT_010.md`.
+
 **Saída:** G0 aprovado.
 
 ### Fase 1 — núcleo comum e contrato v1
@@ -508,7 +513,7 @@ pressupõe uma equipe pequena com participação científica regular.
 | Período | Entrega principal |
 |---|---|
 | Próximo ciclo, semanas 1–4 | Fase UX prioritária (`FT-049` a `FT-056`) |
-| Após a Porta UX, semanas 5–6 | CI mínima e retomada das pendências de fundação |
+| Após a Porta UX, semanas 5–6 | CI mínima concluída; retomada das demais pendências de fundação |
 | Semanas 7–12 | consolidação do LTFT mínimo útil |
 | Semanas 13–18 | corpus, balanços e validação LTFT inicial |
 | Semanas 19–24 | planejamento experimental e homologação LTFT |
