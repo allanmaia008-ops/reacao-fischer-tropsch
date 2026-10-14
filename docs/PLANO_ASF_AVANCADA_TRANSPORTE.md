@@ -48,11 +48,11 @@ transporte.
 negativos; campos ausentes permanecem ausentes, sem valores arbitrários; o caso
 continua rotulado como planejamento até confirmação da execução.
 
-## FT-013B — Diagnóstico de transporte — próxima implementação
+## FT-013B — Diagnóstico de transporte — concluída
 
 **Objetivo:** avaliar se uma medição pode sustentar interpretação cinética.
 
-**Implementação planejada:**
+**Implementação entregue:**
 
 - critérios de Weisz–Prater, Mears de massa e Mears térmico;
 - entradas, unidades, equações, limites e fontes versionados;
@@ -62,8 +62,9 @@ continua rotulado como planejamento até confirmação da execução.
 - análise de sensibilidade às propriedades estimadas;
 - separação entre verificação calculada e declaração do operador.
 
-**Aceite:** casos de referência independentes, testes de unidade/dimensão e
-mensagens que não confundam ausência de dados com ausência de limitação.
+**Aceite atendido:** contrato e equações versionados, estados distintos,
+sensibilidade paramétrica, proveniência por campo, exemplo sintético, CLI,
+documentação e testes que não confundem ausência de dados com aprovação.
 
 ## FT-017A — Ajuste e seleção do modelo ASF
 

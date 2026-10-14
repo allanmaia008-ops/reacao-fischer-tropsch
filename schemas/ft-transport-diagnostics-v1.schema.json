@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://reacao-fischer-tropsch.local/schemas/ft-transport-diagnostics-v1.schema.json",
+  "title": "Contrato de diagnóstico de transporte FT v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contract_version", "criterion_profile", "source_ids", "field_sources", "recommendation_blocked"],
+  "properties": {
+    "contract_version": {"const": "1.0.0"},
+    "criterion_profile": {"const": "conservative-screening-v1"},
+    "observed_rate_mol_m3_s": {"type": ["number", "null"], "exclusiveMinimum": 0},
+    "particle_radius_m": {"type": ["number", "null"], "exclusiveMinimum": 0},
+    "surface_reactant_concentration_mol_m3": {"type": ["number", "null"], "exclusiveMinimum": 0},
+    "bulk_reactant_concentration_mol_m3": {"type": ["number", "null"], "exclusiveMinimum": 0},
+    "effective_diffusivity_m2_s": {"type": ["number", "null"], "exclusiveMinimum": 0},
+    "reaction_order_abs": {"type": ["number", "null"], "exclusiveMinimum": 0},
+    "external_mass_transfer_coefficient_m_s": {"type": ["number", "null"], "exclusiveMinimum": 0},
+    "reaction_enthalpy_abs_j_mol": {"type": ["number", "null"], "exclusiveMinimum": 0},
+    "activation_energy_j_mol": {"type": ["number", "null"], "exclusiveMinimum": 0},
+    "temperature_k": {"type": ["number", "null"], "exclusiveMinimum": 0},
+    "external_heat_transfer_coefficient_w_m2_k": {"type": ["number", "null"], "exclusiveMinimum": 0},
+    "relative_uncertainty_fraction": {"type": ["object", "null"], "additionalProperties": {"type": "number", "minimum": 0, "exclusiveMaximum": 1}},
+    "source_ids": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "field_sources": {"type": "object", "additionalProperties": {"type": "string", "minLength": 1}},
+    "weisz_prater_limit": {"type": "number", "exclusiveMinimum": 0, "default": 0.3},
+    "mears_mass_limit": {"type": "number", "exclusiveMinimum": 0, "default": 0.15},
+    "mears_heat_limit": {"type": "number", "exclusiveMinimum": 0, "default": 0.15},
+    "gas_constant_j_mol_k": {"type": "number", "exclusiveMinimum": 0, "default": 8.314462618},
+    "recommendation_blocked": {"const": true}
+  }
+}

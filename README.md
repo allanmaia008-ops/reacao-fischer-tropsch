@@ -205,7 +205,14 @@ diagnósticos de transporte e seleção de modelo estão em
 Implementações concluídas:
 
 - [ASF avançada FT-012A](docs/ASF_AVANCADA_FT_012A.md);
-- [contrato experimental v2 FT-013A](docs/CONTRATO_EXPERIMENTAL_V2_FT_013A.md).
+- [contrato experimental v2 FT-013A](docs/CONTRATO_EXPERIMENTAL_V2_FT_013A.md);
+- [diagnóstico de transporte FT-013B](docs/DIAGNOSTICO_TRANSPORTE_FT_013B.md).
+
+Execução reproduzível da FT-013B com um exemplo declarado como sintético:
+
+```powershell
+py tools\calculate_transport_diagnostics.py --input examples\diagnostico_transporte_sintetico.json --output outputs\diagnostico_transporte_sintetico.json
+```
 
 Ver [PLANEJAMENTO.md](PLANEJAMENTO.md) para a sequência LTFT/HTFT, as portas de
 validação e as decisões pendentes. A separação científica dos regimes está em

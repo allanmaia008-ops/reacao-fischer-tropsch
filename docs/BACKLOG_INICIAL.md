@@ -24,7 +24,7 @@
 | FT-012A | ASF avançada | **CONCLUÍDO** — ASF simples, mistura dupla e segmentação normalizadas até C∞, correções C1/C2 separadas, cauda analítica e testes; ver [ASF_AVANCADA_FT_012A.md](ASF_AVANCADA_FT_012A.md) |
 | FT-013 | caso experimental completo | **CONCLUÍDO** — reator, alimentação, condições, prontidão e impressão digital auditável; ver [ACEITE_FT_013.md](ACEITE_FT_013.md) |
 | FT-013A | contrato experimental v2 | **CONCLUÍDO** — diluição, partículas, geometria, ativação completa, analytics, fontes por campo e migração sem defaults arbitrários; ver [CONTRATO_EXPERIMENTAL_V2_FT_013A.md](CONTRATO_EXPERIMENTAL_V2_FT_013A.md) |
-| FT-013B | diagnóstico de transporte | **PLANEJADO** — Weisz–Prater e Mears com estados calculado, reprovado ou não avaliável por falta de dados |
+| FT-013B | diagnóstico de transporte | **CONCLUÍDO** — Weisz–Prater e Mears versionados, sensibilidade, proveniência e estado não avaliável por falta de dados |
 | FT-014 | balanço de carbono | **CONCLUÍDO** — tolerância configurável, residual, fechamento e relatório; ver [BALANCOS_ELEMENTARES_FT_014_015.md](BALANCOS_ELEMENTARES_FT_014_015.md) |
 | FT-015 | balanços H/O | **CONCLUÍDO** — espécies e bases documentadas, propagação de incerteza independente e bloqueio para H/O em base seca; ver [BALANCOS_ELEMENTARES_FT_014_015.md](BALANCOS_ELEMENTARES_FT_014_015.md) |
 | FT-016 | auditor de evidência | inconsistências e status rastreáveis |

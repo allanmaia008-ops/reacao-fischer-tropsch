@@ -412,7 +412,7 @@ versionados e suíte automatizada. O aceite e seus limites estão em
   simples, com duas distribuições/segmentação, C1/C2 separados e cauda analítica;
 - `FT-013A` **concluída**: contrato experimental v2 com diluição, partículas,
   geometria, ativação completa e rastreabilidade analítica;
-- `FT-013B` **planejada**: Weisz–Prater e Mears calculados, incluindo estado não
+- `FT-013B` **concluída**: Weisz–Prater e Mears calculados, incluindo estado não
   avaliável quando faltarem entradas;
 - `FT-017A` **bloqueada** até FT-012A e dados aprovados: ajuste e seleção de
   modelo por resíduos, incerteza e critérios de informação;

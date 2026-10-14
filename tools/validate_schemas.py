@@ -25,6 +25,7 @@ EXAMPLE_CASES = (
     ("ft-advanced-asf-v1.schema.json", "asf_avancada_dual_sintetica.json", None, True),
     ("ft-experimental-protocol-v2.schema.json", "protocolo_experimental_v2_template.json", None, True),
     ("ft-experimental-protocol-v2.schema.json", "protocolo_experimental_v2_sintetico_completo.json", None, True),
+    ("ft-transport-diagnostics-v1.schema.json", "diagnostico_transporte_sintetico.json", None, True),
 )
 
 

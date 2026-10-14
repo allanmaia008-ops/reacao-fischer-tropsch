@@ -20,6 +20,8 @@
   segmentado, com correções C1/C2 explicitamente separadas.
 - `ft-experimental-protocol-v2.schema.json`: extensão experimental com leito,
   partículas, diluição, ativação completa, analytics e fontes por campo.
+- `ft-transport-diagnostics-v1.schema.json`: entradas SI, proveniência,
+  incerteza e limites versionados para Weisz–Prater e Mears.
 
 As unidades fazem parte dos nomes dos campos (`_c`, `_bar`, `_mol_s`, `_h_1`,
 `_g`, `_ml`, `_wt_pct`). O JSON Schema valida forma e limites simples; as regras

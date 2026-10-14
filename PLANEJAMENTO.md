@@ -272,7 +272,7 @@ Após `FT-056`, retomar os ciclos abaixo na ordem original.
    janela do gráfico;
 6. `FT-013A`: **concluída** — contrato experimental separado e migração versionada para
    registrar diluente, partículas, geometria, ativação completa e analytics;
-7. `FT-013B`: implementar diagnósticos Weisz–Prater e Mears com estado não
+7. `FT-013B` **concluída**: diagnósticos Weisz–Prater e Mears com estado não
    avaliável quando faltarem taxa ou propriedades de transporte;
 8. `FT-017A`: após dados aprovados, ajustar e comparar ASF simples e avançada
    por resíduos, incerteza, AIC/BIC e avaliação fora do ajuste quando possível.
