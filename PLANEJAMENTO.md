@@ -264,6 +264,8 @@ Após `FT-056`, retomar os ciclos abaixo na ordem original.
 3. `FT-013`: **concluída** — caso experimental LTFT completo e auditável com
    reator, alimentação, velocidade espacial, condições e impressão digital;
    permanece rotulado como planejamento ilustrativo, não evidência medida;
+4. `FT-017`: **parcial** — comparação por Cn ou cortes, resíduos, métricas e
+   incertezas implementados; conclusão depende de medição experimental aprovada;
 4. qualificar um conjunto LTFT completo e licenciável;
 5. comparar ASF com esse conjunto e quantificar desvios;
 6. publicar relatório de validação sem liberar recomendação final.

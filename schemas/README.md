@@ -14,6 +14,8 @@
   VLE, cobertura de fases, domínio e validação termodinâmica.
 - `ft-elemental-balance-v1.schema.json`: correntes molares, composição atômica,
   base de medição, fontes e tolerância para balanços C/H/O.
+- `ft-asf-measurement-v1.schema.json`: distribuição medida, base analítica,
+  incerteza, proveniência e estado de aprovação para comparação com ASF.
 
 As unidades fazem parte dos nomes dos campos (`_c`, `_bar`, `_mol_s`, `_h_1`,
 `_g`, `_ml`, `_wt_pct`). O JSON Schema valida forma e limites simples; as regras

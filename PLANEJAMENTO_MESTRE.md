@@ -406,7 +406,8 @@ versionados e suíte automatizada. O aceite e seus limites estão em
 - `FT-014` e `FT-015` **concluídas**: balanços C/H/O versionados com base de
   medição, espécies, fontes, tolerância e relatório reproduzível;
 - ingestão e revisão de evidência;
-- comparação ASF versus experimento;
+- `FT-017` **parcial**: contrato e relatório ASF versus medição implementados;
+  falta conectar uma distribuição experimental aprovada;
 - interface web LTFT.
 
 **Saída:** análise LTFT reproduzível, sem cinética inventada.

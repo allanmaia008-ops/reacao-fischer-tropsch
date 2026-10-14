@@ -186,6 +186,18 @@ py tools\calculate_elemental_balance.py --input examples\balanco_elementar_demon
 O exemplo é sintético e valida o cálculo, não um resultado experimental.
 Consulte [docs/BALANCOS_ELEMENTARES_FT_014_015.md](docs/BALANCOS_ELEMENTARES_FT_014_015.md).
 
+## Comparação ASF versus medição
+
+A FT-017 possui uma infraestrutura inicial para alinhar a base de carbono,
+calcular resíduos e incorporar incertezas sem promover dados não aprovados:
+
+```powershell
+py tools\compare_asf_measurement.py --input examples\comparacao_asf_medicao_sintetica.json --output outputs\comparacao_asf_medicao_sintetica.json
+```
+
+O exemplo é sintético e mantém a validação de modelo bloqueada. Consulte
+[docs/COMPARACAO_ASF_MEDICAO_FT_017.md](docs/COMPARACAO_ASF_MEDICAO_FT_017.md).
+
 Ver [PLANEJAMENTO.md](PLANEJAMENTO.md) para a sequência LTFT/HTFT, as portas de
 validação e as decisões pendentes. A separação científica dos regimes está em
 [docs/ESCOPO_LTFT_HTFT.md](docs/ESCOPO_LTFT_HTFT.md).

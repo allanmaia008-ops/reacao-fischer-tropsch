@@ -25,7 +25,7 @@
 | FT-014 | balanço de carbono | **CONCLUÍDO** — tolerância configurável, residual, fechamento e relatório; ver [BALANCOS_ELEMENTARES_FT_014_015.md](BALANCOS_ELEMENTARES_FT_014_015.md) |
 | FT-015 | balanços H/O | **CONCLUÍDO** — espécies e bases documentadas, propagação de incerteza independente e bloqueio para H/O em base seca; ver [BALANCOS_ELEMENTARES_FT_014_015.md](BALANCOS_ELEMENTARES_FT_014_015.md) |
 | FT-016 | auditor de evidência | inconsistências e status rastreáveis |
-| FT-017 | comparação ASF/medição | resíduos e incerteza exibidos |
+| FT-017 | comparação ASF/medição | **EM EXECUÇÃO** — contrato, alinhamento de base, resíduos e incerteza implementados com exemplo sintético; falta conectar medições experimentais aprovadas; ver [COMPARACAO_ASF_MEDICAO_FT_017.md](COMPARACAO_ASF_MEDICAO_FT_017.md) |
 | FT-018 | interface LTFT | fluxo produto→caso→resultado |
 | FT-019 | exportação JSON/CSV | arquivos versionados e reproduzíveis |
 | FT-020 | relatório científico | premissas, evidências e limitações |

@@ -1,0 +1,24 @@
+{
+  "contract_version": "1.0.0",
+  "comparison_id": "demo-ft-017",
+  "alpha": 0.85,
+  "representation": "product_bands",
+  "measured_fractions": {
+    "CH4": 0.028,
+    "C2-C4": 0.105,
+    "C5-C11": 0.285,
+    "C12-C20": 0.275,
+    "C21+": 0.307
+  },
+  "measurement_basis": "carbon_fraction_hydrocarbons",
+  "evidence_status": "synthetic",
+  "source_ids": ["synthetic-demonstration-not-experimental-evidence"],
+  "measured_uncertainty": {
+    "CH4": 0.003,
+    "C2-C4": 0.008,
+    "C5-C11": 0.012,
+    "C12-C20": 0.012,
+    "C21+": 0.015
+  },
+  "closure_tolerance_pct": 2.0
+}
