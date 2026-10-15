@@ -12,6 +12,7 @@ from .applicability import assess_case_applicability, assess_case_compatibility
 from .quantitative import quantitative_readiness, one_at_a_time_sensitivity
 from .experimental_planning import generate_experimental_plan, validate_pilot_record
 from .htft import validate_htft_case, route_model
+from .process_integration import integrated_balance_gate, economic_scenario, integrated_validation_gate
 from .units import (
     CANONICAL_UNITS, FIELD_QUANTITIES, UNIT_CATALOG_VERSION,
     CanonicalMeasurement, UnitDefinition, UnitError,
