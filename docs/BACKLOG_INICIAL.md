@@ -28,7 +28,7 @@
 | FT-014 | balanço de carbono | **CONCLUÍDO** — tolerância configurável, residual, fechamento e relatório; ver [BALANCOS_ELEMENTARES_FT_014_015.md](BALANCOS_ELEMENTARES_FT_014_015.md) |
 | FT-015 | balanços H/O | **CONCLUÍDO** — espécies e bases documentadas, propagação de incerteza independente e bloqueio para H/O em base seca; ver [BALANCOS_ELEMENTARES_FT_014_015.md](BALANCOS_ELEMENTARES_FT_014_015.md) |
 | FT-016 | auditor de evidência | **CONCLUÍDO** — auditoria não destrutiva de CSVs, hashes, integridade, compatibilidade contextual, warnings e bloqueio de uso automático; ver [ACEITE_FT_016_018.md](ACEITE_FT_016_018.md) |
-| FT-017 | comparação ASF/medição | **EM EXECUÇÃO** — contrato, alinhamento de base, resíduos e incerteza implementados com exemplo sintético; falta conectar medições experimentais aprovadas; ver [COMPARACAO_ASF_MEDICAO_FT_017.md](COMPARACAO_ASF_MEDICAO_FT_017.md) |
+| FT-017 | comparação ASF/medição | **EM EXECUÇÃO COM GATE** — fonte aprovada auditada, mas cortes C5–C12/C13+ incompatíveis com os cortes ASF; repartição automática bloqueada; ver [COMPARACAO_ASF_MEDICAO_FT_017.md](COMPARACAO_ASF_MEDICAO_FT_017.md) |
 | FT-017A | ajuste e seleção do modelo ASF | **BLOQUEADO** — comparar ASF simples e avançada por resíduos, AIC/BIC e incerteza somente após FT-012A e aprovação de dados experimentais |
 | FT-018 | interface LTFT | **CONCLUÍDO** — fluxo guiado produto→regime→catalisador→condições→resultado→evidências, validação incremental e bloqueios visíveis; ver [ACEITE_FT_016_018.md](ACEITE_FT_016_018.md) |
 | FT-019 | exportação JSON/CSV | **CONCLUÍDO** — JSON canônico, CSVs versionados e manifesto SHA-256 reproduzível; ver [EXPORTACAO_RELATORIO_FT_019_020.md](EXPORTACAO_RELATORIO_FT_019_020.md) |

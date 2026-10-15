@@ -63,3 +63,9 @@ class ASFMeasurementTests(unittest.TestCase):
             **contract.__dict__, "representation": "carbon_number"
         })
         self.assertTrue(any("Rótulos incompatíveis" in error for error in validate_asf_measurement_contract(invalid)))
+
+    def test_mello_cut_bins_are_not_silently_repartitioned(self):
+        from plataforma_ltft.asf_measurement import assess_band_compatibility
+        report = assess_band_compatibility(("C1", "C2_C4", "C5_C12", "C13plus"))
+        self.assertFalse(report["compatible"])
+        self.assertEqual(report["status"], "blocked")

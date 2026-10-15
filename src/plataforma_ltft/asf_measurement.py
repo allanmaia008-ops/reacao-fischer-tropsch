@@ -13,6 +13,14 @@ MEASUREMENT_BASIS = "carbon_fraction_hydrocarbons"
 EVIDENCE_STATUSES = ("synthetic", "extracted", "verified", "approved")
 BAND_LABELS = ("CH4", "C2-C4", "C5-C11", "C12-C20", "C21+")
 
+def assess_band_compatibility(labels: Sequence[str]) -> dict[str, object]:
+    """Verifica se cortes medidos podem ser comparados sem repartição arbitrária."""
+    labels = tuple(labels)
+    mello = {"C1", "C2_C4", "C5_C12", "C13plus"}
+    if mello.intersection(labels):
+        return {"compatible": False, "status": "blocked", "reasons": ["C5-C12/C13+ não coincidem com C5-C11/C12-C20/C21+; faltam dados para repartição"]}
+    return {"compatible": set(labels).issubset(set(BAND_LABELS)), "status": "compatible" if set(labels).issubset(set(BAND_LABELS)) else "blocked", "reasons": [] if set(labels).issubset(set(BAND_LABELS)) else ["cortes não reconhecidos"]}
+
 
 @dataclass(frozen=True)
 class ASFMeasurementContract:

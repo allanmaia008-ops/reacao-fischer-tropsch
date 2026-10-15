@@ -2,9 +2,10 @@
 
 ## Estado da atividade
 
-A infraestrutura inicial está implementada. A FT-017 permanece **parcial** até
-que uma distribuição experimental com licença, fonte integral, base analítica e
-aprovação humana seja conectada ao contrato.
+A infraestrutura inicial está implementada. A fonte interna aprovada foi auditada,
+mas a FT-017 permanece **parcial** porque seus cortes C5–C12/C13+ não coincidem
+com os cortes ASF C5–C11/C12–C20/C21+. A plataforma bloqueia a repartição
+arbitrária desses intervalos.
 
 ## Escopo implementado
 
@@ -32,7 +33,8 @@ calibrar modelos, validar catalisadores ou orientar condições experimentais.
 
 ## Pendências para conclusão
 
-1. aprovar ao menos uma fonte experimental e sua licença;
+1. obter dados experimentais nos mesmos cinco cortes ASF, ou um método publicado
+   para desagregar C5–C12 e C13+;
 2. confirmar a base de seletividade e converter somente quando houver dados
    suficientes e método documentado;
 3. registrar incertezas, limites de detecção e tratamento de espécies não
