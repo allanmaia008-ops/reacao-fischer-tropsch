@@ -11,7 +11,7 @@
       "review_status": "approved",
       "approval_basis": "user_approval_2026-10-15",
       "evidence_status": "approved",
-      "full_text_verified": false,
+      "full_text_verified": true,
       "approved_uses": ["proveniencia", "identificacao_de_lacunas"],
       "prohibited_uses": ["calibracao_automatica", "ranking", "recomendacao_de_condicoes"]
     },
@@ -25,7 +25,7 @@
       "review_status": "approved",
       "approval_basis": "user_approval_2026-10-15",
       "evidence_status": "approved",
-      "full_text_verified": false,
+      "full_text_verified": true,
       "approved_uses": ["auditoria_de_fechamento", "comparacao_contextual"],
       "prohibited_uses": ["calibracao_automatica", "ranking", "transferencia_para_outro_catalisador"]
     },
@@ -39,7 +39,7 @@
       "review_status": "approved",
       "approval_basis": "user_approval_2026-10-15",
       "evidence_status": "approved",
-      "full_text_verified": false,
+      "full_text_verified": true,
       "approved_uses": ["comparacao_contextual_de_suportes"],
       "prohibited_uses": ["ranking", "inferir_superioridade_universal", "calibracao_automatica"]
     }
