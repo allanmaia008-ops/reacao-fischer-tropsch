@@ -29,7 +29,7 @@ class EvidenceValidationTests(unittest.TestCase):
         self.assertEqual(report["summary"]["approved_for_model_use_count"], 0)
         self.assertFalse(report["summary"]["g2_ready"])
         self.assertEqual(report["summary"]["error_count"], 0)
-        self.assertGreater(report["summary"]["warning_count"], 0)
+        self.assertEqual(report["summary"]["warning_count"], 0)
         self.assertTrue(all(not item["allowed_to_change_ranking"] for item in report["datasets"]))
 
     def test_selectivity_rows_close_at_100_percent(self):
