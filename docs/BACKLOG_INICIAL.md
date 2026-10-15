@@ -38,7 +38,7 @@
 
 | ID | Entrega | Aceite |
 |---|---|---|
-| FT-021 | corpus LTFT aprovado | **AVALIADO/BLOQUEADO** — gate de aprovação implementado; os três conjuntos permanecem bloqueados por URL/DOI, licença e verificação integral ausentes; ver [ACEITE_FT_021.md](ACEITE_FT_021.md) |
+| FT-021 | corpus LTFT aprovado | **CONCLUÍDO PARA USO INTERNO** — três datasets aprovados pelo responsável, sem redistribuição pública; ver [ACEITE_FT_021.md](ACEITE_FT_021.md) |
 | FT-022 | compatibilidade de casos | **CONCLUÍDO COM BLOQUEIO** — regras de família, regime, pressão, H₂/CO e aprovação de evidência; justificativa auditável |
 | FT-023 | domínio de aplicabilidade | **CONCLUÍDO COM BLOQUEIO** — envelope LTFT, alertas de extrapolação e `recommendation_blocked=true`; sem transferência quantitativa automática |
 | FT-024 | modelo quantitativo inicial | **PORTA IMPLEMENTADA/BLOQUEADA** — só libera taxa com contrato validado, validação externa e incerteza definida |
@@ -50,10 +50,10 @@
 
 | ID | Entrega | Aceite |
 |---|---|---|
-| FT-028 | caso de uso HTFT | produto e métrica aprovados |
-| FT-029 | schema HTFT | Fe, fases, O/P, coque e reações secundárias |
-| FT-030 | bloqueio cruzado | nenhum modelo LTFT executa em HTFT |
-| FT-031 | corpus HTFT | separado, rastreável e revisado |
+| FT-028 | caso de uso HTFT | **CONCLUÍDO** — caso diagnóstico HTFT e métricas de acompanhamento definidos |
+| FT-029 | schema HTFT | **CONCLUÍDO** — contrato v1 para Fe, oxigenados, coque e reações secundárias |
+| FT-030 | bloqueio cruzado | **CONCLUÍDO** — roteamento impede execução LTFT em HTFT |
+| FT-031 | corpus HTFT | **CONCLUÍDO COMO FUNDAÇÃO** — diretório separado e política de proveniência; corpus ainda vazio |
 | FT-032 | balanços HTFT | CO2, água, C/H/O e não identificados |
 | FT-033 | interface HTFT bloqueada | diagnóstico sem recomendação |
 | FT-034 | validação HTFT | conjunto externo e revisão independente |

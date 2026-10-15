@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://reacao-fischer-tropsch.local/schemas/htft-case-v1.schema.json",
+  "title": "HTFT diagnostic case v1",
+  "type": "object",
+  "required": ["case_id", "desired_product", "temperature_c", "catalyst_family", "oxygenate_policy", "coke_tracking", "secondary_reactions"],
+  "properties": {
+    "case_id": {"type": "string"}, "desired_product": {"type": "string"},
+    "temperature_c": {"type": "number", "minimum": 280, "maximum": 350},
+    "catalyst_family": {"enum": ["Fe", "Fe-K", "Fe-Co"]},
+    "oxygenate_policy": {"type": "string"}, "coke_tracking": {"type": "string"},
+    "secondary_reactions": {"type": "array", "items": {"type": "string"}}
+  }, "additionalProperties": true
+}
