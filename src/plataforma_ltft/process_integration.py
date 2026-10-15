@@ -1,7 +1,7 @@
 """Integração de balanços e avaliação técnico-econômica com portas explícitas."""
 
-def integrated_balance_gate(*, syngas_closed: bool, ft_closed: bool, upgrading_closed: bool, oxygen_accounted: bool) -> dict:
-    checks = {"syngas": syngas_closed, "ft": ft_closed, "upgrading": upgrading_closed, "oxygen": oxygen_accounted}
+def integrated_balance_gate(*, syngas_closed: bool, ft_closed: bool, upgrading: bool, oxygen_accounted: bool) -> dict:
+    checks = {"syngas": syngas_closed, "ft": ft_closed, "upgrading": upgrading, "oxygen": oxygen_accounted}
     return {"checks": checks, "status": "ready" if all(checks.values()) else "blocked", "recommendation_blocked": True, "missing": [name for name, ok in checks.items() if not ok]}
 
 def economic_scenario(*, capacity_kg_h: float, h2_cost_per_kg: float, electricity_cost_per_mwh: float, carbon_cost_per_t: float, capex: float, opex_per_kg: float, product_price_per_kg: float) -> dict:
