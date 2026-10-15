@@ -1,0 +1,6 @@
+dataset_id,source_url_or_doi,catalyst,temperature_c,pressure_bar,selectivity_basis,band,value_pct,data_status,notes
+pmc6092428,https://pmc.ncbi.nlm.nih.gov/articles/PMC6092428/,Cat-12h,,,carbon_basis,C5-C11,62.4,extracted,"Value reported in indexed article text; other bands not captured"
+pmc6092428,https://pmc.ncbi.nlm.nih.gov/articles/PMC6092428/,Cat-8h,,,carbon_basis,C5-C11,42.4,extracted,"Value reported in indexed article text; other bands not captured"
+pmc6092428,https://pmc.ncbi.nlm.nih.gov/articles/PMC6092428/,Cat-8h,,,carbon_basis,C10-C20,39.3,extracted,"Overlaps C5-C11; not directly compatible with current ASF cuts"
+pmc6092428,https://pmc.ncbi.nlm.nih.gov/articles/PMC6092428/,Cat-4h,,,carbon_basis,C10-C20,66.2,extracted,"Value reported in indexed article text; not directly compatible with current ASF cuts"
+ft_org_91010533,https://www.fischer-tropsch.org/DOE/_conf_proc/USDOE-INDLIQ/91010533/de91010533_bukur.pdf,,,carbon_basis,C5-C11,21.4,extracted,"Search-indexed table value; PDF table requires manual verification"
