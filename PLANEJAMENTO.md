@@ -307,11 +307,11 @@ Detalhamento e critérios de aceite: `docs/PLANO_ASF_AVANCADA_TRANSPORTE.md`.
 1. `FT-057`: **concluída** — contrato cinético v1 com domínio, unidades,
    parâmetros, incerteza, fonte e porta de validação; temperatura e pressão
    isoladas continuam sem predizer conversão;
-2. `FT-058`: **parcial** — contrato do reator, validação de alimentação,
+2. `FT-058`: **contrato/porta concluídos** — contrato do reator, validação de alimentação,
    geometria, GHSV/WHSV, inventário molar e porta de prontidão implementados;
    conversão e produtividade continuam bloqueadas até a aprovação da cinética
    e dos modelos de energia, queda de pressão, transporte, WGS e desativação;
-3. `FT-059`: **parcial** — contrato termodinâmico e porta de validação cobrem
+3. `FT-059`: **contrato/porta concluídos** — contrato termodinâmico e porta de validação cobrem
    EOS, regra de mistura, pseudocomponentes, VLE, domínio, métricas e fases de
    gás de síntese a ceras; falta selecionar candidatos e compará-los com dados
    rastreáveis antes da integração de uma biblioteca;

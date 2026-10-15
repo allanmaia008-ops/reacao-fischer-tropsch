@@ -63,8 +63,8 @@
 | ID | Entrega | Aceite |
 |---|---|---|
 | FT-057 | contrato cinético | variáveis, unidades, parâmetros, fonte, domínio e incerteza versionados |
-| FT-058 | modelo de reator LTFT | balanços, alimentação, vazão, geometria, pressão e fenômenos adotados testados |
-| FT-059 | propriedades termodinâmicas | EOS, mistura, pseudocomponentes, fases e faixa de validade comparados com dados |
+| FT-058 | modelo de reator LTFT | **CONCLUÍDO COMO CONTRATO/PORTA** — alimentação, vazão, geometria, pressão e fenômenos declarados; sem conversão sem cinética validada |
+| FT-059 | propriedades termodinâmicas | **CONCLUÍDO COMO CONTRATO/PORTA** — EOS, mistura, pseudocomponentes, fases, fontes e validação exigidos |
 | FT-060 | balanço integrado de massa e energia | syngas, FT e upgrading fechados; O2 produzido e consumido distinguidos |
 | FT-061 | contrato técnico-econômico | fronteira, capacidade, ano-base, preços e cenários aprovados |
 | FT-062 | modelo econômico | CAPEX/OPEX, H2, eletricidade, carbono e custo do combustível com sensibilidade |
