@@ -10,9 +10,11 @@ def assess_corpus_approval(manifest_path: Path) -> dict:
     rows = []
     for filename, metadata in payload.get("datasets", {}).items():
         missing = [field for field in ("source_url_or_doi", "license") if not metadata.get(field)]
+        if metadata.get("license_verified") is not True:
+            missing.append("license_verified")
         if not metadata.get("full_text_verified", False):
             missing.append("full_text_verified")
-        status = "approved" if not missing and metadata.get("evidence_status") == "approved" else "blocked"
+        status = "approved" if not missing and metadata.get("evidence_status") == "approved" and metadata.get("review_status") == "approved" else "blocked"
         rows.append({"filename": filename, "status": status, "missing_requirements": missing})
     approved = sum(row["status"] == "approved" for row in rows)
     return {"schema_version": CORPUS_APPROVAL_SCHEMA_VERSION, "manifest": str(Path(manifest_path).resolve()), "dataset_count": len(rows), "approved_count": approved, "corpus_status": "approved" if rows and approved == len(rows) else "blocked", "datasets": rows, "prohibited_until_approval": ["calibracao_automatica", "ranking", "recomendacao_de_condicoes"]}
