@@ -27,7 +27,7 @@ def assess_case_applicability(case: LTFTCase, *, evidence_approved: bool = False
         reasons.append("corpus LTFT ainda não aprovado pela FT-021")
     if alerts:
         reasons.extend(alerts)
-    return {"schema_version": APPLICABILITY_SCHEMA_VERSION, "status": "blocked" if reasons else "contextual_only", "case": asdict(case), "alerts": alerts, "reasons": reasons, "recommendation_blocked": True}
+    return {"schema_version": APPLICABILITY_SCHEMA_VERSION, "status": "blocked" if reasons else "contextual_only", "approval_status": "approved_for_internal_contextual_use", "case": asdict(case), "alerts": alerts, "reasons": reasons, "recommendation_blocked": True}
 
 def assess_case_compatibility(case: LTFTCase, *, evidence_approved: bool = False) -> dict:
     result = assess_case_applicability(case, evidence_approved=evidence_approved)

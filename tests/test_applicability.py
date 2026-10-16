@@ -8,6 +8,7 @@ class ApplicabilityTests(unittest.TestCase):
         report = assess_case_compatibility(case)
         self.assertEqual(report["compatibility"], "not_demonstrated")
         self.assertTrue(report["recommendation_blocked"])
+        self.assertEqual(report["approval_status"], "approved_for_internal_contextual_use")
 
     def test_out_of_domain_temperature_is_alerted(self):
         case = LTFTCase(active_family="Co", temperature_c=300, pressure_bar=20, h2_co_molar_ratio=2)
