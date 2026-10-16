@@ -42,6 +42,34 @@
       "full_text_verified": true,
       "approved_uses": ["comparacao_contextual_de_suportes"],
       "prohibited_uses": ["ranking", "inferir_superioridade_universal", "calibracao_automatica"]
+    },
+    "ltft_mansouri_2013_kinetics.csv": {
+      "dataset_id": "ltft-mansouri-2013-kinetics-v1",
+      "source": "Mansouri et al. 2013, Tabela 1",
+      "source_url_or_doi": "https://doi.org/10.1186/2228-5547-4-1",
+      "license": "internal_use_authorized_by_project_owner",
+      "license_verified": true,
+      "rights_note": "Uso interno autorizado pelo responsável nesta atividade; CSV não é redistribuído pelo repositório.",
+      "review_status": "approved",
+      "approval_basis": "user_instruction_2026-10-16",
+      "evidence_status": "approved",
+      "full_text_verified": true,
+      "approved_uses": ["ajuste_exploratorio", "holdout_mesmo_estudo", "auditoria_de_consistencia"],
+      "prohibited_uses": ["validacao_externa", "transferencia_de_catalisador", "recomendacao_de_condicoes"]
+    },
+    "ltft_akbarzadeh_2024_external_candidate.csv": {
+      "dataset_id": "ltft-akbarzadeh-2024-external-candidate-v1",
+      "source": "Akbarzadeh et al. 2024, Tabela 3",
+      "source_url_or_doi": "https://doi.org/10.1038/s41598-024-64382-0",
+      "license": "internal_use_authorized_by_project_owner",
+      "license_verified": true,
+      "rights_note": "Uso interno autorizado pelo responsável nesta atividade; CSV não é redistribuído pelo repositório.",
+      "review_status": "approved",
+      "approval_basis": "user_instruction_2026-10-16",
+      "evidence_status": "approved",
+      "full_text_verified": true,
+      "approved_uses": ["triagem_de_compatibilidade", "futuro_modelo_especifico_comn"],
+      "prohibited_uses": ["validar_modelo_coce", "transferencia_de_catalisador", "recomendacao_de_condicoes"]
     }
   }
 }

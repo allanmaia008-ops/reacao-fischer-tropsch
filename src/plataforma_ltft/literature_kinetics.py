@@ -47,3 +47,20 @@ def predict(model, rows):
     width = student_t.ppf(.975, model['degrees_freedom']) * np.sqrt(variance + model['residual_log_variance'])
     return [{"median_rate": float(math.exp(c)), "prediction_lower_95": float(math.exp(c-w)),
              "prediction_upper_95": float(math.exp(c+w))} for c,w in zip(center,width)]
+
+
+def assess_external_dataset(model, rows):
+    """Checks scientific compatibility before any numeric validation is attempted."""
+    reasons = []
+    catalysts = sorted({str(r.get("catalyst_id", "")) for r in rows})
+    if catalysts != [CATALYST]:
+        reasons.append("catalyst_mismatch")
+    for row in rows:
+        temp = float(row["temperature_c"])
+        if not model["temperature_range_c"][0] <= temp <= model["temperature_range_c"][1]:
+            reasons.append("temperature_outside_calibration_domain")
+        if (float(row["p_h2_bar"]), float(row["p_co_bar"])) not in ((.333, .333), (.4, .267)):
+            reasons.append("feed_composition_outside_calibration_domain")
+    reasons = list(dict.fromkeys(reasons))
+    return {"compatible": not reasons, "reasons": reasons,
+            "validation_performed": False, "recommendation_blocked": bool(reasons)}

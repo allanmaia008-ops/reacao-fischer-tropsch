@@ -27,6 +27,16 @@ DATASET_SPECS = {
         "required": ["Suporte", "BET_m2_g", "Vp_cm3_g", "Vp_normalized_cm3_gAl2O3", "pore_nm", "eta_eV"],
         "numeric": ["M_wt_pct", "delta_atoms_nm2", "BET_m2_g", "Vp_cm3_g", "Vp_normalized_cm3_gAl2O3", "pore_nm", "eta_eV"],
     },
+    "ltft_mansouri_2013_kinetics.csv": {
+        "headers": ["row_id", "catalyst_id", "temperature_c", "p_h2_bar", "p_co_bar", "feed_co_mmol_gcat_min", "conversion_co_pct", "rate_mmol_gcat_min", "rate_consistency_residual", "consistency_check", "ltft_eligible", "source_doi", "source_table", "source_url", "measurement_uncertainty", "evidence_type"],
+        "required": ["row_id", "catalyst_id", "temperature_c", "p_h2_bar", "p_co_bar", "feed_co_mmol_gcat_min", "conversion_co_pct", "rate_mmol_gcat_min", "consistency_check", "ltft_eligible", "source_doi", "source_table", "source_url", "measurement_uncertainty", "evidence_type"],
+        "numeric": ["temperature_c", "p_h2_bar", "p_co_bar", "feed_co_mmol_gcat_min", "conversion_co_pct", "rate_mmol_gcat_min"],
+    },
+    "ltft_akbarzadeh_2024_external_candidate.csv": {
+        "headers": ["row_id", "catalyst_id", "temperature_c", "p_co_bar", "p_h2_bar", "conversion_co_pct", "rate_mol_gcat_min", "rate_uncertainty_mol_gcat_min", "source_doi", "source_table", "source_url", "evidence_type"],
+        "required": ["row_id", "catalyst_id", "temperature_c", "p_co_bar", "p_h2_bar", "conversion_co_pct", "rate_mol_gcat_min", "rate_uncertainty_mol_gcat_min", "source_doi", "source_table", "source_url", "evidence_type"],
+        "numeric": ["temperature_c", "p_co_bar", "p_h2_bar", "conversion_co_pct", "rate_mol_gcat_min", "rate_uncertainty_mol_gcat_min"],
+    },
 }
 
 
@@ -58,7 +68,8 @@ def _audit_rows(filename: str, rows: list[dict[str, str]], issues: list[dict]) -
     missing_counts = {header: 0 for header in spec["headers"]}
     closures: list[float] = []
     duplicate_keys: list[str] = []
-    key_field = {"ltft_kinetic_equations_provenance.csv": "system", "ltft_mello_2017_selectivity.csv": "Catalisador", "ltft_mello_2017_supports.csv": "Suporte"}[filename]
+    key_field = {"ltft_kinetic_equations_provenance.csv": "system", "ltft_mello_2017_selectivity.csv": "Catalisador", "ltft_mello_2017_supports.csv": "Suporte",
+                 "ltft_mansouri_2013_kinetics.csv": "row_id", "ltft_akbarzadeh_2024_external_candidate.csv": "row_id"}[filename]
     seen = set()
     for row_number, row in enumerate(rows, start=2):
         key = row.get(key_field, "")
@@ -94,6 +105,10 @@ def _audit_rows(filename: str, rows: list[dict[str, str]], issues: list[dict]) -
 
 
 def _compatibility(filename: str, case: LTFTCase | None) -> dict:
+    if filename == "ltft_mansouri_2013_kinetics.csv":
+        return {"status": "exploratory_model_only", "reasons": ["Uso restrito ao catalisador Co-Ce/SiO2 e domínio publicado; não constitui validação externa."]}
+    if filename == "ltft_akbarzadeh_2024_external_candidate.csv":
+        return {"status": "incompatible_with_current_model", "reasons": ["Catalisador Co-Mn/SiO2 não valida modelo Co-Ce/SiO2."]}
     if case is None:
         return {"status": "not_evaluated", "reasons": ["Nenhum caso LTFT foi fornecido."]}
     reasons = []
@@ -144,7 +159,7 @@ def audit_evidence_directory(evidence_dir: Path, case: LTFTCase | None = None) -
             "issues": issues,
             "allowed_for_automatic_calibration": False,
             "allowed_to_change_ranking": False,
-            "approved_for_internal_contextual_use": metadata.get("review_status") == "approved" and metadata.get("license_verified") is True,
+            "approved_for_internal_contextual_use": str(metadata.get("review_status", "")).startswith("approved") and metadata.get("license_verified") is True,
         }
         files.append(file_report)
         global_issues.extend({"filename": filename, **issue} for issue in issues)

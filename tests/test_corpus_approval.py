@@ -9,5 +9,5 @@ class CorpusApprovalTests(unittest.TestCase):
     def test_user_approved_manifest_is_internal_approved(self):
         report = assess_corpus_approval(Path(__file__).parents[1] / "data/evidence/manifest.json")
         self.assertEqual(report["corpus_status"], "approved")
-        self.assertEqual(report["approved_count"], 3)
+        self.assertEqual(report["approved_count"], 5)
 

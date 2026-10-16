@@ -1,5 +1,5 @@
 import unittest
-from plataforma_ltft.literature_kinetics import CATALYST, fit, predict
+from plataforma_ltft.literature_kinetics import CATALYST, assess_external_dataset, fit, predict
 from plataforma_ltft.experimental_planning import validate_pilot_record
 
 
@@ -33,3 +33,11 @@ class LiteratureKineticsTests(unittest.TestCase):
         self.assertTrue(validate_pilot_record(record)['record_is_evidence'])
         record['execution_date'] = '2999-01-01'
         self.assertFalse(validate_pilot_record(record)['record_is_evidence'])
+
+    def test_external_dataset_is_rejected_before_metrics_when_catalyst_differs(self):
+        model = fit(self.rows())
+        candidate = [dict(self.rows()[0], catalyst_id='CoMn_SiO2', p_h2_bar=1.85, p_co_bar=.9)]
+        assessment = assess_external_dataset(model, candidate)
+        self.assertFalse(assessment['compatible'])
+        self.assertFalse(assessment['validation_performed'])
+        self.assertIn('catalyst_mismatch', assessment['reasons'])

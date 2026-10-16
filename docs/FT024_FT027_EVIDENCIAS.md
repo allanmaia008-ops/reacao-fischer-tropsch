@@ -45,7 +45,16 @@ mas não constitui revisão independente nem validação experimental do projeto
 Busca adicional identificou DOI 10.1021/acscatal.7b02758 (Co/SiO2 com promotor Pt)
 e 10.5281/zenodo.8241527 (microcinética computacional). Não foram combinados com
 Co–Ce/SiO2: catalisadores distintos e simulação não fornecem validação experimental
-externa compatível. Continua necessária uma campanha independente compatível.
+externa compatível.
+
+Também foi extraída a Tabela 3 de Akbarzadeh et al. (2024), DOI
+[10.1038/s41598-024-64382-0](https://www.nature.com/articles/s41598-024-64382-0/tables/3),
+no CSV interno `ltft_akbarzadeh_2024_external_candidate.csv`: 15 experimentos com
+temperatura, pressões parciais, conversão, taxa média e incerteza publicada. A porta
+automática recusou validação antes de calcular métricas: o catalisador Co–Mn/SiO2 e
+as pressões não pertencem ao domínio Co–Ce/SiO2 do modelo. O CSV permanece útil
+para um futuro modelo específico de Co–Mn; não valida o atual. Continua necessária
+uma campanha independente do mesmo sistema catalítico e domínio operacional.
 
 ## FT-027: preparação documental; execução de laboratório pendente
 

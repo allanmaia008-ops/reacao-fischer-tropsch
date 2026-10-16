@@ -24,10 +24,10 @@ class EvidenceValidationTests(unittest.TestCase):
     def test_current_csvs_are_structurally_valid_but_not_approved(self):
         self.require_local_evidence_corpus()
         report = audit_evidence_directory(self.evidence)
-        self.assertEqual(report["summary"]["dataset_count"], 3)
-        self.assertEqual(report["summary"]["structurally_valid_count"], 3)
+        self.assertEqual(report["summary"]["dataset_count"], 5)
+        self.assertEqual(report["summary"]["structurally_valid_count"], 5)
         self.assertEqual(report["summary"]["approved_for_model_use_count"], 0)
-        self.assertEqual(report["summary"]["approved_for_internal_contextual_use_count"], 3)
+        self.assertEqual(report["summary"]["approved_for_internal_contextual_use_count"], 5)
         self.assertFalse(report["summary"]["g2_ready"])
         self.assertEqual(report["summary"]["error_count"], 0)
         self.assertEqual(report["summary"]["warning_count"], 0)
@@ -65,4 +65,11 @@ class EvidenceValidationTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder:
             target = write_audit_report(self.evidence, Path(folder) / "audit.json")
             self.assertEqual(json.loads(target.read_text(encoding="utf-8"))["schema_version"], "1.0.0")
+
+    def test_external_candidate_is_explicitly_incompatible(self):
+        self.require_local_evidence_corpus()
+        report = audit_evidence_directory(self.evidence)
+        candidate = next(item for item in report["datasets"] if "akbarzadeh" in item["filename"])
+        self.assertEqual(candidate["compatibility"]["status"], "incompatible_with_current_model")
+        self.assertFalse(candidate["allowed_for_automatic_calibration"])
 

@@ -7,9 +7,9 @@ const wb = await SpreadsheetFile.importXlsx(await FileBlob.load(path));
 const sheet = wb.worksheets.getItem('Atividades');
 const values = sheet.getRange('A1:I120').values;
 const updates = new Map([
-  ['FT-024', ['MODELO EXPLORATÓRIO / VALIDAÇÃO EXTERNA PENDENTE',
-    'FT024_FT027_EVIDENCIAS.md: 22 registros publicados, 14 LTFT; ajuste em 10 e avaliação em 4. MAE 0,013757 e RMSE 0,015509 mmol CO/(g cat min); intervalos preditivos.',
-    'Obter campanha independente compatível e critérios de aceitação; manter recomendação bloqueada.']],
+  ['FT-024', ['MODELO EXPLORATÓRIO / VALIDAÇÃO EXTERNA COMPATÍVEL PENDENTE',
+    'FT024_FT027_EVIDENCIAS.md: 22 registros Co–Ce e 15 candidatos externos Co–Mn. A porta rejeitou o candidato por incompatibilidade de catalisador e alimentação; holdout interno documentado.',
+    'Obter campanha independente do mesmo sistema Co–Ce e domínio; definir critérios de aceitação; manter recomendação bloqueada.']],
   ['FT-027', ['PREPARAÇÃO DOCUMENTAL / EXECUÇÃO EXPERIMENTAL PENDENTE',
     'FT024_FT027_EVIDENCIAS.md e ft027_pilot_pending.json: preparação e validação de metadados; nenhum ensaio próprio executado.',
     'Completar protocolo e revisão no laboratório; executar ensaio; anexar dados brutos, hash e comparação revisada.']]

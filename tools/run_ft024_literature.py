@@ -10,10 +10,12 @@ import requests
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'src'))
-from plataforma_ltft.literature_kinetics import CATALYST, fit, predict
+from plataforma_ltft.literature_kinetics import CATALYST, assess_external_dataset, fit, predict
 
 URL = 'https://link.springer.com/article/10.1186/2228-5547-4-1/tables/1'
 DOI = '10.1186/2228-5547-4-1'
+EXTERNAL_URL = 'https://www.nature.com/articles/s41598-024-64382-0/tables/3'
+EXTERNAL_DOI = '10.1038/s41598-024-64382-0'
 
 
 def extract(page):
@@ -38,6 +40,27 @@ def extract(page):
     return rows
 
 
+def extract_external(page):
+    table = re.search(r'<table\b.*?</table>', page, re.S).group()
+    rows = []
+    for tr in re.findall(r'<tr\b.*?</tr>', table, re.S):
+        cells = [html.unescape(re.sub('<[^>]+>', '', cell)).replace('\u2009', '').strip()
+                 for cell in re.findall(r'<td\b[^>]*>(.*?)</td>', tr, re.S)]
+        if len(cells) != 6 or not cells[0].isdigit():
+            continue
+        number, temp_k, co, h2, conversion, response = cells
+        mean, uncertainty = [x.strip() for x in response.split('±')]
+        rows.append(dict(row_id=number, catalyst_id='Akbarzadeh2024_CoMn_SiO2',
+                         temperature_c=float(temp_k) - 273.15, p_co_bar=co, p_h2_bar=h2,
+                         conversion_co_pct=conversion, rate_mol_gcat_min=float(mean)/1000,
+                         rate_uncertainty_mol_gcat_min=float(uncertainty)/1000,
+                         source_doi=EXTERNAL_DOI, source_table='3', source_url=EXTERNAL_URL,
+                         evidence_type='published_experiment'))
+    if len(rows) != 15:
+        raise ValueError(f'Expected 15 external records, got {len(rows)}')
+    return rows
+
+
 def main():
     out = ROOT / 'outputs/ft024_literature'
     out.mkdir(parents=True, exist_ok=True)
@@ -52,18 +75,34 @@ def main():
     with destination.open('w', newline='', encoding='utf-8') as stream:
         writer = csv.DictWriter(stream, fieldnames=list(rows[0]))
         writer.writeheader(); writer.writerows(rows)
+    ext_source = out / 'external_table3.html'
+    if '--refresh' in sys.argv or not ext_source.exists():
+        response = requests.get(EXTERNAL_URL, timeout=45)
+        response.raise_for_status()
+        extract_external(response.text)
+        ext_source.write_text(response.text, encoding='utf-8')
+    external = extract_external(ext_source.read_text(encoding='utf-8'))
+    external_destination = ROOT / 'data/evidence/ltft_akbarzadeh_2024_external_candidate.csv'
+    with external_destination.open('w', newline='', encoding='utf-8') as stream:
+        writer = csv.DictWriter(stream, fieldnames=list(external[0]))
+        writer.writeheader(); writer.writerows(external)
     eligible = [r for r in rows if r['ltft_eligible'] and r['consistency_check'] == 'pass']
     # Fixed split by temperature, before fitting; never called external validation.
     test = [r for r in eligible if float(r['temperature_c']) in (220, 240)]
     train = [r for r in eligible if r not in test]
     model = fit(train)
+    external_assessment = assess_external_dataset(model, external)
     predictions = predict(model, test)
     errors = [p['median_rate'] - float(r['rate_mmol_gcat_min']) for r,p in zip(test,predictions)]
     report = {'source_url': URL, 'source_sha256': hashlib.sha256(source.read_bytes()).hexdigest(),
               'csv_sha256': hashlib.sha256(destination.read_bytes()).hexdigest(),
+              'external_source_url': EXTERNAL_URL,
+              'external_source_sha256': hashlib.sha256(ext_source.read_bytes()).hexdigest(),
+              'external_csv_sha256': hashlib.sha256(external_destination.read_bytes()).hexdigest(),
               'source_rows': len(rows), 'ltft_rows': len(eligible),
               'train_ids': [r['row_id'] for r in train], 'test_ids': [r['row_id'] for r in test],
               'validation_type': 'same_study_temperature_holdout', 'model': model,
+              'external_candidate_rows': len(external), 'external_assessment': external_assessment,
               'mae_mmol_gcat_min': sum(abs(e) for e in errors)/len(errors),
               'rmse_mmol_gcat_min': (sum(e*e for e in errors)/len(errors))**.5,
               'predictions': [dict(row_id=r['row_id'], observed=float(r['rate_mmol_gcat_min']), **p) for r,p in zip(test,predictions)],
