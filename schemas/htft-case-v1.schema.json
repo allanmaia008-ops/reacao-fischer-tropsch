@@ -3,12 +3,31 @@
   "$id": "https://reacao-fischer-tropsch.local/schemas/htft-case-v1.schema.json",
   "title": "HTFT diagnostic case v1",
   "type": "object",
-  "required": ["case_id", "desired_product", "temperature_c", "catalyst_family", "oxygenate_policy", "coke_tracking", "secondary_reactions"],
+  "required": ["schema_version", "case_id", "case_status", "desired_product", "product_carbon_range", "selectivity_basis", "temperature_c", "pressure_bar", "h2_co_molar_ratio", "reactor_type", "catalyst", "analytics", "acceptance_criteria", "oxygenate_policy", "coke_tracking", "secondary_reactions", "recommendation_blocked"],
   "properties": {
-    "case_id": {"type": "string"}, "desired_product": {"type": "string"},
-    "temperature_c": {"type": "number", "minimum": 280, "maximum": 350},
-    "catalyst_family": {"enum": ["Fe", "Fe-K", "Fe-Co"]},
-    "oxygenate_policy": {"type": "string"}, "coke_tracking": {"type": "string"},
-    "secondary_reactions": {"type": "array", "items": {"type": "string"}}
-  }, "additionalProperties": true
+    "schema_version": {"const": "1.0.0"}, "case_id": {"type": "string", "minLength": 1},
+    "case_status": {"const": "diagnostic_planning"}, "desired_product": {"const": "light_olefins_C2_C4"},
+    "product_carbon_range": {"type": "object", "required": ["min", "max"], "properties": {"min": {"const": 2}, "max": {"const": 4}}, "additionalProperties": false},
+    "selectivity_basis": {"enum": ["carbon_CO2_free", "carbon_including_CO2"]},
+    "temperature_c": {"type": "number", "minimum": 280, "maximum": 350}, "pressure_bar": {"type": "number", "exclusiveMinimum": 0},
+    "h2_co_molar_ratio": {"type": "number", "exclusiveMinimum": 0}, "reactor_type": {"enum": ["fixed_bed", "fluidized_bed", "slurry"]},
+    "catalyst": {"type": "object", "required": ["family", "promoters", "phase_hypotheses", "support"], "properties": {
+      "family": {"enum": ["Fe", "Fe-K", "Fe-Co"]},
+      "promoters": {"type": "array", "items": {"type": "object", "required": ["species", "loading_status"], "properties": {"species": {"type": "string", "minLength": 1}, "loading_status": {"enum": ["measured", "nominal", "unknown"]}, "loading_wt_pct": {"type": ["number", "null"], "minimum": 0}}, "additionalProperties": false}},
+      "phase_hypotheses": {"type": "array", "minItems": 1, "items": {"enum": ["alpha_Fe", "Fe3O4", "Fe5C2", "Fe7C3", "other"]}}, "support": {"type": ["string", "null"]}
+    }, "additionalProperties": false},
+    "analytics": {"type": "object", "required": ["co_conversion", "carbon_balance", "olefin_paraffin_by_carbon", "oxygenates", "co2", "water", "coke", "unidentified_fraction", "thermal_gradient"], "properties": {
+      "co_conversion": {"const": true}, "carbon_balance": {"const": true},
+      "olefin_paraffin_by_carbon": {"type": "array", "items": {"type": "integer", "minimum": 2, "maximum": 4}, "minItems": 3, "maxItems": 3, "uniqueItems": true},
+      "oxygenates": {"const": true}, "co2": {"const": true}, "water": {"const": true}, "coke": {"const": true}, "unidentified_fraction": {"const": true}, "thermal_gradient": {"const": true}
+    }, "additionalProperties": false},
+    "acceptance_criteria": {"type": "object", "required": ["carbon_balance_error_max_pct", "steady_state_conversion_variation_max_pct", "steady_state_window_h", "replicates_min", "criteria_status"], "properties": {
+      "carbon_balance_error_max_pct": {"type": "number", "exclusiveMinimum": 0}, "steady_state_conversion_variation_max_pct": {"type": "number", "exclusiveMinimum": 0},
+      "steady_state_window_h": {"type": "number", "exclusiveMinimum": 0}, "replicates_min": {"type": "integer", "minimum": 2},
+      "criteria_status": {"const": "planning_thresholds_human_review_required"}
+    }, "additionalProperties": false},
+    "oxygenate_policy": {"const": "quantify_and_report"}, "coke_tracking": {"const": "required"},
+    "secondary_reactions": {"type": "array", "items": {"enum": ["wgs", "methanation", "boudouard", "cracking", "readsorption"]}, "allOf": [{"contains": {"const": "wgs"}}, {"contains": {"const": "methanation"}}, {"contains": {"const": "boudouard"}}]},
+    "recommendation_blocked": {"const": true}
+  }, "additionalProperties": false
 }

@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0.0", "case_id": "HTFT-LO-001", "case_status": "diagnostic_planning",
+  "desired_product": "light_olefins_C2_C4", "product_carbon_range": {"min": 2, "max": 4}, "selectivity_basis": "carbon_CO2_free",
+  "temperature_c": 320, "pressure_bar": 20, "h2_co_molar_ratio": 1.0, "reactor_type": "fixed_bed",
+  "catalyst": {"family": "Fe-K", "promoters": [{"species": "K", "loading_status": "unknown", "loading_wt_pct": null}], "phase_hypotheses": ["Fe3O4", "Fe5C2"], "support": null},
+  "analytics": {"co_conversion": true, "carbon_balance": true, "olefin_paraffin_by_carbon": [2, 3, 4], "oxygenates": true, "co2": true, "water": true, "coke": true, "unidentified_fraction": true, "thermal_gradient": true},
+  "acceptance_criteria": {"carbon_balance_error_max_pct": 5.0, "steady_state_conversion_variation_max_pct": 2.0, "steady_state_window_h": 12.0, "replicates_min": 2, "criteria_status": "planning_thresholds_human_review_required"},
+  "oxygenate_policy": "quantify_and_report", "coke_tracking": "required",
+  "secondary_reactions": ["wgs", "methanation", "boudouard", "cracking", "readsorption"], "recommendation_blocked": true
+}

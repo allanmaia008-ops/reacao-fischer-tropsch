@@ -1,0 +1,6 @@
+{
+  "schema_version": "1.0.0", "case_id": "HTFT-INVALID", "case_status": "diagnostic_planning", "desired_product": "light_olefins_C2_C4",
+  "product_carbon_range": {"min": 2, "max": 4}, "selectivity_basis": "carbon_CO2_free", "temperature_c": 220, "pressure_bar": 20, "h2_co_molar_ratio": 2, "reactor_type": "fixed_bed",
+  "catalyst": {"family": "Co", "promoters": [], "phase_hypotheses": ["other"], "support": "Al2O3"}, "analytics": {"co_conversion": true},
+  "acceptance_criteria": {"criteria_status": "planning_thresholds_human_review_required"}, "oxygenate_policy": "ignore", "coke_tracking": "optional", "secondary_reactions": [], "recommendation_blocked": false
+}

@@ -50,8 +50,8 @@
 
 | ID | Entrega | Aceite |
 |---|---|---|
-| FT-028 | caso de uso HTFT | **CONCLUÍDO** — caso diagnóstico HTFT e métricas de acompanhamento definidos |
-| FT-029 | schema HTFT | **CONCLUÍDO** — contrato v1 para Fe, oxigenados, coque e reações secundárias |
+| FT-028 | caso de uso HTFT | **CONCLUÍDO** — alvo olefinas leves C2–C4, condições de referência, respostas e critérios mensuráveis; ver [aceite](ACEITE_FT_028_029.md) |
+| FT-029 | schema HTFT | **CONCLUÍDO** — contrato v1 dedicado para Fe/promotores/fases, O/P C2–C4, oxigenados, coque, gradiente, WGS e secundárias; exemplos positivo/negativo; ver [aceite](ACEITE_FT_028_029.md) |
 | FT-030 | bloqueio cruzado | **CONCLUÍDO** — roteamento impede execução LTFT em HTFT |
 | FT-031 | corpus HTFT | **CONCLUÍDO COMO FUNDAÇÃO** — diretório separado e política de proveniência; corpus ainda vazio |
 | FT-032 | balanços HTFT | CO2, água, C/H/O e não identificados |

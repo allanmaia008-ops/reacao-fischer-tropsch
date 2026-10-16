@@ -12,7 +12,13 @@ const updates = new Map([
     'Obter campanha independente do mesmo sistema Co–Ce e domínio; definir critérios de aceitação; manter recomendação bloqueada.']],
   ['FT-027', ['PREPARAÇÃO DOCUMENTAL / EXECUÇÃO EXPERIMENTAL PENDENTE',
     'FT024_FT027_EVIDENCIAS.md e ft027_pilot_pending.json: preparação e validação de metadados; nenhum ensaio próprio executado.',
-    'Completar protocolo e revisão no laboratório; executar ensaio; anexar dados brutos, hash e comparação revisada.']]
+    'Completar protocolo e revisão no laboratório; executar ensaio; anexar dados brutos, hash e comparação revisada.']],
+  ['FT-028', ['CONCLUÍDO',
+    'ACEITE_FT_028_029.md e htft_light_olefins_v1.json: alvo C2–C4, condições de referência, respostas, estabilidade, fechamento e replicatas definidos.',
+    'Usar o caso como contrato diagnóstico; revisar limiares antes de execução e manter recomendação bloqueada.']],
+  ['FT-029', ['CONCLUÍDO',
+    'htft-case-v1.schema.json cobre Fe/promotores/fases, O/P C2–C4, oxigenados, coque, gradiente e reações secundárias; exemplos positivo e negativo validados na CI.',
+    'Versionar o schema se o escopo mudar; avançar corpus e balanços HTFT em atividades próprias.']]
 ]);
 const expected = [];
 for (const [id, fields] of updates) {
