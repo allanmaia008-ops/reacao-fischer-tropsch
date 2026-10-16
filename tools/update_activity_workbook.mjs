@@ -26,7 +26,7 @@ const status = new Map([
 ]);
 for (let r = headerRow + 1; r < values.length; r++) {
   const id = String(values[r][idCol] ?? '').trim().toUpperCase();
-  if (status.has(id)) sheet.getRangeByIndexes(r, statusCol, 1, 1).values = [[status.get(id)]];
+  if (status.has(id)) sheet.getRangeByIndexes(r - 1, statusCol, 1, 1).values = [[status.get(id)]];
 }
 const note = sheet.getRangeByIndexes(values.length + 1, 0, 1, Math.max(headers.length, 3));
 note.merge();
