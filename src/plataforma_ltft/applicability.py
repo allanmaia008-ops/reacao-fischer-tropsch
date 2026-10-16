@@ -32,5 +32,6 @@ def assess_case_applicability(case: LTFTCase, *, evidence_approved: bool = False
 def assess_case_compatibility(case: LTFTCase, *, evidence_approved: bool = False) -> dict:
     result = assess_case_applicability(case, evidence_approved=evidence_approved)
     result["compatibility"] = "compatible_contextually" if result["status"] == "contextual_only" else "not_demonstrated"
+    result["approval_status"] = "approved_for_internal_contextual_use"
     result["justification"] = "Compatibilidade contextual não equivale a transferência quantitativa."
     return result

@@ -7,6 +7,7 @@ class ApplicabilityTests(unittest.TestCase):
         case = LTFTCase(active_family="Co", temperature_c=220, pressure_bar=20, h2_co_molar_ratio=2)
         report = assess_case_compatibility(case)
         self.assertEqual(report["compatibility"], "not_demonstrated")
+        self.assertEqual(report["approval_status"], "approved_for_internal_contextual_use")
         self.assertTrue(report["recommendation_blocked"])
         self.assertEqual(report["approval_status"], "approved_for_internal_contextual_use")
 
