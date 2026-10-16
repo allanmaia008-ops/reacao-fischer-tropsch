@@ -46,3 +46,11 @@ Mansouri, M.; Atashi, H.; Mirzaei, A. A.; Jangi, R. *Kinetics of the
 Fischer–Tropsch synthesis on silica-supported cobalt-cerium catalyst*.
 International Journal of Industrial Chemistry 4, 1 (2013).
 https://doi.org/10.1186/2228-5547-4-1.
+
+## Auditoria de literatura posterior
+
+A busca por execução prévia da matriz não encontrou uma campanha independente que
+reúna a mesma composição, coprecipitação e domínio LTFT. Os artigos adicionais e sua
+classificação de compatibilidade foram incorporados a
+`FT024_REFERENCIAS_E_CRITERIOS.md`. Eles sustentam a família catalítica e o desenho
+experimental, mas não substituem a execução de FT024-EXT-001.
