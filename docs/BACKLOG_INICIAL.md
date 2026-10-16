@@ -52,10 +52,10 @@
 |---|---|---|
 | FT-028 | caso de uso HTFT | **CONCLUÍDO** — alvo olefinas leves C2–C4, condições de referência, respostas e critérios mensuráveis; ver [aceite](ACEITE_FT_028_029.md) |
 | FT-029 | schema HTFT | **CONCLUÍDO** — contrato v1 dedicado para Fe/promotores/fases, O/P C2–C4, oxigenados, coque, gradiente, WGS e secundárias; exemplos positivo/negativo; ver [aceite](ACEITE_FT_028_029.md) |
-| FT-030 | bloqueio cruzado | **CONCLUÍDO** — roteamento impede execução LTFT em HTFT |
-| FT-031 | corpus HTFT | **CONCLUÍDO COMO FUNDAÇÃO** — diretório separado e política de proveniência; corpus ainda vazio |
-| FT-032 | balanços HTFT | CO2, água, C/H/O e não identificados |
-| FT-033 | interface HTFT bloqueada | diagnóstico sem recomendação |
+| FT-030 | bloqueio cruzado | **CONCLUÍDO** — contrato, roteamento e evidência impedem uso cruzado LTFT/HTFT; ver [aceite](ACEITE_FT_030_033.md) |
+| FT-031 | corpus HTFT | **CONCLUÍDO — USO INTERNO CONTEXTUAL** — oito registros Fe HTFT auditados, sem autorização para calibração/ranking; ver [aceite](ACEITE_FT_030_033.md) |
+| FT-032 | balanços HTFT | **CONCLUÍDO — INFRAESTRUTURA** — fechamento C/H/O com CO2, água, oxigenados, coque e não identificados; dados reais pendem de ensaio; ver [aceite](ACEITE_FT_030_033.md) |
+| FT-033 | interface HTFT bloqueada | **CONCLUÍDO** — diagnóstico controlado, corpus visível e recomendação bloqueada; ver [aceite](ACEITE_FT_030_033.md) |
 | FT-034 | validação HTFT | conjunto externo e revisão independente |
 
 ## P4 — processo e avaliação técnico-econômica

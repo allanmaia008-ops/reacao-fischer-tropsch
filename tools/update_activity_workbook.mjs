@@ -18,7 +18,19 @@ const updates = new Map([
     'Usar o caso como contrato diagnóstico; revisar limiares antes de execução e manter recomendação bloqueada.']],
   ['FT-029', ['CONCLUÍDO',
     'htft-case-v1.schema.json cobre Fe/promotores/fases, O/P C2–C4, oxigenados, coque, gradiente e reações secundárias; exemplos positivo e negativo validados na CI.',
-    'Versionar o schema se o escopo mudar; avançar corpus e balanços HTFT em atividades próprias.']]
+    'Versionar o schema se o escopo mudar; avançar corpus e balanços HTFT em atividades próprias.']],
+  ['FT-030', ['CONCLUÍDO',
+    'Roteamento do caso e da evidência impede execução LTFT, calibração automática e transferência entre famílias incompatíveis.',
+    'Manter testes de não regressão ao adicionar novos modelos ou datasets.']],
+  ['FT-031', ['CONCLUÍDO — USO INTERNO CONTEXTUAL',
+    'Corpus HTFT separado com 8 registros Fe a 350 °C; auditor verifica manifesto, hash, envelope e fechamento. Calibração e ranking permanecem proibidos.',
+    'Confirmar licença antes de redistribuição externa; ampliar com estudos compatíveis revisados.']],
+  ['FT-032', ['CONCLUÍDO — INFRAESTRUTURA',
+    'Contrato e módulo fecham C/H/O com CO₂, água, hidrocarbonetos, oxigenados, coque e não identificados; exemplo sintético e testes aprovados.',
+    'Aplicar a dados medidos quando houver ensaio HTFT completo.']],
+  ['FT-033', ['CONCLUÍDO',
+    'Interface HTFT mostra alvo C2–C4, 8 registros contextuais, requisitos analíticos e bloqueio; ASF é rotulada como referência matemática.',
+    'Manter recomendação bloqueada até validação HTFT independente na FT-034.']]
 ]);
 const expected = [];
 for (const [id, fields] of updates) {

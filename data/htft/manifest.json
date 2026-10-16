@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "datasets": {
+    "htft_liu_2019_light_olefins.csv": {
+      "dataset_id": "liu2019_htft",
+      "source": "Liu et al. 2019, Chemical Science, Table 1",
+      "source_url_or_doi": "https://doi.org/10.1039/C9SC01210A",
+      "license": "internal_use_authorized_by_project_owner",
+      "license_verified": true,
+      "rights_note": "Uso interno contextual autorizado; confirmar licença antes de redistribuir o CSV fora do projeto.",
+      "full_text_verified": true,
+      "review_status": "approved",
+      "evidence_status": "approved",
+      "approval_basis": "user_instruction_2026-10-16",
+      "regime": "HTFT",
+      "catalyst_family": "Fe",
+      "approved_uses": ["comparacao_contextual", "teste_de_contrato_htft"],
+      "prohibited_uses": ["calibracao_automatica", "ranking_universal", "recomendacao_de_condicoes"]
+    }
+  }
+}

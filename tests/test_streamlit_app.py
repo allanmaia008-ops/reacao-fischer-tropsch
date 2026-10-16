@@ -52,6 +52,8 @@ class StreamlitAppTests(unittest.TestCase):
         app.selectbox[0].set_value("HTFT").run()
         self.assertFalse(app.exception)
         self.assertTrue(any("HTFT está em preparação" in item.value for item in app.warning))
+        self.assertTrue(any("Diagnóstico HTFT controlado" in item.value for item in app.markdown))
+        self.assertTrue(any(item.label == "Corpus interno" and item.value == "8 registros" for item in app.metric))
         app.radio[0].set_value(STEP_CATALYST).run()
         self.assertEqual(app.selectbox[0].value, "Fe")
         app.radio[0].set_value(STEP_CONDITIONS).run()

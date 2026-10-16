@@ -1,0 +1,9 @@
+dataset_id,row_id,catalyst,n_content_at_pct,fe_loading_wt_pct,temperature_c,pressure_bar,co_h2_ratio,ghsv_ml_h_gcat,tos_h,co_conversion_pct,co2_selectivity_pct,ch4_carbon_pct,c2_c4_olefins_carbon_pct,c2_c4_paraffins_carbon_pct,c5plus_carbon_pct,olefin_paraffin_ratio_c2_c4,selectivity_basis,source_doi,source_table,evidence_status
+liu2019_htft,1,10Fe/hCNC,0.0,10.0,350,1.0,1.0,12000,60,1.7,16.5,27.1,44.4,4.7,23.8,9.4,hydrocarbon_carbon_co2_free,10.1039/C9SC01210A,Table 1,approved_internal_contextual
+liu2019_htft,2,10Fe/hNCNC-1,3.0,10.0,350,1.0,1.0,12000,60,2.3,21.2,26.1,46.6,4.1,23.2,11.4,hydrocarbon_carbon_co2_free,10.1039/C9SC01210A,Table 1,approved_internal_contextual
+liu2019_htft,3,10Fe/hNCNC-2,8.1,10.0,350,1.0,1.0,12000,60,1.9,22.4,23.8,51.0,4.2,21.0,12.1,hydrocarbon_carbon_co2_free,10.1039/C9SC01210A,Table 1,approved_internal_contextual
+liu2019_htft,4,10Fe/hNCNC-3,12.0,10.0,350,1.0,1.0,12000,60,1.5,28.3,25.7,52.1,4.6,17.5,11.3,hydrocarbon_carbon_co2_free,10.1039/C9SC01210A,Table 1,approved_internal_contextual
+liu2019_htft,5,20Fe/hNCNC-3,12.0,20.0,350,1.0,1.0,12000,60,2.1,32.1,25.1,53.9,4.1,16.9,13.2,hydrocarbon_carbon_co2_free,10.1039/C9SC01210A,Table 1,approved_internal_contextual
+liu2019_htft,6,30Fe/hNCNC-3,12.0,30.0,350,1.0,1.0,12000,60,2.8,34.9,24.9,53.6,3.6,17.8,14.9,hydrocarbon_carbon_co2_free,10.1039/C9SC01210A,Table 1,approved_internal_contextual
+liu2019_htft,7,35Fe/hNCNC-3,12.0,35.0,350,1.0,1.0,12000,60,3.5,39.4,25.0,54.1,3.3,17.6,16.4,hydrocarbon_carbon_co2_free,10.1039/C9SC01210A,Table 1,approved_internal_contextual
+liu2019_htft,8,40Fe/hNCNC-3,12.0,40.0,350,1.0,1.0,12000,60,3.2,38.7,24.7,50.8,3.0,21.4,16.9,hydrocarbon_carbon_co2_free,10.1039/C9SC01210A,Table 1,approved_internal_contextual

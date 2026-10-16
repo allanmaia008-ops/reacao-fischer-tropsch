@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://reacao-fischer-tropsch.local/schemas/ft-htft-balance-v1.schema.json",
+  "type": "object", "required": ["schema_version", "regime", "closure_tolerance_pct", "inlet", "outlet"],
+  "$defs": {
+    "atoms": {"type": "object", "properties": {"C": {"type": "number", "minimum": 0}, "H": {"type": "number", "minimum": 0}, "O": {"type": "number", "minimum": 0}}, "additionalProperties": false},
+    "stream": {"type": "object", "required": ["species_mol_h", "hydrocarbon_atoms_mol_h", "oxygenate_atoms_mol_h", "unidentified_atoms_mol_h", "coke_carbon_mol_h"], "properties": {
+      "species_mol_h": {"type": "object", "propertyNames": {"enum": ["CO", "H2", "CO2", "H2O", "CH4"]}, "additionalProperties": {"type": "number", "minimum": 0}},
+      "hydrocarbon_atoms_mol_h": {"$ref": "#/$defs/atoms"}, "oxygenate_atoms_mol_h": {"$ref": "#/$defs/atoms"},
+      "unidentified_atoms_mol_h": {"$ref": "#/$defs/atoms"}, "coke_carbon_mol_h": {"type": "number", "minimum": 0}
+    }, "additionalProperties": false}
+  },
+  "properties": {"schema_version": {"const": "1.0.0"}, "regime": {"const": "HTFT"}, "closure_tolerance_pct": {"type": "number", "exclusiveMinimum": 0}, "inlet": {"$ref": "#/$defs/stream"}, "outlet": {"$ref": "#/$defs/stream"}},
+  "additionalProperties": false
+}

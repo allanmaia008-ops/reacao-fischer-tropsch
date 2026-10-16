@@ -1,3 +1,9 @@
 # Corpus HTFT separado
 
-Esta pasta é reservada para dados HTFT. Nenhum CSV LTFT é reutilizado automaticamente. Cada entrada deverá conter origem, licença, condições térmicas, fase do ferro, oxigenados, coque e reações secundárias antes de revisão.
+Nenhum CSV LTFT é reutilizado automaticamente. O primeiro dataset aprovado para
+uso interno contextual é `htft_liu_2019_light_olefins.csv`; sua proveniência e
+restrições constam em `manifest.json`. Ele sustenta comparação contextual e teste
+do contrato, sem calibração automática, ranking ou recomendação.
+
+Novas entradas devem registrar origem, licença, condições, catalisador/fase,
+base analítica, oxigenados, coque e reações secundárias antes da revisão.

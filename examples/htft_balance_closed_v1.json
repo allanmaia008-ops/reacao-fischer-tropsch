@@ -1,0 +1,5 @@
+{
+  "schema_version": "1.0.0", "regime": "HTFT", "closure_tolerance_pct": 1.0,
+  "inlet": {"species_mol_h": {"CO": 10, "H2": 20}, "hydrocarbon_atoms_mol_h": {}, "oxygenate_atoms_mol_h": {}, "unidentified_atoms_mol_h": {}, "coke_carbon_mol_h": 0},
+  "outlet": {"species_mol_h": {"CO": 4, "H2": 4, "CO2": 0.5, "H2O": 4.5, "CH4": 1}, "hydrocarbon_atoms_mol_h": {"C": 3, "H": 18}, "oxygenate_atoms_mol_h": {"C": 0.5, "H": 1, "O": 0.5}, "unidentified_atoms_mol_h": {}, "coke_carbon_mol_h": 1}
+}

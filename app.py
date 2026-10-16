@@ -32,6 +32,7 @@ from plataforma_ltft.ui_design import apply_global_design, maturity_badge, matur
 from plataforma_ltft.result_panel import carbon_curve, curve_closure, readiness_rows
 from plataforma_ltft.evidence_maturity import maturity_catalog, result_maturity_rows
 from plataforma_ltft.scenario_comparison import compare_asf_scenarios
+from plataforma_ltft.htft_evidence import audit_htft_corpus
 
 
 PRODUCT_OPTIONS = ["CH4", "C2-C4", "C5-C11", "C12-C20", "C21+", "C5+"]
@@ -238,6 +239,14 @@ def _render_regime() -> None:
         confirm_regime = st.button("Confirmar regime", type="primary", disabled=bool(regime_errors))
     if st.session_state.ft_regime == "HTFT":
         st.warning("HTFT está em preparação: a saída será descritiva e a recomendação permanecerá bloqueada.")
+        corpus = audit_htft_corpus(ROOT / "data" / "htft")
+        with st.container(border=True):
+            st.markdown("#### Diagnóstico HTFT controlado")
+            c1, c2, c3 = st.columns(3)
+            c1.metric("Alvo inicial", "Olefinas C2–C4")
+            c2.metric("Corpus interno", f"{corpus['row_count']} registros")
+            c3.metric("Recomendação", "Bloqueada")
+            st.caption("Contrato HTFT v1: Fe, O/P por C2–C4, CO₂, água, oxigenados, coque, gradiente térmico e reações secundárias. O corpus serve apenas para comparação contextual.")
     elif st.session_state.ft_regime == "transicao":
         st.warning("A faixa de transição exige justificativa científica explícita.")
     if confirm_regime:
@@ -287,6 +296,8 @@ def _render_conditions() -> None:
         st.markdown("#### Parâmetro do modelo ASF")
         st.number_input("Probabilidade de crescimento da cadeia (α)", 0.001, 0.999, key="alpha", step=0.01, format="%.3f", on_change=_invalidate_from, args=(STEP_CONDITIONS,), help="Entrada do usuário entre 0 e 1. Não é prevista a partir de temperatura e pressão nesta versão.")
         st.caption("α é uma entrada matemática do cálculo ASF, não uma medição nem uma cinética calibrada.")
+    if st.session_state.ft_regime == "HTFT":
+        st.info("No modo HTFT, a ASF é apenas uma referência matemática. Conversão, O/P, WGS, coque e balanços dependem de medições e permanecem indisponíveis sem um registro experimental completo.")
     if st.button("Validar e calcular distribuição ASF", type="primary", disabled=bool(missing)):
         desired_product = st.session_state.selected_target or st.session_state.target_standard
         case = LTFTCase(
@@ -327,7 +338,9 @@ def _render_results() -> None:
     else:
         case = result["case"]
         target = case["desired_product"]
-        st.success("Distribuição ASF condicional calculada.")
+        st.success("Diagnóstico HTFT condicional calculado." if result["ft_regime"] == "HTFT" else "Distribuição ASF condicional calculada.")
+        if result["ft_regime"] == "HTFT":
+            st.warning("A curva ASF não representa seletividade HTFT validada. Relações olefina/parafina, CO₂, água, coque e reações secundárias exigem dados medidos.")
 
         metric_target, metric_alpha, metric_regime = st.columns(3)
         metric_target.metric("Fração de carbono no alvo", f"{100 * result['target_fraction']:.2f}%", help="Fração calculada na base de carbono dos hidrocarbonetos.")

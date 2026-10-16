@@ -29,6 +29,7 @@ EXAMPLE_CASES = (
     ("ft-export-manifest-v1.schema.json", "manifesto_exportacao_sintetico.json", None, True),
     ("htft-case-v1.schema.json", "htft_light_olefins_v1.json", None, True),
     ("htft-case-v1.schema.json", "htft_invalid_cobalt_v1.json", None, False),
+    ("ft-htft-balance-v1.schema.json", "htft_balance_closed_v1.json", None, True),
 )
 
 
