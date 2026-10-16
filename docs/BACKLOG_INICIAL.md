@@ -27,7 +27,7 @@
 | FT-013B | diagnóstico de transporte | **CONCLUÍDO** — Weisz–Prater e Mears versionados, sensibilidade, proveniência e estado não avaliável por falta de dados |
 | FT-014 | balanço de carbono | **CONCLUÍDO** — tolerância configurável, residual, fechamento e relatório; ver [BALANCOS_ELEMENTARES_FT_014_015.md](BALANCOS_ELEMENTARES_FT_014_015.md) |
 | FT-015 | balanços H/O | **CONCLUÍDO** — espécies e bases documentadas, propagação de incerteza independente e bloqueio para H/O em base seca; ver [BALANCOS_ELEMENTARES_FT_014_015.md](BALANCOS_ELEMENTARES_FT_014_015.md) |
-| FT-016 | auditor de evidência | **CONCLUÍDO** — auditoria não destrutiva de CSVs, hashes, integridade, compatibilidade contextual, warnings e bloqueio de uso automático; ver [ACEITE_FT_016_018.md](ACEITE_FT_016_018.md) |
+| FT-016 | auditor de evidência | **CONCLUÍDO — APROVADO PARA USO INTERNO CONTEXTUAL** — auditoria, hashes e compatibilidade aprovados; calibração automática, ranking e recomendação continuam bloqueados; ver [ACEITE_FT_016_018.md](ACEITE_FT_016_018.md) |
 | FT-017 | comparação ASF/medição | **GATE CONCLUÍDO/BLOQUEADO** — fonte aprovada auditada; cortes incompatíveis permanecem bloqueados; ver [ACEITE_FT_017_028.md](ACEITE_FT_017_028.md) |
 | FT-017A | ajuste e seleção do modelo ASF | **PREPARADA/BLOQUEADA** — infraestrutura e dados parciais catalogados; ajuste/AIC/BIC aguardam cortes completos e revisão |
 | FT-018 | interface LTFT | **CONCLUÍDO** — fluxo guiado produto→regime→catalisador→condições→resultado→evidências, validação incremental e bloqueios visíveis; ver [ACEITE_FT_016_018.md](ACEITE_FT_016_018.md) |

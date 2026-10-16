@@ -17,6 +17,7 @@ const idCol = headers.findIndex(h => h === 'id' || h === 'atividade' || h.includ
 const statusCol = headers.findIndex(h => h === 'status' || h.includes('situação'));
 if (idCol < 0 || statusCol < 0) throw new Error(`Colunas não encontradas: ${headers.join('|')}`);
 const status = new Map([
+  ['FT-016','CONCLUÍDO — APROVADO PARA USO INTERNO CONTEXTUAL'],
   ['FT-017','GATE CONCLUÍDO/BLOQUEADO'],['FT-017A','PREPARADA/BLOQUEADA'],
   ['FT-018','CONCLUÍDO'],['FT-019','CONCLUÍDO'],['FT-020','CONCLUÍDO'],
   ['FT-021','CONCLUÍDO — USO INTERNO'],['FT-022','CONCLUÍDO COM BLOQUEIO'],['FT-023','CONCLUÍDO COM BLOQUEIO'],

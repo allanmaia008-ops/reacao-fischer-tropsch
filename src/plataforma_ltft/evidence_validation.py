@@ -144,6 +144,7 @@ def audit_evidence_directory(evidence_dir: Path, case: LTFTCase | None = None) -
             "issues": issues,
             "allowed_for_automatic_calibration": False,
             "allowed_to_change_ranking": False,
+            "approved_for_internal_contextual_use": metadata.get("review_status") == "approved" and metadata.get("license_verified") is True,
         }
         files.append(file_report)
         global_issues.extend({"filename": filename, **issue} for issue in issues)
@@ -158,6 +159,7 @@ def audit_evidence_directory(evidence_dir: Path, case: LTFTCase | None = None) -
             "dataset_count": len(files),
             "structurally_valid_count": sum(item["status"] == "structurally_valid_not_approved" for item in files),
             "approved_for_model_use_count": 0,
+        "approved_for_internal_contextual_use_count": sum(item.get("approved_for_internal_contextual_use", False) for item in files),
             "error_count": error_count,
             "warning_count": warning_count,
             "g2_ready": False,

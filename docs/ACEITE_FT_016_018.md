@@ -13,6 +13,8 @@ Implementado em `src/plataforma_ltft/evidence_validation.py`.
 
 O aceite não transforma os CSVs em evidência aprovada: a licença, a leitura integral e a revisão científica continuam portas explícitas.
 
+O responsável aprovou os três datasets para uso interno contextual. Essa aprovação não libera calibração automática, alteração de ranking ou recomendação de condições.
+
 ## FT-018 — interface LTFT
 
 Implementado em `app.py` e `src/plataforma_ltft/ui_workflow.py`.

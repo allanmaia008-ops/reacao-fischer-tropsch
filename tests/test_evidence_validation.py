@@ -27,6 +27,7 @@ class EvidenceValidationTests(unittest.TestCase):
         self.assertEqual(report["summary"]["dataset_count"], 3)
         self.assertEqual(report["summary"]["structurally_valid_count"], 3)
         self.assertEqual(report["summary"]["approved_for_model_use_count"], 0)
+        self.assertEqual(report["summary"]["approved_for_internal_contextual_use_count"], 3)
         self.assertFalse(report["summary"]["g2_ready"])
         self.assertEqual(report["summary"]["error_count"], 0)
         self.assertEqual(report["summary"]["warning_count"], 0)
