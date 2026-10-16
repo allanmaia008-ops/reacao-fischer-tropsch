@@ -10,8 +10,8 @@ ROOT = Path(__file__).resolve().parents[1]
 class SchemaTests(unittest.TestCase):
     def test_all_schemas_are_valid_json_with_unique_ids(self):
         schemas = [json.loads(path.read_text(encoding="utf-8")) for path in sorted((ROOT / "schemas").glob("*.schema.json"))]
-        self.assertEqual(len(schemas), 17)
-        self.assertEqual(len({schema["$id"] for schema in schemas}), 17)
+        self.assertEqual(len(schemas), 21)
+        self.assertEqual(len({schema["$id"] for schema in schemas}), 21)
         self.assertTrue(all(schema["$schema"].endswith("2020-12/schema") for schema in schemas))
         for schema in schemas:
             Draft202012Validator.check_schema(schema)

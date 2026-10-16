@@ -14,6 +14,8 @@ from .experimental_planning import generate_experimental_plan, validate_pilot_re
 from .htft import validate_htft_case, route_model
 from .htft_evidence import audit_htft_corpus, htft_dataset_route
 from .htft_balance import calculate_htft_balance
+from .htft_validation import HTFT_VALIDATION_VERSION, assess_htft_validation
+from .dft_contracts import DFT_CONTRACT_VERSION, calculate_adsorption_energy, validate_structure_contract, validate_surface_protocol
 from .process_integration import integrated_balance_gate, economic_scenario, integrated_validation_gate
 from .units import (
     CANONICAL_UNITS, FIELD_QUANTITIES, UNIT_CATALOG_VERSION,
@@ -33,3 +35,6 @@ from .transport_diagnostics import TRANSPORT_DIAGNOSTICS_VERSION, CRITERION_PROF
 from .reporting import EXPORT_CONTRACT_VERSION, SCIENTIFIC_REPORT_VERSION, build_export_artifacts, generate_scientific_report
 
 __all__ = ["CASE_SCHEMA_VERSION", "REGIME_ENVELOPE_VERSION", "LTFTCase", "ValidationResult", "classify_ft_regime", "migrate_case_v1_to_v2", "validate_case", "run_screening", "STANDARD_TARGETS", "build_target_plan", "plan_product_target", "audit_evidence_directory", "CANONICAL_UNITS", "FIELD_QUANTITIES", "UNIT_CATALOG_VERSION", "CanonicalMeasurement", "UnitDefinition", "UnitError", "canonicalize", "canonicalize_field", "convert", "normalize_unit", "unit_catalog", "CATALYST_SCHEMA_VERSION", "CatalystValidationResult", "validate_catalyst", "KINETIC_CONTRACT_VERSION", "KineticContract", "kinetic_readiness", "validate_kinetic_contract", "REACTOR_CONTRACT_VERSION", "ReactorContract", "inlet_balance", "reactor_readiness", "validate_reactor_contract", "THERMO_CONTRACT_VERSION", "ThermodynamicContract", "thermodynamic_readiness", "validate_thermodynamic_contract", "EXPERIMENTAL_CASE_SUMMARY_VERSION", "experimental_case_summary", "ELEMENTAL_BALANCE_VERSION", "ElementalBalanceContract", "calculate_elemental_balance", "validate_elemental_balance_contract", "ASF_MEASUREMENT_VERSION", "ASFMeasurementContract", "compare_asf_to_measurement", "validate_asf_measurement_contract", "ADVANCED_ASF_VERSION", "AdvancedASFContract", "advanced_carbon_fraction", "advanced_distribution", "advanced_tail_fraction", "validate_advanced_asf_contract", "EXPERIMENTAL_PROTOCOL_VERSION", "ExperimentalProtocolV2", "ExperimentalProtocolValidation", "migrate_case_to_experimental_protocol_v2", "validate_experimental_protocol_v2", "TRANSPORT_DIAGNOSTICS_VERSION", "CRITERION_PROFILE_VERSION", "TransportDiagnosticsContract", "assess_transport_diagnostics", "validate_transport_diagnostics_contract", "EXPORT_CONTRACT_VERSION", "SCIENTIFIC_REPORT_VERSION", "build_export_artifacts", "generate_scientific_report"]
+
+__all__ += ["HTFT_VALIDATION_VERSION", "assess_htft_validation", "DFT_CONTRACT_VERSION",
+            "calculate_adsorption_energy", "validate_structure_contract", "validate_surface_protocol"]

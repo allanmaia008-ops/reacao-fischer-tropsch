@@ -56,7 +56,7 @@
 | FT-031 | corpus HTFT | **CONCLUÍDO — USO INTERNO CONTEXTUAL** — oito registros Fe HTFT auditados, sem autorização para calibração/ranking; ver [aceite](ACEITE_FT_030_033.md) |
 | FT-032 | balanços HTFT | **CONCLUÍDO — INFRAESTRUTURA** — fechamento C/H/O com CO2, água, oxigenados, coque e não identificados; dados reais pendem de ensaio; ver [aceite](ACEITE_FT_030_033.md) |
 | FT-033 | interface HTFT bloqueada | **CONCLUÍDO** — diagnóstico controlado, corpus visível e recomendação bloqueada; ver [aceite](ACEITE_FT_030_033.md) |
-| FT-034 | validação HTFT | conjunto externo e revisão independente |
+| FT-034 | validação HTFT | **PORTA IMPLEMENTADA / BLOQUEADA** — exige modelo congelado, conjunto externo compatível, métricas, incerteza, resíduos e revisão independente; esses insumos científicos ainda não existem; ver [aceite](ACEITE_FT_034_037.md) |
 
 ## P4 — processo e avaliação técnico-econômica
 
@@ -74,9 +74,9 @@
 
 | ID | Entrega | Aceite |
 |---|---|---|
-| FT-035 | contrato estrutural | estrutura completa e proveniência |
-| FT-036 | protocolo de superfície | faceta, terminação, slab e cobertura |
-| FT-037 | protocolo de adsorção | três energias comparáveis |
+| FT-035 | contrato estrutural | **CONCLUÍDO COMO CONTRATO** — célula, sítios, periodicidade, carga/spin, arquivo, hash e proveniência validados; exemplo sintético; ver [aceite](ACEITE_FT_034_037.md) |
+| FT-036 | protocolo de superfície | **CONCLUÍDO COMO PROTOCOLO** — faceta, terminação, slab, vácuo, cobertura, método e testes de convergência declarados; execução real pendente; ver [aceite](ACEITE_FT_034_037.md) |
+| FT-037 | protocolo de adsorção | **CONCLUÍDO COMO INFRAESTRUTURA** — três energias convergidas e metodologicamente comparáveis são obrigatórias; exemplo exclusivamente sintético; ver [aceite](ACEITE_FT_034_037.md) |
 | FT-038 | adaptador de engine | entrada validada e versionada |
 | FT-039 | parser de saída | convergência e erros detectados |
 | FT-040 | relatório DFT | hipótese e limitações separadas de experimento |

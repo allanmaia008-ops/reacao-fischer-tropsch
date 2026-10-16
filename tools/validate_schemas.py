@@ -30,6 +30,10 @@ EXAMPLE_CASES = (
     ("htft-case-v1.schema.json", "htft_light_olefins_v1.json", None, True),
     ("htft-case-v1.schema.json", "htft_invalid_cobalt_v1.json", None, False),
     ("ft-htft-balance-v1.schema.json", "htft_balance_closed_v1.json", None, True),
+    ("ft-htft-validation-v1.schema.json", "htft_validation_pending_v1.json", None, True),
+    ("ft-dft-structure-v1.schema.json", "dft_structure_synthetic_v1.json", None, True),
+    ("ft-dft-surface-v1.schema.json", "dft_surface_synthetic_v1.json", None, True),
+    ("ft-dft-adsorption-v1.schema.json", "dft_adsorption_synthetic_v1.json", None, True),
 )
 
 

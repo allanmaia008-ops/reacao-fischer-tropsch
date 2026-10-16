@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://reacao-fischer-tropsch.local/schemas/ft-dft-structure-v1.schema.json",
+  "type": "object", "required": ["schema_version", "structure_id", "role", "chemical_formula", "periodic_axes", "lattice_angstrom", "sites", "charge_e", "spin_multiplicity", "structure_file", "provenance", "scientific_status"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"}, "structure_id": {"type": "string", "minLength": 1}, "role": {"enum": ["bulk", "surface", "adsorbate", "adsorbed_system"]}, "chemical_formula": {"type": "string", "minLength": 1},
+    "periodic_axes": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "boolean"}},
+    "lattice_angstrom": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "number"}}},
+    "sites": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["element", "fractional_coordinates"], "properties": {"element": {"type": "string", "pattern": "^[A-Z][a-z]?$"}, "fractional_coordinates": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "number"}}, "magnetic_moment_initial": {"type": ["number", "null"]}}, "additionalProperties": false}},
+    "charge_e": {"type": "number"}, "spin_multiplicity": {"type": "integer", "minimum": 1},
+    "structure_file": {"type": "object", "required": ["path", "format", "sha256"], "properties": {"path": {"type": "string", "minLength": 1}, "format": {"enum": ["cif", "poscar", "xyz", "json"]}, "sha256": {"type": "string", "pattern": "^[A-Fa-f0-9]{64}$"}}, "additionalProperties": false},
+    "provenance": {"type": "object", "required": ["source_type", "citation_or_uri", "license", "transformations"], "properties": {"source_type": {"enum": ["published", "database", "generated", "synthetic_test"]}, "citation_or_uri": {"type": "string", "minLength": 1}, "license": {"type": "string", "minLength": 1}, "transformations": {"type": "array", "items": {"type": "string"}}}, "additionalProperties": false},
+    "scientific_status": {"enum": ["synthetic_test", "planned_input", "calculated", "reviewed"]}
+  }, "additionalProperties": false
+}

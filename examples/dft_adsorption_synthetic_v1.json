@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0.0", "calculation_id": "adsorption-synthetic-001", "surface_protocol_id": "surface-synthetic-001", "adsorbate_count": 1,
+  "energies": [
+    {"role": "clean_surface", "structure_id": "surface-synthetic", "energy_ev": -100.0, "converged": true, "method_fingerprint": "2222222222222222222222222222222222222222222222222222222222222222"},
+    {"role": "isolated_adsorbate", "structure_id": "co-synthetic", "energy_ev": -10.0, "converged": true, "method_fingerprint": "2222222222222222222222222222222222222222222222222222222222222222"},
+    {"role": "adsorbed_system", "structure_id": "surface-co-synthetic", "energy_ev": -111.2, "converged": true, "method_fingerprint": "2222222222222222222222222222222222222222222222222222222222222222"}
+  ],
+  "formula": "E_ads = E_adsorbed_system - E_clean_surface - n*E_isolated_adsorbate", "sign_convention": "negative_is_exothermic", "scientific_status": "synthetic_test", "recommendation_blocked": true
+}

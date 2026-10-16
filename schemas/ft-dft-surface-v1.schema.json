@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema", "$id": "https://reacao-fischer-tropsch.local/schemas/ft-dft-surface-v1.schema.json",
+  "type": "object", "required": ["schema_version", "protocol_id", "bulk_structure_id", "miller_index", "termination_id", "slab", "coverage", "electronic_method", "convergence", "execution_status"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"}, "protocol_id": {"type": "string", "minLength": 1}, "bulk_structure_id": {"type": "string", "minLength": 1},
+    "miller_index": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "integer"}}, "termination_id": {"type": "string", "minLength": 1},
+    "slab": {"type": "object", "required": ["layers", "vacuum_angstrom", "supercell", "fixed_layers", "symmetric", "dipole_correction"], "properties": {"layers": {"type": "integer", "minimum": 1}, "vacuum_angstrom": {"type": "number", "exclusiveMinimum": 0}, "supercell": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "integer", "minimum": 1}}, "fixed_layers": {"type": "integer", "minimum": 0}, "symmetric": {"type": "boolean"}, "dipole_correction": {"type": "boolean"}}, "additionalProperties": false},
+    "coverage": {"type": "object", "required": ["adsorbate", "count", "surface_sites", "definition"], "properties": {"adsorbate": {"type": "string", "minLength": 1}, "count": {"type": "integer", "minimum": 0}, "surface_sites": {"type": "integer", "minimum": 1}, "definition": {"type": "string", "minLength": 1}}, "additionalProperties": false},
+    "electronic_method": {"type": "object", "required": ["engine", "functional", "dispersion", "pseudopotential_family", "cutoff_ev", "k_mesh", "spin_polarized"], "properties": {"engine": {"type": "string"}, "functional": {"type": "string"}, "dispersion": {"type": ["string", "null"]}, "pseudopotential_family": {"type": "string"}, "cutoff_ev": {"type": "number", "exclusiveMinimum": 0}, "k_mesh": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "integer", "minimum": 1}}, "spin_polarized": {"type": "boolean"}}, "additionalProperties": false},
+    "convergence": {"type": "object", "required": ["energy_ev", "force_ev_angstrom", "slab_thickness_tested", "vacuum_tested", "k_mesh_tested", "cutoff_tested"], "properties": {"energy_ev": {"type": "number", "exclusiveMinimum": 0}, "force_ev_angstrom": {"type": "number", "exclusiveMinimum": 0}, "slab_thickness_tested": {"type": "boolean"}, "vacuum_tested": {"type": "boolean"}, "k_mesh_tested": {"type": "boolean"}, "cutoff_tested": {"type": "boolean"}}, "additionalProperties": false},
+    "execution_status": {"enum": ["synthetic_test", "planned", "executed", "reviewed"]}
+  }, "additionalProperties": false
+}

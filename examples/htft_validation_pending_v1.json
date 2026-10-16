@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0.0", "regime": "HTFT",
+  "model": {"model_id": "htft-model-not-yet-implemented", "version": "0.0.0", "frozen": false},
+  "external_dataset": {"dataset_id": "external-dataset-not-yet-selected", "row_count": 0, "independent_from_calibration": false, "compatibility_review": "pending", "source_uri": "pending://external-source", "sha256": "0000000000000000000000000000000000000000000000000000000000000000"},
+  "evaluation": {"metrics": ["co_conversion_pct", "c2_c4_olefins_carbon_pct"], "uncertainty_method": "pending", "residual_analysis": false},
+  "independent_review": {"independent": false, "reviewer_id": null, "status": "pending"},
+  "recommendation_blocked": true
+}

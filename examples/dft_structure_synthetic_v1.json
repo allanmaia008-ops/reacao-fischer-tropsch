@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0.0", "structure_id": "synthetic-fe-test", "role": "bulk", "chemical_formula": "Fe",
+  "periodic_axes": [true, true, true], "lattice_angstrom": [[2.86, 0, 0], [0, 2.86, 0], [0, 0, 2.86]],
+  "sites": [{"element": "Fe", "fractional_coordinates": [0, 0, 0], "magnetic_moment_initial": 2.2}],
+  "charge_e": 0, "spin_multiplicity": 1,
+  "structure_file": {"path": "tests/fixtures/synthetic-fe-test.cif", "format": "cif", "sha256": "1111111111111111111111111111111111111111111111111111111111111111"},
+  "provenance": {"source_type": "synthetic_test", "citation_or_uri": "internal://schema-validation-only", "license": "not_applicable_synthetic", "transformations": ["synthetic minimal cell for contract testing"]},
+  "scientific_status": "synthetic_test"
+}

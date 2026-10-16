@@ -30,7 +30,19 @@ const updates = new Map([
     'Aplicar a dados medidos quando houver ensaio HTFT completo.']],
   ['FT-033', ['CONCLUÍDO',
     'Interface HTFT mostra alvo C2–C4, 8 registros contextuais, requisitos analíticos e bloqueio; ASF é rotulada como referência matemática.',
-    'Manter recomendação bloqueada até validação HTFT independente na FT-034.']]
+    'Manter recomendação bloqueada até validação HTFT independente na FT-034.']],
+  ['FT-034', ['PORTA IMPLEMENTADA / BLOQUEADA',
+    'ACEITE_FT_034_037.md: contrato e testes exigem modelo congelado, dataset externo compatível, métricas, incerteza, resíduos e parecer independente.',
+    'Implementar e congelar modelo HTFT; selecionar conjunto externo compatível; executar avaliação e obter revisão independente.']],
+  ['FT-035', ['CONCLUÍDO COMO CONTRATO',
+    'Schema estrutural v1 exige célula, sítios, periodicidade, carga, spin, arquivo, SHA-256 e proveniência; exemplo identificado como sintético.',
+    'Na FT-038, consumir somente estruturas reais revisadas; não tratar o exemplo sintético como evidência científica.']],
+  ['FT-036', ['CONCLUÍDO COMO PROTOCOLO',
+    'Protocolo v1 registra faceta, terminação, slab, vácuo, supercélula, camadas fixas, cobertura, método e testes de convergência.',
+    'Gerar slabs reais e fechar convergência de espessura, vácuo, malha k e cutoff antes de produção.']],
+  ['FT-037', ['CONCLUÍDO COMO INFRAESTRUTURA',
+    'Cálculo aceita apenas superfície limpa, adsorbato isolado e sistema adsorvido convergidos sob a mesma impressão digital metodológica.',
+    'Integrar à engine na FT-038; substituir energias sintéticas por saídas reais e submetê-las à revisão científica.']]
 ]);
 const expected = [];
 for (const [id, fields] of updates) {

@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema", "$id": "https://reacao-fischer-tropsch.local/schemas/ft-dft-adsorption-v1.schema.json",
+  "type": "object", "required": ["schema_version", "calculation_id", "surface_protocol_id", "adsorbate_count", "energies", "formula", "sign_convention", "scientific_status", "recommendation_blocked"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"}, "calculation_id": {"type": "string", "minLength": 1}, "surface_protocol_id": {"type": "string", "minLength": 1}, "adsorbate_count": {"type": "integer", "minimum": 1},
+    "energies": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "object", "required": ["role", "structure_id", "energy_ev", "converged", "method_fingerprint"], "properties": {"role": {"enum": ["clean_surface", "isolated_adsorbate", "adsorbed_system"]}, "structure_id": {"type": "string", "minLength": 1}, "energy_ev": {"type": "number"}, "converged": {"type": "boolean"}, "method_fingerprint": {"type": "string", "pattern": "^[A-Fa-f0-9]{64}$"}}, "additionalProperties": false}},
+    "formula": {"const": "E_ads = E_adsorbed_system - E_clean_surface - n*E_isolated_adsorbate"}, "sign_convention": {"const": "negative_is_exothermic"}, "scientific_status": {"enum": ["synthetic_test", "planned", "calculated", "reviewed"]}, "recommendation_blocked": {"const": true}
+  }, "additionalProperties": false
+}
