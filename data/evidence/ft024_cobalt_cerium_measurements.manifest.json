@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0.0",
+  "measurement_rows": 374,
+  "unique_experimental_runs": 52,
+  "strict_model_catalyst_runs": 22,
+  "contextual_family_runs": 30,
+  "externally_validating_runs": 0,
+  "minimum_100_measurements_met": true,
+  "sha256": "e21cc50b5ff09d3b2fa7a3f4cc5b74c9d1b21c0e0777e52702847e9e94c8089a",
+  "recommendation_blocked": true,
+  "note": "Measurement rows are not independent experiments; model validation remains pending."
+}

@@ -41,7 +41,7 @@
 | FT-021 | corpus LTFT aprovado | **CONCLUÍDO PARA USO INTERNO** — três datasets aprovados pelo responsável, sem redistribuição pública; ver [ACEITE_FT_021.md](ACEITE_FT_021.md) |
 | FT-022 | compatibilidade de casos | **CONCLUÍDO — APROVADO PARA USO INTERNO CONTEXTUAL** — regras e justificativa aprovadas; transferência quantitativa e recomendação continuam bloqueadas |
 | FT-023 | domínio de aplicabilidade | **CONCLUÍDO — APROVADO PARA USO INTERNO CONTEXTUAL** — envelope e alertas aprovados; bloqueio de extrapolação e recomendação automática permanece ativo |
-| FT-024 | modelo quantitativo inicial | **MODELO EXPLORATÓRIO IMPLEMENTADO / VALIDAÇÃO EXTERNA COMPATÍVEL PENDENTE** — CSV principal com 22 registros e candidato externo com 15; porta rejeita Co–Mn como validação do modelo Co–Ce; ver [evidências](FT024_FT027_EVIDENCIAS.md) |
+| FT-024 | modelo quantitativo inicial | **BANCO AMPLIADO / VALIDAÇÃO EXTERNA COMPATÍVEL PENDENTE** — 374 medições em 52 ensaios, critérios MAE/MSE/resíduos/incerteza implementados; só 22 ensaios usam o catalisador exato e são do estudo de calibração; ver [referências e critérios](FT024_REFERENCIAS_E_CRITERIOS.md) |
 | FT-025 | análise de sensibilidade | **CONCLUÍDO COMO INFRAESTRUTURA** — sensibilidade one-at-a-time e marcação de pontos fora da faixa declarada |
 | FT-026 | gerador de plano experimental | **CONCLUÍDO COM BLOQUEIO** — plano estruturado, checklist e revisão humana obrigatória |
 | FT-027 | piloto de laboratório | **PREPARAÇÃO DOCUMENTAL / EXECUÇÃO EXPERIMENTAL PENDENTE** — registro e validação reforçados; faltam ensaio e dados brutos do projeto; ver [evidências](FT024_FT027_EVIDENCIAS.md) |

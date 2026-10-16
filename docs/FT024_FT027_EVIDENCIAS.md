@@ -2,6 +2,12 @@
 
 ## FT-024: modelo exploratório implementado; validação externa pendente
 
+Atualização de 2026-10-16: o banco consolidado passou a conter 374 medições
+publicadas em 52 condições experimentais únicas. Os critérios de MAE, MSE/RMSE,
+resíduos e incerteza e a bibliografia curada estão em
+`FT024_REFERENCIAS_E_CRITERIOS.md`. O aumento do número de medições não remove o
+bloqueio: ainda não há campanha externa independente do mesmo catalisador e domínio.
+
 Os quatro CSVs anteriores foram lidos: proveniência de equações, seletividade de
 Mello, propriedades de suportes e seletividades externas parciais. Nenhum contém
 uma série de taxas com condições suficientes para ajustar a cinética. A única CTY
