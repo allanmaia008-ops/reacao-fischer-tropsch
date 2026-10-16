@@ -1,0 +1,21 @@
+{
+  "campaign_id": "FT024-EXT-001",
+  "status": "planned_not_executed",
+  "planned_runs": 100,
+  "unique_conditions": 50,
+  "independent_catalyst_batches": 2,
+  "randomization_seed": 24024,
+  "source_model_doi": "10.1186/2228-5547-4-1",
+  "observed_measurements": 0,
+  "external_validation_complete": false,
+  "recommendation_blocked": true,
+  "sha256": "7c70db8988a2c280d16f33310d1d54b59e47c3b21708317381906b0646d9a813",
+  "required_release_conditions": [
+    "independent laboratory executes the campaign",
+    "raw chromatograms and calibration records are retained",
+    "transport and thermal criteria pass",
+    "at least 20 compatible unique conditions remain after exclusions",
+    "pre-registered MAE, MSE, residual and uncertainty criteria pass",
+    "independent reviewer signs the validation report"
+  ]
+}
