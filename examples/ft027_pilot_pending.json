@@ -1,0 +1,14 @@
+{
+  "pilot_id": "FT-027-PENDING",
+  "protocol_id": null,
+  "evidence_type": "project_experiment",
+  "execution_confirmed": false,
+  "execution_date": null,
+  "raw_data_uri": null,
+  "raw_data_sha256": null,
+  "raw_data_verified": false,
+  "analytical_method": null,
+  "reviewer": null,
+  "comparison_report_uri": null,
+  "recommendation_blocked": true
+}

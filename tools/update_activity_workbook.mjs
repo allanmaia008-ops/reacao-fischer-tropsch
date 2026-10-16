@@ -1,39 +1,36 @@
-import fs from 'node:fs/promises';
 import { FileBlob, SpreadsheetFile } from '@oai/artifact-tool';
+import { fileURLToPath } from 'node:url';
 
-const inputPath = 'C:/Users/allan/OneDrive/programas/Plataforma_LTFT/docs/Planilha_Atividades_Plataforma_Fischer_Tropsch.xlsx';
-const outputPath = inputPath;
-const input = await FileBlob.load(inputPath);
-const wb = await SpreadsheetFile.importXlsx(input);
-const info = await wb.inspect({kind:'sheet', include:'id,name'});
-console.log(info.ndjson);
+// Anchor at A1; the used range may begin at A2. Use explicit cell addresses.
+const path = fileURLToPath(new URL('../docs/Planilha_Atividades_Plataforma_Fischer_Tropsch.xlsx', import.meta.url));
+const wb = await SpreadsheetFile.importXlsx(await FileBlob.load(path));
 const sheet = wb.worksheets.getItem('Atividades');
-const used = sheet.getUsedRange();
-const values = used.values;
-let headerRow = values.findIndex(row => row.some(v => ['id','atividade','status'].includes(String(v ?? '').trim().toLowerCase())));
-if (headerRow < 0) { console.log(JSON.stringify(values.slice(0,8))); throw new Error('Linha de cabeçalho não encontrada'); }
-const headers = values[headerRow].map(v => String(v ?? '').trim().toLowerCase());
-const idCol = headers.findIndex(h => h === 'id' || h === 'atividade' || h.includes('código'));
-const statusCol = headers.findIndex(h => h === 'status' || h.includes('situação'));
-if (idCol < 0 || statusCol < 0) throw new Error(`Colunas não encontradas: ${headers.join('|')}`);
-const status = new Map([
-  ['FT-016','CONCLUÍDO — APROVADO PARA USO INTERNO CONTEXTUAL'],
-  ['FT-017','GATE CONCLUÍDO/BLOQUEADO'],['FT-017A','PREPARADA/BLOQUEADA'],
-  ['FT-018','CONCLUÍDO'],['FT-019','CONCLUÍDO'],['FT-020','CONCLUÍDO'],
-  ['FT-021','CONCLUÍDO — APROVADO PARA USO INTERNO CONTEXTUAL'],['FT-022','CONCLUÍDO — APROVADO PARA USO INTERNO CONTEXTUAL'],['FT-023','CONCLUÍDO — APROVADO PARA USO INTERNO CONTEXTUAL'],
-  ['FT-024','PORTA IMPLEMENTADA/BLOQUEADA'],['FT-025','CONCLUÍDO — INFRAESTRUTURA'],
-  ['FT-026','CONCLUÍDO COM BLOQUEIO'],['FT-027','CONTRATO IMPLEMENTADO/BLOQUEADO'],['FT-028','CONCLUÍDO']
+const values = sheet.getRange('A1:I120').values;
+const updates = new Map([
+  ['FT-024', ['MODELO EXPLORATÓRIO / VALIDAÇÃO EXTERNA PENDENTE',
+    'FT024_FT027_EVIDENCIAS.md: 22 registros publicados, 14 LTFT; ajuste em 10 e avaliação em 4. MAE 0,013757 e RMSE 0,015509 mmol CO/(g cat min); intervalos preditivos.',
+    'Obter campanha independente compatível e critérios de aceitação; manter recomendação bloqueada.']],
+  ['FT-027', ['PREPARAÇÃO DOCUMENTAL / EXECUÇÃO EXPERIMENTAL PENDENTE',
+    'FT024_FT027_EVIDENCIAS.md e ft027_pilot_pending.json: preparação e validação de metadados; nenhum ensaio próprio executado.',
+    'Completar protocolo e revisão no laboratório; executar ensaio; anexar dados brutos, hash e comparação revisada.']]
 ]);
-for (let r = headerRow + 1; r < values.length; r++) {
-  const id = String(values[r][idCol] ?? '').trim().toUpperCase();
-  if (status.has(id)) sheet.getRangeByIndexes(r - 1, statusCol, 1, 1).values = [[status.get(id)]];
+const expected = [];
+for (const [id, fields] of updates) {
+  const matches = values.map((row, i) => row[0] === id ? i + 1 : null).filter(Boolean);
+  if (matches.length !== 1) throw new Error(`ID ausente/duplicado: ${id}`);
+  const row = matches[0];
+  sheet.getRange(`G${row}:I${row}`).values = [fields];
+  sheet.getRange(`G${row}:I${row}`).format.wrapText = true;
+  expected.push({id, row, fields});
 }
-const note = sheet.getRangeByIndexes(values.length + 1, 0, 1, Math.max(headers.length, 3));
-note.merge();
-note.values = [['Atualizado em 2026-10-16: FT-017 a FT-028 revisadas. FT-017/017A e FT-024/027 permanecem bloqueadas por dados experimentais, calibração ou execução real.']];
-note.format.wrapText = true;
 wb.recalculate();
-const check = await wb.inspect({kind:'region', sheetId:sheet.name, range:`A1:${String.fromCharCode(65+Math.min(headers.length,26)-1)}${Math.min(values.length,40)}`, maxChars:4000});
-console.log(check.ndjson);
-const out = await SpreadsheetFile.exportXlsx(wb);
-await out.save(outputPath);
+await (await SpreadsheetFile.exportXlsx(wb)).save(path);
+const reopened = await SpreadsheetFile.importXlsx(await FileBlob.load(path));
+const check = reopened.worksheets.getItem('Atividades');
+for (const {id,row,fields} of expected) {
+  if (check.getRange(`A${row}`).values[0][0] !== id ||
+      JSON.stringify(check.getRange(`G${row}:I${row}`).values[0]) !== JSON.stringify(fields)) {
+    throw new Error(`Verificação pós-exportação falhou: ${id}`);
+  }
+}
+console.log(JSON.stringify(expected));
