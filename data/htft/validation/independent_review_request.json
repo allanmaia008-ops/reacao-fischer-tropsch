@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "activity_id": "FT-034",
+  "review_subject": "htft-catalyst-persistence-baseline:1.0.0",
+  "reviewer_id": null,
+  "reviewer_affiliation": null,
+  "independence_declared": false,
+  "review_date": null,
+  "decision": "pending",
+  "required_checks": [
+    "source transcription and selectivity basis",
+    "calibration and holdout separation",
+    "model freeze and hashes",
+    "metrics, residuals and bootstrap uncertainty",
+    "failed quantitative criteria and blocked recommendation"
+  ],
+  "reviewer_comments": null,
+  "recommendation_blocked": true
+}

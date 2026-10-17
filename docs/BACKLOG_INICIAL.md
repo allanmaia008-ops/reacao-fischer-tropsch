@@ -56,7 +56,7 @@
 | FT-031 | corpus HTFT | **CONCLUÍDO — USO INTERNO CONTEXTUAL** — oito registros Fe HTFT auditados, sem autorização para calibração/ranking; ver [aceite](ACEITE_FT_030_033.md) |
 | FT-032 | balanços HTFT | **CONCLUÍDO — INFRAESTRUTURA** — fechamento C/H/O com CO2, água, oxigenados, coque e não identificados; dados reais pendem de ensaio; ver [aceite](ACEITE_FT_030_033.md) |
 | FT-033 | interface HTFT bloqueada | **CONCLUÍDO** — diagnóstico controlado, corpus visível e recomendação bloqueada; ver [aceite](ACEITE_FT_030_033.md) |
-| FT-034 | validação HTFT | **PORTA IMPLEMENTADA / BLOQUEADA** — exige modelo congelado, conjunto externo compatível, métricas, incerteza, resíduos e revisão independente; esses insumos científicos ainda não existem; ver [aceite](ACEITE_FT_034_037.md) |
+| FT-034 | validação HTFT | **AVALIAÇÃO EXECUTADA / MODELO REPROVADO / REVISÃO INDEPENDENTE PENDENTE** — benchmark congelado avaliado em holdout térmico: conversão e olefinas C2–C4 falharam nos critérios; recomendação segue bloqueada; ver [pacote de revisão](FT034_PACOTE_REVISAO.md) |
 
 ## P4 — processo e avaliação técnico-econômica
 

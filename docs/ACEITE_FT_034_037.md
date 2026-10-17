@@ -7,7 +7,7 @@ exemplos e testes. O estado científico de cada entrega permanece explícito.
 
 | Atividade | Entrega | Estado científico |
 |---|---|---|
-| FT-034 | porta de validação HTFT com modelo congelado, conjunto externo, métricas, incerteza, resíduos e parecer independente | **PORTA IMPLEMENTADA / BLOQUEADA**: ainda não existe modelo HTFT quantitativo congelado, conjunto externo compatível aprovado nem parecer independente |
+| FT-034 | porta de validação HTFT com modelo congelado, conjunto externo, métricas, incerteza, resíduos e parecer independente | **AVALIAÇÃO EXECUTADA / MODELO REPROVADO / REVISÃO INDEPENDENTE PENDENTE**: benchmark v1 congelado e holdout térmico avaliados; conversão e olefinas C2–C4 falharam nos critérios |
 | FT-035 | contrato estrutural com célula, sítios, periodicidade, carga, spin, arquivo, hash e proveniência | **CONCLUÍDO COMO CONTRATO**: o exemplo é sintético e não é uma estrutura científica validada |
 | FT-036 | protocolo de superfície com índice de Miller, terminação, slab, vácuo, supercélula, camadas fixas, cobertura, método e convergência | **CONCLUÍDO COMO PROTOCOLO**: nenhum slab real foi gerado ou convergido |
 | FT-037 | porta de energia de adsorção baseada em superfície limpa, adsorbato isolado e sistema adsorvido | **CONCLUÍDO COMO INFRAESTRUTURA**: o valor do exemplo é sintético e serve apenas ao teste automatizado |
@@ -35,4 +35,4 @@ exemplos e testes. O estado científico de cada entrega permanece explícito.
 
 ## Próximos passos
 
-FT-034 só poderá mudar para validação concluída após a implementação e o congelamento do modelo HTFT, a seleção de uma campanha externa compatível e o parecer independente. A sequência DFT prossegue na FT-038, com o adaptador de engine, sem transformar os exemplos sintéticos atuais em resultados científicos.
+FT-034 só poderá mudar para validação científica concluída após um novo modelo passar os critérios em conjunto externo adequado e receber parecer independente. O benchmark v1 atual foi corretamente reprovado e permanece proibido para recomendação automática.

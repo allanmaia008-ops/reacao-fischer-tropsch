@@ -1,0 +1,191 @@
+{
+  "schema_version": "1.0.0",
+  "model_id": "htft-catalyst-persistence-baseline",
+  "model_version": "1.0.0",
+  "external_holdout_rows": 4,
+  "uncertainty_method": "deterministic nonparametric bootstrap of catalyst-level absolute residuals, 10000 resamples, fixed seed 34034",
+  "metrics": {
+    "co_conversion_pct": {
+      "n": 4,
+      "mae": 28.0,
+      "mse": 1060.0,
+      "rmse": 32.55764119219941,
+      "bias": -28.0,
+      "mae_bootstrap_95_ci": [
+        12.0,
+        44.0
+      ]
+    },
+    "ch4_carbon_pct": {
+      "n": 4,
+      "mae": 4.25,
+      "mse": 21.75,
+      "rmse": 4.663689526544408,
+      "bias": -1.75,
+      "mae_bootstrap_95_ci": [
+        2.0,
+        5.75
+      ]
+    },
+    "c2_c4_olefins_carbon_pct": {
+      "n": 4,
+      "mae": 6.75,
+      "mse": 47.75,
+      "rmse": 6.910137480542627,
+      "bias": 6.75,
+      "mae_bootstrap_95_ci": [
+        5.5,
+        8.25
+      ]
+    },
+    "olefin_paraffin_ratio": {
+      "n": 4,
+      "mae": 0.08249999999999999,
+      "mse": 0.013624999999999996,
+      "rmse": 0.1167261752992875,
+      "bias": 0.07249999999999998,
+      "mae_bootstrap_95_ci": [
+        0.010000000000000009,
+        0.16249999999999998
+      ]
+    }
+  },
+  "residuals": [
+    {
+      "row_id": "5",
+      "catalyst": "Fe",
+      "target": "co_conversion_pct",
+      "observed": 56.0,
+      "predicted": 14.0,
+      "residual_predicted_minus_observed": -42.0
+    },
+    {
+      "row_id": "6",
+      "catalyst": "FeCu7",
+      "target": "co_conversion_pct",
+      "observed": 94.0,
+      "predicted": 76.0,
+      "residual_predicted_minus_observed": -18.0
+    },
+    {
+      "row_id": "7",
+      "catalyst": "FeMn10Cu7",
+      "target": "co_conversion_pct",
+      "observed": 93.0,
+      "predicted": 87.0,
+      "residual_predicted_minus_observed": -6.0
+    },
+    {
+      "row_id": "8",
+      "catalyst": "FeMn16",
+      "target": "co_conversion_pct",
+      "observed": 92.0,
+      "predicted": 46.0,
+      "residual_predicted_minus_observed": -46.0
+    },
+    {
+      "row_id": "5",
+      "catalyst": "Fe",
+      "target": "ch4_carbon_pct",
+      "observed": 39.0,
+      "predicted": 33.0,
+      "residual_predicted_minus_observed": -6.0
+    },
+    {
+      "row_id": "6",
+      "catalyst": "FeCu7",
+      "target": "ch4_carbon_pct",
+      "observed": 22.0,
+      "predicted": 21.0,
+      "residual_predicted_minus_observed": -1.0
+    },
+    {
+      "row_id": "7",
+      "catalyst": "FeMn10Cu7",
+      "target": "ch4_carbon_pct",
+      "observed": 28.0,
+      "predicted": 23.0,
+      "residual_predicted_minus_observed": -5.0
+    },
+    {
+      "row_id": "8",
+      "catalyst": "FeMn16",
+      "target": "ch4_carbon_pct",
+      "observed": 8.0,
+      "predicted": 13.0,
+      "residual_predicted_minus_observed": 5.0
+    },
+    {
+      "row_id": "5",
+      "catalyst": "Fe",
+      "target": "c2_c4_olefins_carbon_pct",
+      "observed": 7.0,
+      "predicted": 12.0,
+      "residual_predicted_minus_observed": 5.0
+    },
+    {
+      "row_id": "6",
+      "catalyst": "FeCu7",
+      "target": "c2_c4_olefins_carbon_pct",
+      "observed": 23.0,
+      "predicted": 29.0,
+      "residual_predicted_minus_observed": 6.0
+    },
+    {
+      "row_id": "7",
+      "catalyst": "FeMn10Cu7",
+      "target": "c2_c4_olefins_carbon_pct",
+      "observed": 21.0,
+      "predicted": 30.0,
+      "residual_predicted_minus_observed": 9.0
+    },
+    {
+      "row_id": "8",
+      "catalyst": "FeMn16",
+      "target": "c2_c4_olefins_carbon_pct",
+      "observed": 20.0,
+      "predicted": 27.0,
+      "residual_predicted_minus_observed": 7.0
+    },
+    {
+      "row_id": "5",
+      "catalyst": "Fe",
+      "target": "olefin_paraffin_ratio",
+      "observed": 0.1,
+      "predicted": 0.2,
+      "residual_predicted_minus_observed": 0.1
+    },
+    {
+      "row_id": "6",
+      "catalyst": "FeCu7",
+      "target": "olefin_paraffin_ratio",
+      "observed": 0.79,
+      "predicted": 0.77,
+      "residual_predicted_minus_observed": -0.020000000000000018
+    },
+    {
+      "row_id": "7",
+      "catalyst": "FeMn10Cu7",
+      "target": "olefin_paraffin_ratio",
+      "observed": 0.55,
+      "predicted": 0.76,
+      "residual_predicted_minus_observed": 0.20999999999999996
+    },
+    {
+      "row_id": "8",
+      "catalyst": "FeMn16",
+      "target": "olefin_paraffin_ratio",
+      "observed": 0.96,
+      "predicted": 0.96,
+      "residual_predicted_minus_observed": 0.0
+    }
+  ],
+  "criteria": {
+    "co_conversion_mae_at_most_10_pct_points": false,
+    "ch4_mae_at_most_5_pct_points": true,
+    "c2_c4_olefins_mae_at_most_5_pct_points": false,
+    "olefin_paraffin_ratio_mae_at_most_0_15": true
+  },
+  "quantitative_validation_passed": false,
+  "recommendation_blocked": true
+}

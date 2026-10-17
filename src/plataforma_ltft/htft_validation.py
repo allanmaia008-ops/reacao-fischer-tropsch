@@ -23,6 +23,7 @@ def assess_htft_validation(contract: Mapping[str, object]) -> dict[str, object]:
     if not isinstance(evaluation, Mapping) or not evaluation.get("metrics"): reasons.append("validation_metrics_missing")
     if not isinstance(evaluation, Mapping) or not evaluation.get("uncertainty_method"): reasons.append("uncertainty_method_missing")
     if not isinstance(evaluation, Mapping) or evaluation.get("residual_analysis") is not True: reasons.append("residual_analysis_missing")
+    if not isinstance(evaluation, Mapping) or evaluation.get("quantitative_validation_passed") is not True: reasons.append("quantitative_validation_criteria_not_met")
     review = contract.get("independent_review", {})
     if not isinstance(review, Mapping) or review.get("independent") is not True: reasons.append("reviewer_not_independent")
     if not isinstance(review, Mapping) or review.get("status") != "approved": reasons.append("independent_review_not_approved")

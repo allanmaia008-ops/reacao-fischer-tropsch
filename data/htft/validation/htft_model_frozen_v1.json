@@ -1,0 +1,38 @@
+{
+  "model_id": "htft-catalyst-persistence-baseline",
+  "version": "1.0.0",
+  "frozen": true,
+  "model_class": "same-catalyst persistence baseline",
+  "calibration_temperature_c": [
+    300.0
+  ],
+  "predictions_by_catalyst": {
+    "Fe": {
+      "co_conversion_pct": 14.0,
+      "ch4_carbon_pct": 33.0,
+      "c2_c4_olefins_carbon_pct": 12.0,
+      "olefin_paraffin_ratio": 0.2
+    },
+    "FeCu7": {
+      "co_conversion_pct": 76.0,
+      "ch4_carbon_pct": 21.0,
+      "c2_c4_olefins_carbon_pct": 29.0,
+      "olefin_paraffin_ratio": 0.77
+    },
+    "FeMn10Cu7": {
+      "co_conversion_pct": 87.0,
+      "ch4_carbon_pct": 23.0,
+      "c2_c4_olefins_carbon_pct": 30.0,
+      "olefin_paraffin_ratio": 0.76
+    },
+    "FeMn16": {
+      "co_conversion_pct": 46.0,
+      "ch4_carbon_pct": 13.0,
+      "c2_c4_olefins_carbon_pct": 27.0,
+      "olefin_paraffin_ratio": 0.96
+    }
+  },
+  "parameters_sha256": "b2e36bb63fd8a89c018d0e017f61302c1800b7d0c10ef563e88db3a74ceef708",
+  "declared_domain": "same four catalysts, fixed-bed, 20 bar, H2/CO=1, 4.2 L gcat-1 h-1; temperature transfer 300 to 320 C",
+  "scientific_limitation": "baseline assumes no temperature response and is evaluated as a falsifiable benchmark, not a production predictor"
+}

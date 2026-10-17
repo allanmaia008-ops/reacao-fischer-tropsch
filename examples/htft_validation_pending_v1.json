@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0", "regime": "HTFT",
-  "model": {"model_id": "htft-model-not-yet-implemented", "version": "0.0.0", "frozen": false},
-  "external_dataset": {"dataset_id": "external-dataset-not-yet-selected", "row_count": 0, "independent_from_calibration": false, "compatibility_review": "pending", "source_uri": "pending://external-source", "sha256": "0000000000000000000000000000000000000000000000000000000000000000"},
-  "evaluation": {"metrics": ["co_conversion_pct", "c2_c4_olefins_carbon_pct"], "uncertainty_method": "pending", "residual_analysis": false},
+  "model": {"model_id": "htft-catalyst-persistence-baseline", "version": "1.0.0", "frozen": true},
+  "external_dataset": {"dataset_id": "ahmed2021_htft_temperature_holdout", "row_count": 4, "independent_from_calibration": true, "compatibility_review": "accepted", "source_uri": "data/htft/htft_ahmed_2021_temperature_holdout.csv", "sha256": "f0c422882b2b3c760b232c43b6ee0f3755256bd22f2e90f21ef7bbb237ec4dba"},
+  "evaluation": {"metrics": ["mae", "mse", "rmse", "bias", "residuals", "mae_bootstrap_95_ci"], "uncertainty_method": "deterministic nonparametric bootstrap, 10000 resamples, seed 34034", "residual_analysis": true, "quantitative_validation_passed": false, "report_uri": "data/htft/validation/htft_external_validation_v1.json", "report_sha256": "5b116910d41a91192fed5c007b1b705c002c95103c5bfc9bbc5f61d0dc91fb49"},
   "independent_review": {"independent": false, "reviewer_id": null, "status": "pending"},
   "recommendation_blocked": true
 }

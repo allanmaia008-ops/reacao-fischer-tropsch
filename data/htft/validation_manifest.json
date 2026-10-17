@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0.0",
+  "dataset": {
+    "filename": "htft_ahmed_2021_temperature_holdout.csv",
+    "dataset_id": "ahmed2021_htft_temperature",
+    "source": "Ahmed et al. 2021, ACS Omega, Tables 4 and 5",
+    "source_url_or_doi": "https://doi.org/10.1021/acsomega.1c04476",
+    "license": "CC-BY-NC-ND-4.0",
+    "license_verified": true,
+    "rights_note": "Uso interno não comercial; atribuição e integridade preservadas; sem redistribuição de adaptação.",
+    "full_text_verified": true,
+    "sha256": "f0c422882b2b3c760b232c43b6ee0f3755256bd22f2e90f21ef7bbb237ec4dba",
+    "calibration_rows": 4,
+    "external_holdout_rows": 4,
+    "independent_from_calibration": true,
+    "independence_qualification": "Holdout at 320 C was not used to freeze the 300 C baseline, but belongs to the same publication and laboratory campaign.",
+    "compatibility_review": "accepted_same_catalysts_reactor_pressure_feed_and_space_velocity",
+    "approved_uses": ["calibracao_benchmark_congelado", "holdout_termico_mesmo_estudo", "analise_de_residuos"],
+    "prohibited_uses": ["alegar_validacao_independente_multilaboratorio", "ranking_universal", "recomendacao_de_condicoes"]
+  },
+  "recommendation_blocked": true
+}
