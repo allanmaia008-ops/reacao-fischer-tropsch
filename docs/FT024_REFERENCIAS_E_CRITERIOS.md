@@ -38,7 +38,7 @@ A porta só abre se todos os critérios passarem. MAE, MSE e RMSE devem ser calc
 1. Mansouri, M.; Atashi, H.; Mirzaei, A. A.; Jangi, R. *Kinetics of the Fischer–Tropsch synthesis on silica-supported cobalt-cerium catalyst*. International Journal of Industrial Chemistry 4, 1 (2013). https://doi.org/10.1186/2228-5547-4-1. Fonte dos 22 ensaios Co–Ce/SiO2 e da formulação do catalisador.
 2. Taherzadeh Lari, T.; Mirzaei, A. A.; Atashi, H. *Effects of Co/Ce molar ratio and operating temperature on nanocatalyst performance in the Fischer–Tropsch synthesis*. RSC Advances 7 (2017). https://doi.org/10.1039/C7RA05490D. Tabelas suplementares S4–S8 fornecem 30 ensaios e 330 respostas Fe–Co–Ce; uso contextual, não validação direta.
 3. Beigbabaei, A. et al. *Selective Formation of Light Olefins from CO+H2 Over Silica Supported Co/CeO2 Prepared by Fusion Method: Preparation, Characterization and Operational Conditions Effects*. The Open Catalysis Journal 3, 62–69 (2010). Artigo lido; resultados principais são gráficos, portanto não foram digitalizados automaticamente.
-4. Mirzaei, A. A.; Arsalanfar, M.; Beigbabaei, A.; Eslamimanesh, V. *Preparation and operating conditions for cobalt cerium oxide catalysts used in the conversion of synthesis gas into light olefins*. Journal of the Iranian Chemical Society 4, 347–363 (2007). https://doi.org/10.1007/BF03245986. Referência de formulação e condições; dados numéricos completos ainda exigem revisão do texto integral.
+4. Mirzaei, A. A.; Galavy, M.; Beigbabaei, A.; Eslamimanesh, V. *Preparation and operating conditions for cobalt cerium oxide catalysts used in the conversion of synthesis gas into light olefins*. Journal of the Iranian Chemical Society 4, 347–363 (2007). https://doi.org/10.1007/BF03245986. Texto integral revisado via acesso CAFe/UFRN em 16/10/2026. Confirma a formulação `80%Co/20%Ce/15wt%SiO2`, coprecipitação, envelhecimento por 2 h, ausência de promotor e calcinação a 600 °C por 6 h. Os ensaios catalíticos são HTFT, entre 300 e 500 °C, e os resultados de conversão/seletividade são apresentados principalmente em gráficos; não são validação LTFT independente.
 5. Ernst, B.; Hilaire, L.; Kiennemann, A. *Effects of highly dispersed ceria addition on reducibility, activity and hydrocarbon chain growth of a Co/SiO2 Fischer–Tropsch catalyst*. Catalysis Today 50, 413–427 (1999). https://doi.org/10.1016/S0920-5861(98)00519-7. Catalisadores 25%Co–CeO2/SiO2; composição diferente da usada pelo modelo.
 6. Spadaro, L.; Arena, F.; López Granados, M.; Ojeda, M.; Fierro, J. L. G.; Frusteri, F. *Metal–support interactions and reactivity of Co/CeO2 catalysts in the Fischer–Tropsch synthesis reaction*. Journal of Catalysis 234, 451–462 (2005). https://doi.org/10.1016/j.jcat.2005.07.006. Co/CeO2 sem SiO2; evidência mecanística contextual.
 7. Mirzaei, A. A.; Arsalanfar, M.; Eslamimanesh, V. *SEM and BET methods for investigating the structure and morphology of Co–Ce catalysts for production of light olefins*. Australian Journal of Chemistry 61, 144–152 (2008). https://doi.org/10.1071/CH07130. Confirma a seleção de 80%Co/20%Ce/15%SiO2 coprecipitado, envelhecido por 2 h e calcinado a 600 °C; não fornece a campanha cinética LTFT independente requerida.
@@ -69,20 +69,35 @@ contextual e nenhuma linha recebeu `external_validation_eligible=true`.
 A busca por `cobalt cerium silica Fischer Tropsch` retornou quatro artigos, incluindo
 Ernst et al. (1999), He et al. (2015) e Suzuki e Tajima (2010). A busca pelo título
 exato de Mirzaei et al. (2007) confirmou o registro revisado por pares, DOI,
-autoria, periódico, volume e páginas. Na página da editora, o resumo confirma a
-formulação 80%Co/20%Ce/15wt%SiO2, coprecipitação, envelhecimento de 2 h, ausência de
-promotor, 450 °C, H2/CO = 2 e GHSV = 4500 h-1. Essa temperatura fica fora da matriz
-FT024-EXT-001 e o artigo não executa as 100 corridas planejadas.
+autoria, periódico, volume e páginas. Após a renovação da sessão CAFe, a página da
+Springer reconheceu o acesso institucional da Universidade Federal do Rio Grande do
+Norte e permitiu obter o texto integral.
+
+O artigo confirma o seguinte protocolo: reator tubular de leito fixo em aço
+inoxidável, diâmetro interno de 3 mm, 1,0 g de catalisador, pressão atmosférica,
+pré-redução *in situ* a 300 °C por 8 h em H2/N2 (30 mL/min de cada gás), ensaios entre
+300 e 500 °C, H2/CO entre 1 e 4 e GHSV entre 4050 e 5400 h-1. Para o catalisador
+selecionado, a condição reportada como ótima para olefinas leves foi 450 °C,
+H2/CO = 2 e GHSV = 4500 h-1. As Tabelas 1–3 fornecem áreas BET para séries de razão
+Co/Ce, tempo de envelhecimento e presença de SiO2; já conversão de CO e seletividades
+são exibidas em gráficos e não foram transformadas em números sem uma digitalização
+com incerteza explícita.
+
+Apesar da coincidência da formulação, o artigo pertence ao domínio HTFT e compartilha
+autoria e linhagem institucional com a fonte de Mansouri et al. (2013). Portanto, ele
+é evidência primária útil para preparação e triagem do catalisador, mas não satisfaz
+nem a independência nem o domínio LTFT exigidos por FT024-EXT-001.
 
 Para Ernst et al. (1999), o registro CAPES confirmou 25 wt% de Co, 4,5–38,2 wt% de
 Ce, 493 K, 2 MPa e H2/CO = 2, com preparação sol-gel/coprecipitação distinta. Assim,
 o estudo é independente e contém uma condição LTFT, mas é incompatível em carga,
 pressão, composição e preparação.
 
-A sessão do navegador interno não estava autenticada no Portal CAPES e a editora a
-classificou como não afiliada. A rota institucional da Springer foi bloqueada pelo
-navegador interno; portanto, nenhum texto integral restrito foi obtido ou usado.
-
 ## Pendência que permanece
 
-O requisito numérico de 100 medições foi atendido. A validação externa do modelo, porém, continua bloqueada porque ainda não foi localizado um conjunto independente com ao menos 20 — idealmente 100 — condições únicas do mesmo catalisador, preparação e domínio operacional. A busca no Portal CAPES foi executada, mas a sessão do navegador interno permaneceu sem autenticação institucional.
+O requisito numérico de 100 medições foi atendido. A validação externa do modelo,
+porém, continua bloqueada porque ainda não foi localizado um conjunto independente
+com ao menos 20 — idealmente 100 — condições únicas do mesmo catalisador, preparação
+e domínio operacional LTFT. O acesso CAFe ao texto integral de Mirzaei et al. (2007)
+resolveu a pendência documental desse artigo, mas confirmou que ele não substitui a
+execução independente de FT024-EXT-001.

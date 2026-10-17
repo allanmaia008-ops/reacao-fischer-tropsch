@@ -54,3 +54,16 @@ reúna a mesma composição, coprecipitação e domínio LTFT. Os artigos adicio
 classificação de compatibilidade foram incorporados a
 `FT024_REFERENCIAS_E_CRITERIOS.md`. Eles sustentam a família catalítica e o desenho
 experimental, mas não substituem a execução de FT024-EXT-001.
+
+### Resultado do acesso CAFe — 2026-10-16
+
+O texto integral de Mirzaei et al. (2007), obtido pela assinatura institucional da
+UFRN, confirma a formulação e o preparo do catalisador-alvo: 80%Co/20%Ce, 15% em massa
+de SiO2, coprecipitação, envelhecimento por 2 h, sem promotor e calcinação a 600 °C
+por 6 h. O trabalho utilizou 1,0 g de catalisador em leito fixo, pressão atmosférica,
+H2/CO entre 1 e 4, GHSV entre 4050 e 5400 h-1 e temperaturas de 300–500 °C.
+
+Esses dados fortalecem o protocolo de preparação, mas não encerram a campanha:
+trata-se de HTFT, fora do domínio 200–260 °C, e o estudo compartilha autoria/linhagem
+institucional com a fonte de calibração. Logo, não é um conjunto externo independente
+apto a validar o modelo LTFT.
