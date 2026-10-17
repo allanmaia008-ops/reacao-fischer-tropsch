@@ -67,3 +67,10 @@ Esses dados fortalecem o protocolo de preparação, mas não encerram a campanha
 trata-se de HTFT, fora do domínio 200–260 °C, e o estudo compartilha autoria/linhagem
 institucional com a fonte de calibração. Logo, não é um conjunto externo independente
 apto a validar o modelo LTFT.
+
+Uma busca complementar com acesso CAFe localizou Ernst et al. (1999) no domínio
+LTFT (493 K, 2 MPa e H2/CO = 2), além de Bruce et al. (1993), Dai et al. (2006) e
+Arsalanfar et al. (2012). O primeiro é independente, mas emprega 25 wt% Co,
+4,5–38,2 wt% Ce e outra preparação; os demais alteram suporte, promotor, método ou
+independência científica. Assim, ampliam a base contextual, mas não substituem as
+corridas externas com a formulação e o domínio de FT024-EXT-001.
