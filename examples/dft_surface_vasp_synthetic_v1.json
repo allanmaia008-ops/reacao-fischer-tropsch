@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0.0", "protocol_id": "surface-synthetic-001", "bulk_structure_id": "synthetic-fe-test", "miller_index": [1, 1, 0], "termination_id": "synthetic-termination-a",
+  "slab": {"layers": 4, "vacuum_angstrom": 15.0, "supercell": [2, 2], "fixed_layers": 2, "symmetric": false, "dipole_correction": true},
+  "coverage": {"adsorbate": "CO", "count": 1, "surface_sites": 4, "definition": "synthetic 1 adsorbate per 4 declared sites"},
+  "electronic_method": {"engine": "vasp", "functional": "PBE", "dispersion": "D3(BJ)", "pseudopotential_family": "PAW_PBE", "cutoff_ev": 400, "k_mesh": [3, 3, 1], "spin_polarized": true},
+  "convergence": {"energy_ev": 0.00001, "force_ev_angstrom": 0.03, "slab_thickness_tested": false, "vacuum_tested": false, "k_mesh_tested": false, "cutoff_tested": false},
+  "execution_status": "synthetic_test"
+}

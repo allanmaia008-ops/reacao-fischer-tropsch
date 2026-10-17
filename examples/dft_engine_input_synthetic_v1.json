@@ -1,0 +1,23 @@
+{
+  "adapter_version": "1.0.0",
+  "engine": "vasp",
+  "execution_status": "synthetic_test",
+  "files": [
+    {"path": "INCAR", "role": "incar", "sha256": "5287cd6501efed8698850e5d4a6fc8c20475b4fda16dc293b4a845cf9455e600"},
+    {"path": "KPOINTS", "role": "kpoints", "sha256": "01c5b48d2939899799e36706e79c4369d57c08e1a6ebd0d57d3d8db007f5b0a3"},
+    {"path": "POSCAR", "role": "poscar", "sha256": "834ffdb8198267c4fb2a4f81a3ae4e0e0a29d94e1e605e79d13bde41ae91d34a"}
+  ],
+  "generator": {"name": "pymatgen", "version": "2026.5.4"},
+  "input_set_id": "ft038-synthetic-001",
+  "method_fingerprint_sha256": "98701af40d2106efcb0e8cbe799cdcfaf71fdd109975a11c58e283b13af4152f",
+  "recommendation_blocked": true,
+  "required_external_files": [
+    {"path": "POTCAR", "reason": "licensed pseudopotential file; verify family and hashes at execution", "status": "missing"}
+  ],
+  "schema_version": "1.0.0",
+  "source": {
+    "contract_fingerprint_sha256": "bff559029c053597dec36c5f2f00b67fb5bcbe1b25e540464d32b8b659d465a9",
+    "structure_id": "synthetic-fe-test",
+    "surface_protocol_id": "surface-synthetic-001"
+  }
+}

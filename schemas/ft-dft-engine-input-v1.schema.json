@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://reacao-fischer-tropsch.local/schemas/ft-dft-engine-input-v1.schema.json",
+  "type": "object",
+  "required": ["schema_version", "adapter_version", "input_set_id", "engine", "generator", "source", "method_fingerprint_sha256", "files", "required_external_files", "execution_status", "recommendation_blocked"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "adapter_version": {"const": "1.0.0"},
+    "input_set_id": {"type": "string", "minLength": 1},
+    "engine": {"const": "vasp"},
+    "generator": {
+      "type": "object", "required": ["name", "version"],
+      "properties": {"name": {"const": "pymatgen"}, "version": {"type": "string", "minLength": 1}},
+      "additionalProperties": false
+    },
+    "source": {
+      "type": "object", "required": ["structure_id", "surface_protocol_id", "contract_fingerprint_sha256"],
+      "properties": {
+        "structure_id": {"type": "string", "minLength": 1},
+        "surface_protocol_id": {"type": "string", "minLength": 1},
+        "contract_fingerprint_sha256": {"type": "string", "pattern": "^[A-Fa-f0-9]{64}$"}
+      }, "additionalProperties": false
+    },
+    "method_fingerprint_sha256": {"type": "string", "pattern": "^[A-Fa-f0-9]{64}$"},
+    "files": {
+      "type": "array", "minItems": 3, "maxItems": 3,
+      "items": {
+        "type": "object", "required": ["path", "sha256", "role"],
+        "properties": {
+          "path": {"enum": ["INCAR", "KPOINTS", "POSCAR"]},
+          "sha256": {"type": "string", "pattern": "^[A-Fa-f0-9]{64}$"},
+          "role": {"enum": ["incar", "kpoints", "poscar"]}
+        }, "additionalProperties": false
+      }
+    },
+    "required_external_files": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "required": ["path", "reason", "status"],
+        "properties": {"path": {"const": "POTCAR"}, "reason": {"type": "string", "minLength": 1}, "status": {"const": "missing"}},
+        "additionalProperties": false
+      }
+    },
+    "execution_status": {"enum": ["synthetic_test", "planned"]},
+    "recommendation_blocked": {"const": true}
+  },
+  "additionalProperties": false
+}

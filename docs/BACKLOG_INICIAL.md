@@ -77,7 +77,7 @@
 | FT-035 | contrato estrutural | **CONCLUÍDO COMO CONTRATO** — célula, sítios, periodicidade, carga/spin, arquivo, hash e proveniência validados; exemplo sintético; ver [aceite](ACEITE_FT_034_037.md) |
 | FT-036 | protocolo de superfície | **CONCLUÍDO COMO PROTOCOLO** — faceta, terminação, slab, vácuo, cobertura, método e testes de convergência declarados; execução real pendente; ver [aceite](ACEITE_FT_034_037.md) |
 | FT-037 | protocolo de adsorção | **CONCLUÍDO COMO INFRAESTRUTURA** — três energias convergidas e metodologicamente comparáveis são obrigatórias; exemplo exclusivamente sintético; ver [aceite](ACEITE_FT_034_037.md) |
-| FT-038 | adaptador de engine | entrada validada e versionada |
+| FT-038 | adaptador de engine | **CONCLUÍDO COMO INFRAESTRUTURA** — adaptador VASP via pymatgen gera POSCAR/INCAR/KPOINTS determinísticos, manifesto versionado e hashes; POTCAR licenciado permanece pendência explícita; ver [aceite](ACEITE_FT_038.md) |
 | FT-039 | parser de saída | convergência e erros detectados |
 | FT-040 | relatório DFT | hipótese e limitações separadas de experimento |
 

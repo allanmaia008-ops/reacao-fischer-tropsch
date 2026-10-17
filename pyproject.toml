@@ -10,6 +10,7 @@ requires-python = ">=3.11"
 
 [project.optional-dependencies]
 kinetics = ["numpy>=1.26,<3", "scipy>=1.11,<2", "requests>=2.31,<3"]
+dft = ["pymatgen>=2025.1,<2027"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
