@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0.0",
+  "measurement_rows": 61,
+  "source_records": 17,
+  "sources_with_numeric_partial_data": 5,
+  "exact_full_text_table_rows": 45,
+  "qualified_abstract_or_repository_rows": 16,
+  "externally_validating_runs": 0,
+  "sha256_measurements": "5a9faa4c09274294915a6a17a1ba5086ef93eca8a22c9dccb8ce882f73066077",
+  "sha256_source_catalog": "499abb12c1b4b184a4afc29368e49f074bac59d62a321af3c71bc9ea4ec39444",
+  "recommendation_blocked": true,
+  "note": "Partial contextual evidence is separated from the calibration database. Ranges, bounds and approximate values retain explicit qualifiers and are not eligible for external validation."
+}

@@ -79,3 +79,8 @@ Teses e dissertações também foram triadas. Elas fornecem campanhas LTFT indep
 com Co/SiO2, Co/SBA-15 e outros suportes, mas nenhuma reproduz simultaneamente a
 formulação, a coprecipitação e a pressão atmosférica exigidas. A lista auditável está
 em `docs/FT024_TESES_DISSERTACOES.md`.
+
+Dados numéricos parciais dessas fontes foram incorporados como uma camada contextual
+separada. Eles podem apoiar análise de tendência, planejamento analítico e testes de
+transferibilidade, mas não entram no cálculo de aceitação MAE/MSE da campanha externa
+enquanto composição, preparação e domínio permanecerem incompatíveis.

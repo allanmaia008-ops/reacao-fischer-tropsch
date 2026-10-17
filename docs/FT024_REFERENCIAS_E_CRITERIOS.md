@@ -14,6 +14,19 @@ O banco está em `data/evidence/ft024_cobalt_cerium_measurements.csv`; o manifes
 A busca específica de teses e dissertações, com classificação de compatibilidade e
 prioridade para extração, está documentada em `docs/FT024_TESES_DISSERTACOES.md`.
 
+## Integração de evidência parcial
+
+Foram integradas 61 medições contextuais em
+`data/evidence/ft024_contextual_partial_measurements.csv` e na aba
+`Evidência parcial` da planilha consolidada. O conjunto inclui 45 áreas BET das
+Tabelas 1–3 de Mirzaei et al. (2007) e 16 valores parciais explicitamente publicados
+por Ernst et al. (1999), Bruce et al. (1993), Chikati (2023) e Macheli (2014).
+
+Faixas, limites e aproximações são identificados por `value_qualifier`; não foram
+convertidos em valores pontuais de precisão artificial. As 17 fontes coletadas e as
+pendências de extração estão em `data/evidence/ft024_partial_source_catalog.csv`.
+Todas as linhas permanecem com `external_validation_eligible=false`.
+
 ## Critérios de aceitação propostos
 
 Estes limiares são critérios de governança do projeto, não consensos universais da literatura. Devem ser congelados antes da avaliação externa.

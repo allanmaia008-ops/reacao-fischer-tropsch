@@ -70,6 +70,36 @@
       "full_text_verified": true,
       "approved_uses": ["triagem_de_compatibilidade", "futuro_modelo_especifico_comn"],
       "prohibited_uses": ["validar_modelo_coce", "transferencia_de_catalisador", "recomendacao_de_condicoes"]
+    },
+    "ft024_contextual_partial_measurements.csv": {
+      "dataset_id": "ft024-contextual-partial-measurements-v1",
+      "source": "Mirzaei 2007, Ernst 1999, Bruce 1993, Chikati 2023 e Macheli 2014",
+      "source_url_or_doi": "multiple_sources_listed_per_row",
+      "license": "internal_use_authorized_by_project_owner",
+      "license_verified": true,
+      "rights_note": "Uso interno autorizado pelo responsável nesta atividade; CSV não é redistribuído pelo repositório.",
+      "review_status": "approved_with_qualifiers",
+      "approval_basis": "user_instruction_2026-10-16",
+      "evidence_status": "contextual_partial",
+      "full_text_verified": false,
+      "approved_uses": ["comparacao_contextual", "analise_de_tendencia", "planejamento_de_extracao"],
+      "prohibited_uses": ["validacao_externa", "calibracao_automatica", "recomendacao_de_condicoes"],
+      "sha256": "5a9faa4c09274294915a6a17a1ba5086ef93eca8a22c9dccb8ce882f73066077"
+    },
+    "ft024_partial_source_catalog.csv": {
+      "dataset_id": "ft024-partial-source-catalog-v1",
+      "source": "Auditoria bibliográfica FT-024",
+      "source_url_or_doi": "multiple_sources_listed_per_row",
+      "license": "internal_use_authorized_by_project_owner",
+      "license_verified": true,
+      "rights_note": "Catálogo interno de proveniência; não contém texto integral dos trabalhos.",
+      "review_status": "approved",
+      "approval_basis": "user_instruction_2026-10-16",
+      "evidence_status": "source_catalog",
+      "full_text_verified": false,
+      "approved_uses": ["proveniencia", "priorizacao_de_extracao", "identificacao_de_lacunas"],
+      "prohibited_uses": ["calibracao_automatica", "validacao_externa", "recomendacao_de_condicoes"],
+      "sha256": "499abb12c1b4b184a4afc29368e49f074bac59d62a321af3c71bc9ea4ec39444"
     }
   }
 }
