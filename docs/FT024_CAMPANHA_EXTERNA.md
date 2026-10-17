@@ -74,3 +74,8 @@ Arsalanfar et al. (2012). O primeiro é independente, mas emprega 25 wt% Co,
 4,5–38,2 wt% Ce e outra preparação; os demais alteram suporte, promotor, método ou
 independência científica. Assim, ampliam a base contextual, mas não substituem as
 corridas externas com a formulação e o domínio de FT024-EXT-001.
+
+Teses e dissertações também foram triadas. Elas fornecem campanhas LTFT independentes
+com Co/SiO2, Co/SBA-15 e outros suportes, mas nenhuma reproduz simultaneamente a
+formulação, a coprecipitação e a pressão atmosférica exigidas. A lista auditável está
+em `docs/FT024_TESES_DISSERTACOES.md`.

@@ -11,6 +11,9 @@ O banco consolidado contém **374 medições publicadas associadas a 52 condiç�
 
 O banco está em `data/evidence/ft024_cobalt_cerium_measurements.csv`; o manifesto registra contagens, SHA-256 e bloqueio científico.
 
+A busca específica de teses e dissertações, com classificação de compatibilidade e
+prioridade para extração, está documentada em `docs/FT024_TESES_DISSERTACOES.md`.
+
 ## Critérios de aceitação propostos
 
 Estes limiares são critérios de governança do projeto, não consensos universais da literatura. Devem ser congelados antes da avaliação externa.
