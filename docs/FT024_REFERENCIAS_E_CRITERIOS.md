@@ -45,6 +45,9 @@ A porta só abre se todos os critérios passarem. MAE, MSE e RMSE devem ser calc
 8. Dai, X.; Yu, C.; Li, R.; Shi, H.; Shen, S. *Role of CeO2 promoter in Co/SiO2 catalyst for Fischer–Tropsch synthesis*. Chinese Journal of Catalysis 27, 904–910 (2006). https://doi.org/10.1016/S1872-2067(06)60047-8. Evidência experimental independente para promoção por céria em Co/SiO2, mas com formulação e impregnação diferentes.
 9. Bruce, L. A.; Hoang, M.; Hughes, A. E.; Turney, T. W. *Ruthenium promotion of Fischer–Tropsch synthesis over coprecipitated cobalt/ceria catalysts*. Applied Catalysis A: General 100, 51–67 (1993). https://doi.org/10.1016/0926-860X(93)80115-7. Campanha independente de Co/Ce coprecipitado, porém sem o mesmo suporte e com promoção por Ru.
 10. Arsalanfar, M.; Mirzaei, A. A.; Atashi, H. *Structural characteristics of supported cobalt–cerium oxide catalysts used in Fischer–Tropsch synthesis*. Journal of Natural Gas Science and Engineering 9, 119–129 (2012). https://doi.org/10.1016/j.jngse.2012.05.015. Evidência estrutural e catalítica da família Co–Ce suportada; não reproduz a matriz FT024-EXT-001.
+11. He, L.; Teng, B.; Zhang, Y.; Fan, M. *Development of composited rare-earth promoted cobalt-based Fischer–Tropsch synthesis catalysts with high activity and selectivity*. Applied Catalysis A: General 505, 276–283 (2015). https://doi.org/10.1016/j.apcata.2015.07.041. Campanha em leito fixo com Co suportado em sílica e promotores La/Ce; composição diferente da formulação FT-024.
+12. Suzuki, T.; Tajima, S. *Enhancement of Fischer–Tropsch Reaction on Silica Supported Cobalt Catalyst*. Transactions of the Materials Research Society of Japan 35, 635–638 (2010). https://doi.org/10.14723/tmrsj.35.635. Compara promotores de terras raras em Co/SiO2, incluindo céria, mas não informa a razão 80:20 nem a preparação-alvo.
+13. Zohdi-Fasaei, H.; Atashi, H.; Farshchi Tabrizi, F.; Mirzaei, A. A. *Modeling and optimization of Fischer–Tropsch synthesis over Co–Mn–Ce/SiO2 catalyst using hybrid RSM/LHHW approaches*. Energy 128, 496–508 (2017). https://doi.org/10.1016/j.energy.2017.03.122. Possui planejamento e modelagem experimental, porém adiciona Mn e não valida o catalisador binário Co–Ce.
 
 ## Resultado da busca de equivalência da campanha externa
 
@@ -61,6 +64,25 @@ Os estudos de Dai, Bruce e Arsalanfar são independentes, porém alteram composi
 suporte, promotor ou método de preparação. Por isso, todos permanecem como evidência
 contextual e nenhuma linha recebeu `external_validation_eligible=true`.
 
+### Auditoria no Portal de Periódicos CAPES — 2026-10-16
+
+A busca por `cobalt cerium silica Fischer Tropsch` retornou quatro artigos, incluindo
+Ernst et al. (1999), He et al. (2015) e Suzuki e Tajima (2010). A busca pelo título
+exato de Mirzaei et al. (2007) confirmou o registro revisado por pares, DOI,
+autoria, periódico, volume e páginas. Na página da editora, o resumo confirma a
+formulação 80%Co/20%Ce/15wt%SiO2, coprecipitação, envelhecimento de 2 h, ausência de
+promotor, 450 °C, H2/CO = 2 e GHSV = 4500 h-1. Essa temperatura fica fora da matriz
+FT024-EXT-001 e o artigo não executa as 100 corridas planejadas.
+
+Para Ernst et al. (1999), o registro CAPES confirmou 25 wt% de Co, 4,5–38,2 wt% de
+Ce, 493 K, 2 MPa e H2/CO = 2, com preparação sol-gel/coprecipitação distinta. Assim,
+o estudo é independente e contém uma condição LTFT, mas é incompatível em carga,
+pressão, composição e preparação.
+
+A sessão do navegador interno não estava autenticada no Portal CAPES e a editora a
+classificou como não afiliada. A rota institucional da Springer foi bloqueada pelo
+navegador interno; portanto, nenhum texto integral restrito foi obtido ou usado.
+
 ## Pendência que permanece
 
-O requisito numérico de 100 medições foi atendido. A validação externa do modelo, porém, continua bloqueada porque ainda não foi localizado um conjunto independente com ao menos 20 — idealmente 100 — condições únicas do mesmo catalisador, preparação e domínio operacional. O acesso CAFe informado pelo usuário não pôde ser automatizado porque o controle local do navegador está desativado nesta sessão.
+O requisito numérico de 100 medições foi atendido. A validação externa do modelo, porém, continua bloqueada porque ainda não foi localizado um conjunto independente com ao menos 20 — idealmente 100 — condições únicas do mesmo catalisador, preparação e domínio operacional. A busca no Portal CAPES foi executada, mas a sessão do navegador interno permaneceu sem autenticação institucional.
