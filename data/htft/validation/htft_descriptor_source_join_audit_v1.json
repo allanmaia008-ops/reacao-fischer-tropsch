@@ -1,0 +1,16 @@
+{
+  "join_keys": [
+    "dataset_id",
+    "catalyst",
+    "source_doi"
+  ],
+  "descriptor_records": 12,
+  "descriptor_records_matched": 12,
+  "descriptor_records_unmatched": 0,
+  "source_rows": 62,
+  "source_rows_with_descriptors": 62,
+  "row_join_coverage": 1.0,
+  "duplicate_descriptor_keys": [],
+  "status": "exact_source_scoped_join",
+  "scope_warning": "Joined only to the Liu/Xie source tables supplied; this does not imply coverage in the v14 multicatalyst cohort."
+}

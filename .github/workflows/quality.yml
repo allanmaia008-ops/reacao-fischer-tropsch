@@ -23,6 +23,8 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt pytest
       - run: pip install -e ".[kinetics]"
+      - name: Instalar dependências dos testes de pesquisa
+        run: pip install -r requirements-research.txt
       - name: Validar JSON Schemas e exemplos
         run: python tools/validate_schemas.py
       - name: Executar testes

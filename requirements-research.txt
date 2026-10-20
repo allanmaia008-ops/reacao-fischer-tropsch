@@ -1,0 +1,4 @@
+# Optional research experiment; not imported by the Streamlit runtime.
+numpy>=1.26,<3
+scikit-learn>=1.7,<2
+pytest>=8,<10

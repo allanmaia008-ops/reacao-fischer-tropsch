@@ -1,5 +1,6 @@
 """Interface web pública do Projeto Fischer–Tropsch."""
 from pathlib import Path
+import json
 import sys
 
 ROOT = Path(__file__).resolve().parent
@@ -238,15 +239,67 @@ def _render_regime() -> None:
             st.error(message)
         confirm_regime = st.button("Confirmar regime", type="primary", disabled=bool(regime_errors))
     if st.session_state.ft_regime == "HTFT":
-        st.warning("HTFT está em preparação: a saída será descritiva e a recomendação permanecerá bloqueada.")
+        st.warning("HTFT possui interpolação térmica v3.1 para catalisadores conhecidos. Extrapolação e recomendação permanecem bloqueadas.")
         corpus = audit_htft_corpus(ROOT / "data" / "htft")
+        public_summary_path = ROOT / "data" / "htft" / "validation" / "htft_public_model_summary_v1.json"
+        public_summary = json.loads(public_summary_path.read_text(encoding="utf-8")) if public_summary_path.exists() else None
         with st.container(border=True):
             st.markdown("#### Diagnóstico HTFT controlado")
-            c1, c2, c3 = st.columns(3)
+            c1, c2, c3, c4 = st.columns(4)
             c1.metric("Alvo inicial", "Olefinas C2–C4")
             c2.metric("Corpus interno", f"{corpus['row_count']} registros")
             c3.metric("Recomendação", "Bloqueada")
-            st.caption("Contrato HTFT v1: Fe, O/P por C2–C4, CO₂, água, oxigenados, coque, gradiente térmico e reações secundárias. O corpus serve apenas para comparação contextual.")
+            thermal_ok = public_summary and public_summary.get("v31_thermal_interpolation_passed_within_domain")
+            c4.metric("Modelo térmico", "v3.1 · aprovado no domínio" if thermal_ok else "Indisponível")
+            st.caption("O v3.1 interpola somente catalisadores conhecidos entre temperaturas medidas. Catalisadores novos, extrapolação, tempo e GHSV são recusados. O corpus não autoriza recomendação automática.")
+            if public_summary and public_summary.get("v41_transfer_coverage") is not None:
+                st.info(
+                    f"Transferência entre artigos v4.1: cobertura de {public_summary['v41_transfer_coverage']:.0%} "
+                    f"({public_summary['v41_predicted_target_rows']}/{public_summary['v41_eligible_target_rows']} respostas). "
+                    "Ainda faltam medições independentes das mesmas famílias catalíticas; "
+                    "o modelo bloqueia estimativas fora desse domínio."
+                )
+            if public_summary:
+                st.markdown("#### Melhor modelo retrospectivo por alvo · versões v6–v14")
+                candidate_rows = public_summary["best_v6_v14_by_profile_and_target"]
+                if candidate_rows:
+                    display_rows = [{
+                        "Perfil de dados": row["profile_label"],
+                        "Reação-alvo": row["target_label"],
+                        "Versão": row["version"],
+                        "Modelo candidato": row["model_label"],
+                        "MAE (p.p.)": round(row["mae"], 2),
+                        "Casos / fontes": f"{row['n']} / {row['sources']}",
+                        "Situação": "Não promovido · uso operacional bloqueado",
+                    } for row in candidate_rows]
+                    st.dataframe(display_rows, hide_index=True, use_container_width=True)
+                    st.warning(
+                        "Esta tabela compara os modelos das versões v6–v14 no benchmark retrospectivo comum; "
+                        "a escolha entre versões usa o próprio benchmark e tende a ser otimista. "
+                        "Nenhum candidato foi promovido, não gera previsão de processo e não orienta "
+                        "condições experimentais. Exige validação externa independente antes de qualquer uso."
+                    )
+                    st.caption(
+                        "A versão v12 é o protocolo harmonizado de comparação, não um algoritmo separado. "
+                        "O modelo composicional v13 foi excluído porque usa outra base de resposta e coorte "
+                        "(22 casos/3 fontes). As variantes robustas v13 entram como análise de sensibilidade."
+                    )
+                mlp_rows = public_summary.get("mlp_v15_pilot", [])
+                if mlp_rows:
+                    st.markdown("#### Piloto MLP tabular · v15 (não promovido)")
+                    st.dataframe([{
+                        "Perfil": row["profile_label"],
+                        "Reação-alvo": row["target_label"],
+                        "MLP · MAE (p.p.)": round(row["mae"], 2),
+                        "Melhor v6–v14": row["reference_model"],
+                        "MAE v6–v14": round(row["reference_mae"], 2),
+                        "Δ MLP − referência": round(row["delta_mae_vs_v6_v14_best"], 2),
+                    } for row in mlp_rows], hide_index=True, use_container_width=True)
+                    st.caption(
+                        "Piloto nested por fonte; resultados não usados para promover modelo operacional. "
+                        f"A busca interna registrou {public_summary.get('mlp_convergence_warnings', 0)} avisos de convergência, "
+                        "o que reforça que a MLP ainda exige ajuste e nova validação."
+                    )
     elif st.session_state.ft_regime == "transicao":
         st.warning("A faixa de transição exige justificativa científica explícita.")
     if confirm_regime:
