@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://reacao-fischer-tropsch.local/schemas/ft-dft-parsed-result-v1.schema.json",
+  "type": "object",
+  "required": [
+    "schema_version", "parser_version", "engine", "source", "status",
+    "normal_termination", "error_messages", "total_energy_ev",
+    "ionic_steps_with_forces", "final_force_count", "reported_nions", "expected_atom_count",
+    "force_count_matches_expected", "final_max_force_ev_angstrom",
+    "force_threshold_ev_angstrom", "ionic_stop_marker_present", "electronic_converged", "ionic_converged",
+    "recommendation_blocked", "interpretation"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "parser_version": {"type": "string", "minLength": 1},
+    "engine": {"const": "vasp"},
+    "source": {
+      "type": "object",
+      "required": ["name", "sha256"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[A-Fa-f0-9]{64}$"}
+      },
+      "additionalProperties": false
+    },
+    "status": {"enum": ["succeeded", "failed", "incomplete", "unconverged", "synthetic_test"]},
+    "normal_termination": {"type": "boolean"},
+    "error_messages": {"type": "array", "items": {"type": "string"}},
+    "total_energy_ev": {"type": ["number", "null"]},
+    "ionic_steps_with_forces": {"type": "integer", "minimum": 0},
+    "final_force_count": {"type": ["integer", "null"], "minimum": 0},
+    "reported_nions": {"type": ["integer", "null"], "minimum": 1},
+    "expected_atom_count": {"type": ["integer", "null"], "minimum": 1},
+    "force_count_matches_expected": {"type": ["boolean", "null"]},
+    "final_max_force_ev_angstrom": {"type": ["number", "null"], "minimum": 0},
+    "force_threshold_ev_angstrom": {"type": ["number", "null"], "exclusiveMinimum": 0},
+    "ionic_stop_marker_present": {"type": "boolean"},
+    "electronic_converged": {"type": ["boolean", "null"]},
+    "ionic_converged": {"type": ["boolean", "null"]},
+    "recommendation_blocked": {"const": true},
+    "interpretation": {"const": "parsed_output_only_not_independent_scientific_validation"}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "succeeded"}}, "required": ["status"]},
+      "then": {
+        "properties": {
+          "normal_termination": {"const": true},
+          "electronic_converged": {"const": true},
+          "ionic_converged": {"const": true},
+          "force_threshold_ev_angstrom": {"type": "number"},
+          "force_count_matches_expected": {"const": true},
+          "total_energy_ev": {"type": "number"}
+        }
+      }
+    }
+  ],
+  "additionalProperties": false
+}

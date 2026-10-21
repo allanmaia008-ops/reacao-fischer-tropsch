@@ -13,8 +13,8 @@ class SchemaCITests(unittest.TestCase):
     def test_repository_schemas_and_examples_pass(self):
         report = validate_repository(ROOT)
         self.assertTrue(report.valid, report.issues)
-        self.assertEqual(report.schema_count, 22)
-        self.assertEqual(report.example_count, 23)
+        self.assertEqual(report.schema_count, 24)
+        self.assertEqual(report.example_count, 25)
 
     def test_duplicate_schema_id_fails_the_gate(self):
         with tempfile.TemporaryDirectory() as directory:

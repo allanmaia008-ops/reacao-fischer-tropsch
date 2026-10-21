@@ -15,6 +15,27 @@
     "regime_envelope_version": {"const": "1.0.0"},
     "recommendation_blocked": {"const": true},
     "recommendation_blocking_reason": {"type": "string", "minLength": 1},
-    "warning": {"type": "string", "minLength": 1}
-  }
+    "warning": {"type": "string", "minLength": 1},
+    "case": {"type": "object"},
+    "alpha": {"type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1},
+    "alpha_origin": {"const": "informado_pelo_usuario"},
+    "product_basis": {"type": "string", "minLength": 1},
+    "product_bands": {"type": "object", "additionalProperties": {"type": "number", "minimum": 0, "maximum": 1}},
+    "target_fraction": {"type": "number", "minimum": 0, "maximum": 1},
+    "readiness": {"type": "object"},
+    "target_plan": {"type": "object"},
+    "CO_conversion_pct": {"type": ["number", "null"]},
+    "physical_productivity": {"type": ["number", "null"]},
+    "WGS_extent": {"type": ["number", "null"]}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "distribuicao_asf_condicional"}}},
+      "then": {"required": ["case", "alpha", "alpha_origin", "product_basis", "product_bands", "target_fraction", "readiness", "target_plan"]}
+    },
+    {
+      "if": {"properties": {"status": {"const": "orientacao_por_produto"}}},
+      "then": {"required": ["target_plan"]}
+    }
+  ]
 }

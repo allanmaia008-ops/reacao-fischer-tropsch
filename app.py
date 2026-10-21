@@ -599,6 +599,7 @@ _initialize_state()
 apply_global_design()
 _navigation()
 st.title("Projeto Fischer–Tropsch")
+st.caption("Versão 0.2.0 · Serviço público de planejamento científico · Recomendações experimentais sujeitas à validação")
 st.caption("Orientação científica para Fischer–Tropsch em baixa e alta temperatura")
 st.warning(
     "A plataforma diferencia orientação ASF, evidência, cálculo e experimento. "

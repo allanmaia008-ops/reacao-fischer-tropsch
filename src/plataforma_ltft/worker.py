@@ -1,15 +1,19 @@
 """Worker local determinístico para uma configuração LTFT em JSON."""
 import argparse
 import json
+import logging
 from pathlib import Path
+from time import perf_counter
+from hashlib import sha256
 
 from .domain import CASE_SCHEMA_VERSION, LTFTCase, migrate_case_v1_to_v2
 from .screening import run_screening
 from .product_targets import plan_product_target
+from .database import Database
+from .observability import emit
 
 
-def execute(config_path: Path, output_dir: Path) -> Path:
-    config = json.loads(config_path.read_text(encoding="utf-8"))
+def execute_config(config: dict, output_dir: Path) -> Path:
     unknown = set(config) - {"case", "alpha", "desired_product"}
     if unknown:
         raise ValueError(f"Campos desconhecidos na configuração: {sorted(unknown)}")
@@ -34,6 +38,34 @@ def execute(config_path: Path, output_dir: Path) -> Path:
     target = output_dir / "resultado_ft.json"
     target.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return target
+
+
+def execute(config_path: Path, output_dir: Path) -> Path:
+    return execute_config(json.loads(config_path.read_text(encoding="utf-8")), output_dir)
+
+
+def run_queued_once(database: Database, output_root: Path, *, worker_id: str, lease_seconds: int = 300) -> dict | None:
+    """Claim one persisted job, execute once, store result, and schedule bounded retry on error."""
+    job = database.claim_job(worker_id, lease_seconds=lease_seconds)
+    if job is None:
+        return None
+    start = perf_counter()
+    emit("worker.job_started", job_id=job["job_id"], run_id=job["run_id"], worker_id=worker_id)
+    try:
+        run_dir = output_root / sha256(job["run_id"].encode("utf-8")).hexdigest()[:20]
+        output_path = execute_config(job["payload"], run_dir)
+        result = json.loads(output_path.read_text(encoding="utf-8"))
+        database.save_run_result(job["run_id"], result)
+        status = database.finish_job(job["job_id"], worker_id, success=True)
+        emit("worker.job_finished", job_id=job["job_id"], run_id=job["run_id"], worker_id=worker_id,
+             status=status, duration_ms=round((perf_counter()-start)*1000))
+        return {"job_id":job["job_id"],"run_id":job["run_id"],"status":status,"result":result,"artifact":str(output_path)}
+    except Exception as exc:
+        status = database.finish_job(job["job_id"], worker_id, success=False, error=type(exc).__name__)
+        emit("worker.job_failed", level=logging.ERROR, job_id=job["job_id"], run_id=job["run_id"],
+             worker_id=worker_id, status=status, error_code=type(exc).__name__,
+             duration_ms=round((perf_counter()-start)*1000))
+        return {"job_id":job["job_id"],"run_id":job["run_id"],"status":status,"error_code":type(exc).__name__}
 
 
 def main() -> None:

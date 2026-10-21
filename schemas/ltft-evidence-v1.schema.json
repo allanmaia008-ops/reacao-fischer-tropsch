@@ -4,18 +4,38 @@
   "title": "Registro de evidência LTFT v1",
   "type": "object",
   "additionalProperties": true,
-  "required": ["schema_version", "evidence_id", "source", "evidence_status", "data", "limitations"],
+  "required": ["schema_version", "evidence_id", "source", "source_url_or_doi", "license", "evidence_status", "data", "units", "uncertainties", "conditions", "limitations"],
   "properties": {
     "schema_version": {"const": "1.0.0"},
     "evidence_id": {"type": "string", "minLength": 1},
     "source": {"type": "string", "minLength": 1},
     "source_url_or_doi": {"type": ["string", "null"]},
     "license": {"type": ["string", "null"]},
+    "license_verified": {"type": "boolean"},
+    "rights_note": {"type": "string", "minLength": 1},
     "evidence_status": {"enum": ["metadado", "leitura_integral", "extraido", "verificado", "aprovado"]},
+    "review_status": {"enum": ["pending", "in_review", "approved", "rejected"]},
+    "approval_basis": {"type": "string", "minLength": 1},
+    "approved_uses": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "prohibited_uses": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
     "data": {"type": "object"},
     "units": {"type": "object"},
     "uncertainties": {"type": ["object", "null"]},
     "conditions": {"type": ["object", "null"]},
     "limitations": {"type": "array", "items": {"type": "string"}, "minItems": 1}
-  }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"evidence_status": {"const": "aprovado"}}},
+      "then": {
+        "required": ["license_verified", "rights_note", "review_status", "approval_basis", "approved_uses", "prohibited_uses"],
+        "properties": {
+          "license_verified": {"const": true},
+          "review_status": {"const": "approved"},
+          "approved_uses": {"minItems": 1},
+          "prohibited_uses": {"minItems": 1}
+        }
+      }
+    }
+  ]
 }

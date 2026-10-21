@@ -5,5 +5,12 @@ __pycache__/
 outputs/
 .streamlit/secrets.toml
 .venv/
+tmp/
+*.inspect.ndjson
+.env
+.env.*
+*.sqlite3
+*.sqlite3-*
 reference_results/
 data/evidence/*.csv
+data/evidence/source_pdfs/

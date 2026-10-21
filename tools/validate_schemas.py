@@ -36,6 +36,8 @@ EXAMPLE_CASES = (
     ("ft-dft-surface-v1.schema.json", "dft_surface_vasp_synthetic_v1.json", None, True),
     ("ft-dft-adsorption-v1.schema.json", "dft_adsorption_synthetic_v1.json", None, True),
     ("ft-dft-engine-input-v1.schema.json", "dft_engine_input_synthetic_v1.json", None, True),
+    ("ft-dft-parsed-result-v1.schema.json", "dft_vasp_parsed_result_synthetic_v1.json", None, True),
+    ("ft-dft-report-v1.schema.json", "dft_report_synthetic_v1.json", None, True),
 )
 
 

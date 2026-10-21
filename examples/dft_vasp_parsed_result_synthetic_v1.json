@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "parser_version": "1.0.0",
+  "engine": "vasp",
+  "source": {
+    "name": "OUTCAR.synthetic",
+    "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "status": "synthetic_test",
+  "normal_termination": true,
+  "error_messages": [],
+  "total_energy_ev": -10.123456,
+  "ionic_steps_with_forces": 1,
+  "final_force_count": 1,
+  "reported_nions": 1,
+  "expected_atom_count": 1,
+  "force_count_matches_expected": true,
+  "final_max_force_ev_angstrom": 0.01,
+  "force_threshold_ev_angstrom": 0.03,
+  "ionic_stop_marker_present": true,
+  "electronic_converged": true,
+  "ionic_converged": true,
+  "recommendation_blocked": true,
+  "interpretation": "parsed_output_only_not_independent_scientific_validation"
+}

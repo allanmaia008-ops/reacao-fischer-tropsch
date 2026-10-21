@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://reacao-fischer-tropsch.local/schemas/ft-dft-report-v1.schema.json",
+  "type": "object",
+  "required": [
+    "schema_version", "report_id", "report_type", "execution_status", "synthetic",
+    "source_citation", "structure", "protocol", "input_manifest", "parsed_result",
+    "limitations", "independent_review_required", "recommendation_blocked"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "report_id": {"type": "string", "minLength": 1},
+    "report_type": {"const": "dft_run_audit"},
+    "execution_status": {"enum": ["succeeded", "failed", "incomplete", "unconverged", "synthetic_test"]},
+    "synthetic": {"type": "boolean"},
+    "source_citation": {"type": "string", "minLength": 1},
+    "structure": {
+      "type": "object",
+      "required": ["structure_id", "scientific_status", "provenance"],
+      "properties": {
+        "structure_id": {"type": ["string", "null"]},
+        "scientific_status": {"type": ["string", "null"]},
+        "provenance": {"type": "object"}
+      },
+      "additionalProperties": false
+    },
+    "protocol": {
+      "type": "object",
+      "required": ["protocol_id", "protocol_version", "method", "convergence", "surface"],
+      "properties": {
+        "protocol_id": {"type": ["string", "null"]},
+        "protocol_version": {"type": ["string", "null"]},
+        "method": {"type": "object"},
+        "convergence": {"type": ["object", "null"]},
+        "surface": {"type": ["object", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "input_manifest": {
+      "type": "object",
+      "required": [
+        "input_set_id", "adapter_version", "method_fingerprint_sha256",
+        "source_fingerprint_sha256", "files", "required_external_files"
+      ],
+      "properties": {
+        "input_set_id": {"type": ["string", "null"]},
+        "adapter_version": {"type": ["string", "null"]},
+        "method_fingerprint_sha256": {"type": ["string", "null"]},
+        "source_fingerprint_sha256": {"type": ["string", "null"]},
+        "files": {"type": ["array", "null"]},
+        "required_external_files": {"type": ["array", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "parsed_result": {
+      "type": "object",
+      "required": [
+        "parser_version", "source", "normal_termination", "error_messages", "total_energy_ev",
+        "ionic_steps_with_forces", "final_force_count", "reported_nions", "expected_atom_count",
+        "force_count_matches_expected", "final_max_force_ev_angstrom",
+        "electronic_converged", "ionic_converged"
+      ],
+      "properties": {
+        "parser_version": {"type": ["string", "null"]},
+        "source": {"type": ["object", "null"]},
+        "normal_termination": {"type": ["boolean", "null"]},
+        "error_messages": {"type": ["array", "null"]},
+        "total_energy_ev": {"type": ["number", "null"]},
+        "ionic_steps_with_forces": {"type": ["integer", "null"], "minimum": 0},
+        "final_force_count": {"type": ["integer", "null"], "minimum": 0},
+        "reported_nions": {"type": ["integer", "null"], "minimum": 1},
+        "expected_atom_count": {"type": ["integer", "null"], "minimum": 1},
+        "force_count_matches_expected": {"type": ["boolean", "null"]},
+        "final_max_force_ev_angstrom": {"type": ["number", "null"], "minimum": 0},
+        "electronic_converged": {"type": ["boolean", "null"]},
+        "ionic_converged": {"type": ["boolean", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "limitations": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "independent_review_required": {"const": true},
+    "recommendation_blocked": {"const": true}
+  },
+  "additionalProperties": false
+}

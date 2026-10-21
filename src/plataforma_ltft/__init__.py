@@ -16,6 +16,10 @@ from .htft_evidence import audit_htft_corpus, htft_dataset_route
 from .htft_balance import calculate_htft_balance
 from .htft_validation import HTFT_VALIDATION_VERSION, assess_htft_validation
 from .dft_contracts import DFT_CONTRACT_VERSION, calculate_adsorption_energy, validate_structure_contract, validate_surface_protocol
+from .dft_parser import PARSER_VERSION as DFT_PARSER_VERSION, parse_vasp_outcar, parse_vasp_outcar_file
+from .dft_reporting import REPORT_VERSION as DFT_REPORT_VERSION, build_dft_report, render_dft_report_markdown, write_dft_report
+from .database import Database, DatabaseError
+from .auth import AuthService, AuthenticationError
 from .model_validation import VALIDATION_CRITERIA_VERSION, assess_validation, validation_metrics
 from .process_integration import integrated_balance_gate, economic_scenario, integrated_validation_gate
 from .units import (
@@ -40,3 +44,8 @@ __all__ = ["CASE_SCHEMA_VERSION", "REGIME_ENVELOPE_VERSION", "LTFTCase", "Valida
 __all__ += ["HTFT_VALIDATION_VERSION", "assess_htft_validation", "DFT_CONTRACT_VERSION",
             "calculate_adsorption_energy", "validate_structure_contract", "validate_surface_protocol",
             "VALIDATION_CRITERIA_VERSION", "assess_validation", "validation_metrics"]
+__all__ += [
+    "DFT_PARSER_VERSION", "parse_vasp_outcar", "parse_vasp_outcar_file",
+    "DFT_REPORT_VERSION", "build_dft_report", "render_dft_report_markdown", "write_dft_report",
+    "Database", "DatabaseError", "AuthService", "AuthenticationError",
+]

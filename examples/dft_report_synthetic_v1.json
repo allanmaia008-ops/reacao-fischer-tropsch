@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "report_id": "ft-dft-report-synthetic-001",
+  "report_type": "dft_run_audit",
+  "execution_status": "synthetic_test",
+  "synthetic": true,
+  "source_citation": "Internal synthetic fixture; no scientific source.",
+  "structure": {
+    "structure_id": "synthetic-fe-test",
+    "scientific_status": "synthetic_test",
+    "provenance": {
+      "source_type": "synthetic_test",
+      "citation_or_uri": "internal://schema-validation-only",
+      "license": "not_applicable_synthetic",
+      "transformations": ["synthetic minimal cell for contract testing"]
+    }
+  },
+  "protocol": {
+    "protocol_id": "surface-synthetic-001",
+    "protocol_version": "1.0.0",
+    "method": {
+      "engine": "vasp",
+      "functional": "PBE",
+      "pseudopotential_family": "PAW_PBE",
+      "cutoff_ev": 400
+    },
+    "convergence": {"force_ev_angstrom": 0.03},
+    "surface": {"miller_index": [1, 1, 0]}
+  },
+  "input_manifest": {
+    "input_set_id": "ft038-synthetic-001",
+    "adapter_version": "1.0.0",
+    "method_fingerprint_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "source_fingerprint_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "files": [],
+    "required_external_files": [{"path": "POTCAR", "status": "missing"}]
+  },
+  "parsed_result": {
+    "parser_version": "1.0.0",
+    "source": {
+      "name": "OUTCAR.synthetic",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    "normal_termination": true,
+    "error_messages": [],
+    "total_energy_ev": -10.123456,
+    "ionic_steps_with_forces": 1,
+    "final_force_count": 1,
+    "reported_nions": 1,
+    "expected_atom_count": 1,
+    "force_count_matches_expected": true,
+    "final_max_force_ev_angstrom": 0.01,
+    "electronic_converged": true,
+    "ionic_converged": true
+  },
+  "limitations": ["Synthetic fixture; no scientific inference."],
+  "independent_review_required": true,
+  "recommendation_blocked": true
+}

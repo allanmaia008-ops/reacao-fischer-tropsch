@@ -39,6 +39,8 @@ rótulo público da aplicação é **Projeto Fischer–Tropsch**.
 
 ### Publicação no Streamlit Community Cloud
 
+Infraestrutura e fronteiras aprovadas: [decisão de produção](docs/INFRAESTRUTURA_PRODUCAO.md).
+
 1. Conecte a conta GitHub no Streamlit Community Cloud.
 2. Selecione o repositório `allanmaia008-ops/reacao-fischer-tropsch`.
 3. Use a branch `main` e o arquivo principal `app.py`.

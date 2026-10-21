@@ -51,6 +51,23 @@
     {
       "if": {"properties": {"ft_regime": {"const": "transicao"}}},
       "then": {"required": ["regime_justification"]}
+    },
+    {
+      "if": {"properties": {"ft_regime": {"const": "LTFT"}}},
+      "then": {"properties": {"temperature_c": {"minimum": 180, "maximum": 260}}}
+    },
+    {
+      "if": {"properties": {"ft_regime": {"const": "transicao"}}},
+      "then": {"properties": {"temperature_c": {"exclusiveMinimum": 260, "exclusiveMaximum": 280}}}
+    },
+    {
+      "if": {"properties": {"ft_regime": {"const": "HTFT"}}},
+      "then": {
+        "properties": {
+          "temperature_c": {"minimum": 280, "maximum": 350},
+          "active_family": {"const": "Fe"}
+        }
+      }
     }
   ]
 }
